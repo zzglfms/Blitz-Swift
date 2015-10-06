@@ -11,6 +11,7 @@ import UIKit
 class SignupViewController: UIViewController {
     
     @IBOutlet weak var txtUsername: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtConfirmPassord: UITextField!
     
@@ -27,16 +28,20 @@ class SignupViewController: UIViewController {
     
     @IBAction func signupTapped(sender: UIButton) {
         let username:NSString = txtUsername.text!
+        let email:NSString = txtEmail.text!
         let password:NSString = txtPassword.text!
         let confirm_password:NSString = txtConfirmPassord.text!
         
-        if ( username.isEqualToString("") || password.isEqualToString("") ) {
-            let alertController = UIAlertController(title: "Sign Up Failed!", message: "Please enter Username and Password", preferredStyle: .Alert)
+        if ( username.isEqualToString("") || password.isEqualToString("") ||
+            email.isEqualToString("") || confirm_password.isEqualToString(""))
+        {
+            let alertController = UIAlertController(title: "Sign Up Failed!", message: "Please enter Username, Email, Password and Confirm Password", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
             alertController.addAction(OKAction)
             self.presentViewController(alertController, animated: true) {}
         }
-        else if ( !password.isEqual(confirm_password) ) {
+        else if ( !password.isEqual(confirm_password) )
+        {
             let alertController = UIAlertController(title: "Sign Up Failed!", message: "Passwords doesn't Match", preferredStyle: .Alert)
 //            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
 //                // ...
@@ -52,7 +57,8 @@ class SignupViewController: UIViewController {
                 // ...
             }
         }
-        else {
+        else
+        {
             let post:String = "username=\(username)&password=\(password)&c_password=\(confirm_password)"
             
             NSLog("PostData: %@", post);
@@ -61,11 +67,13 @@ class SignupViewController: UIViewController {
             
             NSLog("Result: %@", result);
             
-            if(result == "Success"){
+            if(result == "Success")
+            {
                 NSLog("Sign Up SUCCESS");
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-            else{
+            else
+            {
                 let alertController = UIAlertController(title: "Sign Up Failed!", message: "Server reply fail", preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                 alertController.addAction(OKAction)
