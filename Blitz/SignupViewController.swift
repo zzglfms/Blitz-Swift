@@ -55,14 +55,22 @@ class SignupViewController: UIViewController {
         else {
             let post:String = "username=\(username)&password=\(password)&c_password=\(confirm_password)"
             
-            NSLog("PostData: %@", post);
+            NSLog("@SignupViewController.swift: PostData: %@", post);
             
-            let result = request(post)
+            // Make a json object for communication with server
+            let jsonObject: [String: AnyObject] = [
+                "operation": "Signup",
+                "username": username,
+                "password": password,
+                "email" : "sample@email.com" // Need to replace
+            ]
             
-            NSLog("Result: %@", result);
+            let result = request(jsonObject)
+            
+            NSLog("@SignupViewController.swift: Result: %@", result);
             
             if(result == "Success"){
-                NSLog("Sign Up SUCCESS");
+                NSLog("@SignupViewController.swift: Sign Up SUCCESS");
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else{

@@ -39,14 +39,27 @@ class LoginViewController: UIViewController {
         } else {
             let post:String = "username=\(username)&password=\(password)"
             
-            NSLog("PostData: %@",post);
+            NSLog("@LoginViewController.swift: PostData: %@",post);
             
-            let result = request(post)
+            // Make a json object for communication with server
+            let jsonObject: [String: AnyObject] = [
+                "operation": "Login",
+                "username": username,
+                "password": password
+            ]
             
-            NSLog("Result: %@", result);
+            let result = request(jsonObject)
+            
+            NSLog("@LoginViewController.swift: Result: %@", result);
             
             if(result == "Success"){
-                NSLog("Login SUCCESS");
+                 NSLog("@SignupViewController.swift: Login SUCCESS");
+                
+                let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                prefs.setObject(username, forKey: "USERNAME")
+                prefs.setInteger(1, forKey: "ISLOGGEDIN")
+                prefs.synchronize()
+                
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else{
