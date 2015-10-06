@@ -75,9 +75,8 @@ class SignupViewController: UIViewController {
             
             NSLog("@SignupViewController.swift: Result: %@", result);
             
-            if(result == "Success")
-            {
-                NSLog("Sign Up SUCCESS");
+            if(result == "Success"){
+                NSLog("@SignupViewController.swift: Sign Up SUCCESS");
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else

@@ -235,8 +235,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" id="J1k-xA-jAQ">
+                                <rect key="frame" x="24" y="311" width="366" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xd1-tM-txb">
-                                <rect key="frame" x="157" y="362" width="100" height="30"/>
+                                <rect key="frame" x="157" y="373" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1643449038" green="0.35012587610000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -253,6 +260,7 @@
                         <color key="backgroundColor" red="0.34248450339999997" green="0.68482429170000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="txtEmail" destination="J1k-xA-jAQ" id="UW1-fI-peh"/>
                         <outlet property="txtUsername" destination="1M2-F8-lQd" id="HXF-08-jUu"/>
                     </connections>
                 </viewController>
