@@ -34,7 +34,17 @@ class ResetPasswordViewController: UIViewController {
             self.presentViewController(alertController, animated: true) {}
         }else{
             //connect server
-            NSLog("username = %@, email = %@", username, email)
+            NSLog("@ResetPasswordViewController.swift: username = %@, email = %@", username, email)
+            
+            let jsonObject: [String: AnyObject] = [
+                "operation": "ForgetPassword",
+                "username": username,
+                "email" : email
+            ]
+            
+            let result = request(jsonObject)
+            
+            NSLog("@SignupViewController.swift: Result: %@", result);
         }
     }
 

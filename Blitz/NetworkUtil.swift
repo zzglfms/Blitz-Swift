@@ -8,7 +8,7 @@
 
 import Foundation
 
-func request(jsonObject :[String: AnyObject]) -> String{
+func request(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
     let addr = "127.0.0.1"
     let port = 1234
     
@@ -54,10 +54,21 @@ func request(jsonObject :[String: AnyObject]) -> String{
         
         NSLog("@NetworkUtil.swift: Done: "+res)
         
-        return res
+        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
+            let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
+            
+            if (parsedObject != nil) {
+                
+            }
+            else {
+
+            }
+            return parsedObject!
+        }
+        return [ "success": false, "msg": "Error when use 'dataUsingEncoding'" ]
     }
     catch{
-        return "Failed"
+        return [ "success": false, "msg": "Error when use 'dataWithJSONObject/JSONObjectWithData'" ]
     }
 }
 

@@ -64,24 +64,31 @@ class SignupViewController: UIViewController {
             NSLog("@SignupViewController.swift: PostData: %@", post);
             
             // Make a json object for communication with server
-            let jsonObject: [String: AnyObject] = [
+            let signupJSONObject: [String: AnyObject] = [
                 "operation": "Signup",
                 "username": username,
                 "password": password,
-                "email" : "sample@email.com" // Need to replace
+                "email" : email
             ]
             
-            let result = request(jsonObject)
+            let result = request(signupJSONObject)
             
-            NSLog("@SignupViewController.swift: Result: %@", result);
+            NSLog("@SignupViewController.swift: Result: %@", result)
             
-            if(result == "Success"){
-                NSLog("@SignupViewController.swift: Sign Up SUCCESS");
+            if(result["success"] as! Bool){
+                NSLog("@SignupViewController.swift: Sign Up SUCCESS")
+                let unlockCode :Int = result["unlockCode"] as! Int
+                let activateJSONObject: [String: AnyObject] = [
+                    "operation": "Verify",
+                    "username": username,
+                    "unlockCode": unlockCode
+                ]
+                request(activateJSONObject)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else
             {
-                let alertController = UIAlertController(title: "Sign Up Failed!", message: "Server reply fail", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Sign Up Failed!", message: result["msg"] as? String, preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                 alertController.addAction(OKAction)
                 self.presentViewController(alertController, animated: true) {}

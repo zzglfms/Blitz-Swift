@@ -37,9 +37,6 @@ class LoginViewController: UIViewController {
             alertController.addAction(OKAction)
             self.presentViewController(alertController, animated: true) {}
         } else {
-            let post:String = "username=\(username)&password=\(password)"
-            
-            NSLog("@LoginViewController.swift: PostData: %@",post);
             
             // Make a json object for communication with server
             let jsonObject: [String: AnyObject] = [
@@ -52,7 +49,7 @@ class LoginViewController: UIViewController {
             
             NSLog("@LoginViewController.swift: Result: %@", result);
             
-            if(result == "Success"){
+            if(result["success"] as! Bool){
                  NSLog("@SignupViewController.swift: Login SUCCESS");
                 
                 let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -63,7 +60,7 @@ class LoginViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else{
-                let alertController = UIAlertController(title: "Sign Up Failed!", message: "Server reply fail", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Sign Up Failed!", message: result["msg"] as? String, preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                 alertController.addAction(OKAction)
                 self.presentViewController(alertController, animated: true) {}
