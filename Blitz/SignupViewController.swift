@@ -77,13 +77,6 @@ class SignupViewController: UIViewController {
             
             if(result["success"] as! Bool){
                 NSLog("@SignupViewController.swift: Sign Up SUCCESS")
-                let unlockCode :Int = result["unlockCode"] as! Int
-                let activateJSONObject: [String: AnyObject] = [
-                    "operation": "Verify",
-                    "username": username,
-                    "unlockCode": unlockCode
-                ]
-                request(activateJSONObject)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             else

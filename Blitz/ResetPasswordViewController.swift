@@ -38,8 +38,7 @@ class ResetPasswordViewController: UIViewController {
             
             let jsonObject: [String: AnyObject] = [
                 "operation": "ForgetPassword",
-                "username": username,
-                "email" : email
+                "username": username
             ]
             
             let result = request(jsonObject)

@@ -12,10 +12,19 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    var window: UIWindow?
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        
+        if(isLoggedIn == 1){
+            self.performSegueWithIdentifier("Login_Goto_Home", sender: self)
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -57,7 +66,7 @@ class LoginViewController: UIViewController {
                 prefs.setInteger(1, forKey: "ISLOGGEDIN")
                 prefs.synchronize()
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("Login_Goto_Home", sender: self)
             }
             else{
                 let alertController = UIAlertController(title: "Sign Up Failed!", message: result["msg"] as? String, preferredStyle: .Alert)
