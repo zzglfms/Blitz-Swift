@@ -19,19 +19,24 @@ class LoginViewController: UIViewController {
         
         super.viewDidLoad()
         
-        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-        
-        if(isLoggedIn == 1){
-            self.performSegueWithIdentifier("Login_Goto_Home", sender: self)
-        }
-        
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        
+        if(isLoggedIn == 1){
+            self.performSegueWithIdentifier("Login", sender: self)
+            NSLog("@LoginViewController.swfit: Should jump to homepage")
+        }
     }
     
     
@@ -66,7 +71,7 @@ class LoginViewController: UIViewController {
                 prefs.setInteger(1, forKey: "ISLOGGEDIN")
                 prefs.synchronize()
                 
-                self.performSegueWithIdentifier("Login_Goto_Home", sender: self)
+                self.performSegueWithIdentifier("Login", sender: self)
             }
             else{
                 let alertController = UIAlertController(title: "Sign Up Failed!", message: result["msg"] as? String, preferredStyle: .Alert)

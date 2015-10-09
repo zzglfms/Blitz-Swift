@@ -9,8 +9,8 @@
 import Foundation
 
 func request(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
-    let addr = "10.184.72.234"
-    let port = 5000
+    let addr = "localhost"
+    let port = 1234
     
     var inp :NSInputStream?
     var out :NSOutputStream?
