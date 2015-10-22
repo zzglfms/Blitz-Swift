@@ -17,7 +17,6 @@
 		C9C48F0A1BC75BBB00578C7C /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F091BC75BBB00578C7C /* UserProfileController.swift */; settings = {ASSET_TAGS = (); }; };
 		C9C48F0C1BC7706C00578C7C /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F0B1BC7706C00578C7C /* UserProfileCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163DF481BBDCA380031E915 /* AppDelegate.swift */; };
-		D163DF4B1BBDCA380031E915 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163DF4A1BBDCA380031E915 /* HomeViewController.swift */; };
 		D163DF4E1BBDCA380031E915 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4C1BBDCA380031E915 /* Main.storyboard */; };
 		D163DF501BBDCA380031E915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4F1BBDCA380031E915 /* Assets.xcassets */; };
 		D163DF531BBDCA380031E915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */; };
@@ -48,7 +47,6 @@
 		C9C48F0B1BC7706C00578C7C /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		D163DF451BBDCA380031E915 /* Blitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D163DF481BBDCA380031E915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D163DF4A1BBDCA380031E915 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D163DF4D1BBDCA380031E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D163DF4F1BBDCA380031E915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D163DF521BBDCA380031E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
 				D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */,
 				D163DF541BBDCA380031E915 /* Info.plist */,
-				D163DF4A1BBDCA380031E915 /* HomeViewController.swift */,
 				34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */,
 				34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */,
 				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
@@ -240,7 +237,6 @@
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */,
 				C9C48F0C1BC7706C00578C7C /* UserProfileCell.swift in Sources */,
-				D163DF4B1BBDCA380031E915 /* HomeViewController.swift in Sources */,
 				344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
