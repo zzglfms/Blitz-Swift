@@ -11,6 +11,7 @@
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
 		C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C965535E1BE0009600636531 /* TabBarViewController.swift */; };
+		C96553621BE1223A00636531 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96553611BE1223A00636531 /* ProfileVC.swift */; };
 		C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */; };
 		C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F011BC7343F00578C7C /* SWRevealViewController.m */; };
 		C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F031BC7383F00578C7C /* MenuViewController.swift */; };
@@ -39,6 +40,7 @@
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C965535E1BE0009600636531 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C96553611BE1223A00636531 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		C9C48EFF1BC7343F00578C7C /* Blitz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blitz-Bridging-Header.h"; sourceTree = "<group>"; };
 		C9C48F001BC7343F00578C7C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C96553601BE1220A00636531 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C96553611BE1223A00636531 /* ProfileVC.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		C9C48EFE1BC7340600578C7C /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		D163DF471BBDCA380031E915 /* Blitz */ = {
 			isa = PBXGroup;
 			children = (
+				C96553601BE1220A00636531 /* Profile */,
 				C9C48EFE1BC7340600578C7C /* SWRevealViewController */,
 				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
 				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
@@ -236,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96553621BE1223A00636531 /* ProfileVC.swift in Sources */,
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
