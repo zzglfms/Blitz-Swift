@@ -20,8 +20,6 @@
 		C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F011BC7343F00578C7C /* SWRevealViewController.m */; };
 		C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F031BC7383F00578C7C /* MenuViewController.swift */; };
 		C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F071BC740F100578C7C /* MainViewController.swift */; };
-		C9C48F0A1BC75BBB00578C7C /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F091BC75BBB00578C7C /* UserProfileController.swift */; };
-		C9C48F0C1BC7706C00578C7C /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F0B1BC7706C00578C7C /* UserProfileCell.swift */; };
 		D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163DF481BBDCA380031E915 /* AppDelegate.swift */; };
 		D163DF4E1BBDCA380031E915 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4C1BBDCA380031E915 /* Main.storyboard */; };
 		D163DF501BBDCA380031E915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4F1BBDCA380031E915 /* Assets.xcassets */; };
@@ -56,8 +54,6 @@
 		C9C48F011BC7343F00578C7C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
 		C9C48F031BC7383F00578C7C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C9C48F071BC740F100578C7C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		C9C48F091BC75BBB00578C7C /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
-		C9C48F0B1BC7706C00578C7C /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		D163DF451BBDCA380031E915 /* Blitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D163DF481BBDCA380031E915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D163DF4D1BBDCA380031E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,8 +140,6 @@
 				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
 				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
 				C965535E1BE0009600636531 /* TabBarViewController.swift */,
-				C9C48F091BC75BBB00578C7C /* UserProfileController.swift */,
-				C9C48F0B1BC7706C00578C7C /* UserProfileCell.swift */,
 				C9C48F071BC740F100578C7C /* MainViewController.swift */,
 				C9C48F031BC7383F00578C7C /* MenuViewController.swift */,
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
@@ -282,7 +276,6 @@
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
-				C9C48F0A1BC75BBB00578C7C /* UserProfileController.swift in Sources */,
 				C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */,
 				3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */,
 			);
