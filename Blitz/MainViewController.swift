@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MainViewController: UITableViewController {
+class MainViewController: UIViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
