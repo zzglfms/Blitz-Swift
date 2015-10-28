@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */; settings = {ASSET_TAGS = (); }; };
+		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; settings = {ASSET_TAGS = (); }; };
+		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; settings = {ASSET_TAGS = (); }; };
+		3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9201BE138A800EFC2C2 /* FXBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */; };
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
@@ -34,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
+		3421C91B1BE1385000EFC2C2 /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
+		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		3421C91F1BE138A800EFC2C2 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		3421C9201BE138A800EFC2C2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -74,10 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3421C91D1BE1386A00EFC2C2 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */,
+				3421C91F1BE138A800EFC2C2 /* FXBlurView.h */,
+				3421C9201BE138A800EFC2C2 /* FXBlurView.m */,
+				3421C91B1BE1385000EFC2C2 /* TWTButton.swift */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		C96553601BE1220A00636531 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3421C91D1BE1386A00EFC2C2 /* Support */,
 				C96553611BE1223A00636531 /* ProfileVC.swift */,
+				3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -244,13 +266,18 @@
 				C96553621BE1223A00636531 /* ProfileVC.swift in Sources */,
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
+				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
+				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
 				34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */,
+				3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */,
+				C9C48F0C1BC7706C00578C7C /* UserProfileCell.swift in Sources */,
 				344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
 				C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */,
+				3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
