@@ -37,72 +37,72 @@ class UserProfileController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! UserProfileCell
-        
-        let index = indexPath.indexAtPosition(indexPath.length-1)
-        switch index{
-        case 0: cell.titleLabel.text = "New Username"
-                cell.actionLabel.text = "Change Username"
-        case 1: cell.titleLabel.text = "New Password"
-                cell.actionLabel.text = "Change Password"
-        case 2: cell.titleLabel.text = "New Email"
-                cell.actionLabel.text = "Change Email"
-        default: cell.titleLabel.text = "Error"
-                    NSLog("@UserProfileController.swift: index = " + String(index))
-        }
-        
-        return cell
-    }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let previousIndexPath = selectedIndexPath
-        if indexPath == selectedIndexPath {
-            selectedIndexPath = nil
-        }
-        else {
-            selectedIndexPath = indexPath
-        }
-        
-        var indexPaths : Array<NSIndexPath> = []
-//        indexPaths += [indexPath]
-        if let previous = previousIndexPath {
-            indexPaths += [previous]
-        }
-        if let current = selectedIndexPath {
-            indexPaths += [current]
-        }
-        if indexPaths.count > 0 {
-            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-        }
-    }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        (cell as! UserProfileCell).watchFrameChanges()
-    }
-    
-    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        (cell as! UserProfileCell).ignoreFrameChanges()
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath == selectedIndexPath {
-            return UserProfileCell.expandedHeight
-        }
-        else {
-            return UserProfileCell.defaultHeight
-        }
-    }
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 3
+//    }
+//
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! UserProfileCell
+//        
+//        let index = indexPath.indexAtPosition(indexPath.length-1)
+//        switch index{
+//        case 0: cell.titleLabel.text = "New Username"
+//                cell.actionLabel.text = "Change Username"
+//        case 1: cell.titleLabel.text = "New Password"
+//                cell.actionLabel.text = "Change Password"
+//        case 2: cell.titleLabel.text = "New Email"
+//                cell.actionLabel.text = "Change Email"
+//        default: cell.titleLabel.text = "Error"
+//                    NSLog("@UserProfileController.swift: index = " + String(index))
+//        }
+//        
+//        return cell
+//    }
+//
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let previousIndexPath = selectedIndexPath
+//        if indexPath == selectedIndexPath {
+//            selectedIndexPath = nil
+//        }
+//        else {
+//            selectedIndexPath = indexPath
+//        }
+//        
+//        var indexPaths : Array<NSIndexPath> = []
+////        indexPaths += [indexPath]
+//        if let previous = previousIndexPath {
+//            indexPaths += [previous]
+//        }
+//        if let current = selectedIndexPath {
+//            indexPaths += [current]
+//        }
+//        if indexPaths.count > 0 {
+//            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+//        }
+//    }
+//    
+//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        (cell as! UserProfileCell).watchFrameChanges()
+//    }
+//    
+//    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        (cell as! UserProfileCell).ignoreFrameChanges()
+//    }
+//    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if indexPath == selectedIndexPath {
+//            return UserProfileCell.expandedHeight
+//        }
+//        else {
+//            return UserProfileCell.defaultHeight
+//        }
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
