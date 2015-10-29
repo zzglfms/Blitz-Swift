@@ -11,6 +11,7 @@
 		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; settings = {ASSET_TAGS = (); }; };
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; settings = {ASSET_TAGS = (); }; };
 		3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9201BE138A800EFC2C2 /* FXBlurView.m */; settings = {ASSET_TAGS = (); }; };
+		34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34267E541BE1849800F050A5 /* MainTabBar.swift */; settings = {ASSET_TAGS = (); }; };
 		344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */; };
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
@@ -43,6 +44,7 @@
 		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		3421C91F1BE138A800EFC2C2 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		3421C9201BE138A800EFC2C2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		34267E541BE1849800F050A5 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,15 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
+		34267E4F1BE1840600F050A5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				34267E541BE1849800F050A5 /* MainTabBar.swift */,
+				C965535E1BE0009600636531 /* TabBarViewController.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
 		C96553601BE1220A00636531 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,11 +146,11 @@
 		D163DF471BBDCA380031E915 /* Blitz */ = {
 			isa = PBXGroup;
 			children = (
+				34267E4F1BE1840600F050A5 /* TabBar */,
 				C96553601BE1220A00636531 /* Profile */,
 				C9C48EFE1BC7340600578C7C /* SWRevealViewController */,
 				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
 				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
-				C965535E1BE0009600636531 /* TabBarViewController.swift */,
 				C9C48F071BC740F100578C7C /* MainViewController.swift */,
 				C9C48F031BC7383F00578C7C /* MenuViewController.swift */,
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
@@ -266,12 +277,12 @@
 				C96553621BE1223A00636531 /* ProfileVC.swift in Sources */,
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
+				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
 				34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */,
 				3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */,
-				C9C48F0C1BC7706C00578C7C /* UserProfileCell.swift in Sources */,
 				344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
@@ -410,6 +421,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Blitz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs490.Blitz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,6 +439,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Blitz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs490.Blitz;
 				PRODUCT_NAME = "$(TARGET_NAME)";

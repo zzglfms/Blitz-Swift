@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I5U-4Q-r2s">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -451,16 +452,18 @@
                     <navigationItem key="navigationItem" id="sDH-kY-tSx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iFf-Je-eUf"/>
                     </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="8M9-uD-pt6">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="8M9-uD-pt6" userLabel="Main Tab Bar" customClass="MainTabBar" customModule="Blitz" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="mainTabBar" destination="8M9-uD-pt6" id="r9M-c1-t2D"/>
                         <segue destination="naf-eS-GnS" kind="relationship" relationship="viewControllers" id="ReA-zd-ti3"/>
                         <segue destination="dn3-Kp-p2e" kind="relationship" relationship="viewControllers" id="8hC-ya-ER4"/>
                         <segue destination="1Nh-b2-RKT" kind="relationship" relationship="viewControllers" id="9Q4-oR-zsZ"/>
+                        <segue destination="R2b-6B-IvQ" kind="relationship" relationship="viewControllers" id="eRN-8D-ofH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GA-Re-YVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -794,6 +797,26 @@
             </objects>
             <point key="canvasLocation" x="-1526" y="-612"/>
         </scene>
+        <!--Chat-->
+        <scene sceneID="Tow-rf-QbM">
+            <objects>
+                <viewController id="R2b-6B-IvQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KKd-E9-pHd"/>
+                        <viewControllerLayoutGuide type="bottom" id="5ey-KQ-8o8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7EN-zz-zNS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Chat" id="80Y-AG-YgW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DV-HF-Wlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-814" y="-40"/>
+        </scene>
         <!--AccountNavController-->
         <scene sceneID="xVa-R2-Hx8">
             <objects>
@@ -815,7 +838,7 @@
             </objects>
             <point key="canvasLocation" x="1968" y="-169"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="oO0-aw-Rby">
             <objects>
                 <viewController id="1Nh-b2-RKT" customClass="ProfileVC" customModule="Blitz" customModuleProvider="target" sceneMemberID="viewController">
@@ -921,7 +944,7 @@
                             <constraint firstAttribute="width" secondItem="Jvk-X6-Mxo" secondAttribute="width" id="tRP-VJ-GT3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3Ia-Ze-jwP"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="3Ia-Ze-jwP"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
@@ -944,6 +967,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hc0-sE-TDH"/>
-        <segue reference="5kj-nj-5AT"/>
+        <segue reference="9Q4-oR-zsZ"/>
     </inferredMetricsTieBreakers>
 </document>
