@@ -7,11 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "profile@2x.jpg"
+      "filename" : "tabbar_compose_more@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "tabbar_compose_more@3x.png"
     }
   ],
   "info" : {
