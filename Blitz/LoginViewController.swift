@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-        if(isLoggedIn == 1){
+        if(true){
             self.performSegueWithIdentifier("Login", sender: self)
             NSLog("@LoginViewController.swfit: Should jump to homepage")
         }

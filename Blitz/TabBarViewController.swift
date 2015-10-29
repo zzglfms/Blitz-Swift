@@ -9,11 +9,15 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
+    @IBOutlet weak var mainTabBar: MainTabBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addChildViewControllers()
+        
+        mainTabBar.TabBarButton.addTarget(self, action: "composeButtonClick", forControlEvents: UIControlEvents.TouchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +25,16 @@ class TabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func addChildViewControllers() {
+        self.tabBar.tintColor = UIColor.orangeColor()
 
+        
+    }
+    
+    func composeButtonClick(){
+        print(__FUNCTION__)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -33,3 +46,5 @@ class TabBarViewController: UITabBarController {
     */
 
 }
+
+
