@@ -348,7 +348,7 @@
                         <barButtonItem key="leftBarButtonItem" title="&lt;Back" id="O5c-jK-PeC">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="1Nh-b2-RKT" kind="presentation" id="5kj-nj-5AT"/>
+                                <segue destination="yUa-tf-Aoe" kind="presentation" id="8kn-IH-IBe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="6YH-YH-men">
@@ -947,13 +947,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar" width="44" height="44"/>
+        <image name="avatar" width="175" height="175"/>
         <image name="home" width="25" height="25"/>
         <image name="love" width="32" height="32"/>
         <image name="menu" width="22" height="22"/>
         <image name="profile" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5kj-nj-5AT"/>
+        <segue reference="8kn-IH-IBe"/>
     </inferredMetricsTieBreakers>
 </document>
