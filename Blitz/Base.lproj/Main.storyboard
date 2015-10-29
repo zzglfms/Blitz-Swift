@@ -19,7 +19,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="KVX-qW-J8K"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="KVX-qW-J8K"/>
                     <connections>
                         <segue destination="8FP-6A-fab" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="9kz-sb-gvx"/>
                         <segue destination="Pvq-df-9UT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="c8U-NZ-UVR"/>
@@ -930,7 +930,7 @@
                             <constraint firstAttribute="width" secondItem="Jvk-X6-Mxo" secondAttribute="width" id="tRP-VJ-GT3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3Ia-Ze-jwP"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="profile" id="3Ia-Ze-jwP"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
@@ -947,9 +947,10 @@
     </scenes>
     <resources>
         <image name="avatar" width="44" height="44"/>
+        <image name="home" width="25" height="25"/>
         <image name="love" width="32" height="32"/>
         <image name="menu" width="22" height="22"/>
-        <image name="profile" width="175" height="175"/>
+        <image name="profile" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hc0-sE-TDH"/>

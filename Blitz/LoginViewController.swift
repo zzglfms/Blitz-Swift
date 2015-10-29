@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("viewDidLoad() called")
+
         // Do any additional setup after loading the view.
     }
     
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        NSLog("viewDidAppear() called")
+
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         if(isLoggedIn == 1){
