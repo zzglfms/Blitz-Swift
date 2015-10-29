@@ -23,11 +23,12 @@ UIImagePickerControllerDelegate {
     
     
     var APP_NAME = "Blitz"
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        localStroageRead()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,16 +70,29 @@ UIImagePickerControllerDelegate {
     
     // ImagePicker Delegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        avatarimage.image = image
+        let imageData = UIImageJPEGRepresentation(image, 100)
+        avatarimage.image = UIImage.init(data: imageData!)
         dismissViewControllerAnimated(true, completion: nil)
+        print("try to save image")
+        
+        //save image
+        prefs.setObject(imageData, forKey: "avatar")
+        prefs.synchronize()
     }
     
-    @IBAction func logoutButton(sender: AnyObject) {
-        NSLog("@ProfileVC: Logout Typed")
-        let appDomain = NSBundle.mainBundle().bundleIdentifier
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-        
-        self.performSegueWithIdentifier("Account_Logout", sender: self)
+    func localStroageRead(){
+        //local data read
+        if let username = prefs.stringForKey("USERNAME"){
+            usernameLabel.text = username
+        }
+        if let imageData = prefs.objectForKey("avatar")as? NSData{
+            let image = UIImage.init(data: imageData)
+            avatarimage.image = image
+        }
+    }
+    
+    @IBAction func backButtonTapped(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation
@@ -89,5 +103,7 @@ UIImagePickerControllerDelegate {
     // Pass the selected object to the new view controller.
     }
     */
+    
+    
     
 }

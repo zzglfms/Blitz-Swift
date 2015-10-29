@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DYq-XW-88U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="-2849"/>
+            <point key="canvasLocation" x="-895" y="-3101"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="fpq-Ve-1wh">
@@ -134,7 +134,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="788-np-dq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1870" y="-2849"/>
+            <point key="canvasLocation" x="-1878" y="-2390"/>
         </scene>
         <!--Account-->
         <scene sceneID="h2a-P5-lVC">
@@ -345,10 +345,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="orl-Vd-dWa">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;Back" id="O5c-jK-PeC">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrow" id="O5c-jK-PeC">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="1Nh-b2-RKT" kind="presentation" id="5kj-nj-5AT"/>
+                                <action selector="backButtonTapped:" destination="dru-MI-dTA" id="CmV-2q-qhy"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="6YH-YH-men">
@@ -365,7 +365,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccu-ra-XtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="vUi-MD-jOl" userLabel="dismissKeyboard"/>
             </objects>
-            <point key="canvasLocation" x="699" y="131"/>
+            <point key="canvasLocation" x="411" y="-449"/>
         </scene>
         <!--Active Post-->
         <scene sceneID="Er1-5y-b04">
@@ -381,43 +381,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Active Post" id="Uhv-ca-gx8"/>
+                    <tabBarItem key="tabBarItem" title="Active Post" image="active" id="Uhv-ca-gx8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wl-G6-zJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="-2142"/>
-        </scene>
-        <!--Root View Controller-->
-        <scene sceneID="lQt-25-Fpe">
-            <objects>
-                <tableViewController id="iPZ-ib-D1P" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e0b-6p-PW6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jQj-Ag-NTg">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jQj-Ag-NTg" id="teG-mO-gWw">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="iPZ-ib-D1P" id="jDb-uE-fiZ"/>
-                            <outlet property="delegate" destination="iPZ-ib-D1P" id="Q8c-Kp-Uag"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="lG6-cz-s06"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9hJ-LH-aue" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-155" y="-1436"/>
+            <point key="canvasLocation" x="-895" y="-2390"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wo9-lh-nb6">
@@ -429,12 +397,40 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="iPZ-ib-D1P" kind="relationship" relationship="rootViewController" id="Agc-Jq-W08"/>
+                        <segue destination="Dge-S3-bOR" kind="relationship" relationship="rootViewController" id="57e-ik-NOm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J85-vY-Q21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="-1436"/>
+            <point key="canvasLocation" x="-895" y="-1748"/>
+        </scene>
+        <!--PostVC-->
+        <scene sceneID="XHC-Qr-X3e">
+            <objects>
+                <viewController id="Dge-S3-bOR" customClass="PostVC" customModule="Blitz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Omy-u4-uU9"/>
+                        <viewControllerLayoutGuide type="bottom" id="F6A-nu-SQd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wzb-0A-g8O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="kHX-Zk-lmz">
+                        <barButtonItem key="leftBarButtonItem" image="leftArrow" id="W4A-SF-Rho">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Dge-S3-bOR" id="Amb-ku-LkA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cm0-g8-Fxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-243" y="-1748"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="PEk-y6-PFY">
@@ -472,7 +468,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH8-Mx-HAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747" y="-2849"/>
+            <point key="canvasLocation" x="411" y="-3101"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="9SW-8m-SEe">
@@ -493,7 +489,7 @@
                         <segue destination="dn3-Kp-p2e" kind="relationship" relationship="viewControllers" id="8hC-ya-ER4"/>
                         <segue destination="R2b-6B-IvQ" kind="relationship" relationship="viewControllers" id="eRN-8D-ofH"/>
                         <segue destination="1Nh-b2-RKT" kind="relationship" relationship="viewControllers" id="9Q4-oR-zsZ"/>
-                        <segue destination="Alp-qP-eGc" kind="show" identifier="Post" id="VQ2-cX-eAl"/>
+                        <segue destination="Alp-qP-eGc" kind="presentation" identifier="Post" id="f2W-Qw-lNg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9GA-Re-YVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,7 +513,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Aw-rw-Gvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="-2849"/>
+            <point key="canvasLocation" x="-243" y="-3101"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="oUn-r4-bI7">
@@ -854,7 +850,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DV-HF-Wlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="-676"/>
+            <point key="canvasLocation" x="-895" y="-1108"/>
         </scene>
         <!--AccountNavController-->
         <scene sceneID="xVa-R2-Hx8">
@@ -875,7 +871,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8t-uS-qrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-131" y="131"/>
+            <point key="canvasLocation" x="-243" y="-449"/>
         </scene>
         <!--Profile-->
         <scene sceneID="oO0-aw-Rby">
@@ -988,23 +984,23 @@
                         <outlet property="avatarImage" destination="RT6-eB-uPs" id="I4s-xF-cC6"/>
                         <outlet property="header" destination="7Iw-ZK-Qqr" id="dXv-Ah-T6j"/>
                         <outlet property="headerLabel" destination="ba7-1b-xLA" id="LgZ-Zq-kKg"/>
+                        <outlet property="labelUsername" destination="bbJ-P7-diZ" id="KGC-fw-90x"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55E-jt-5gm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-895" y="131"/>
+            <point key="canvasLocation" x="-895" y="-449"/>
         </scene>
     </scenes>
     <resources>
+        <image name="active" width="32" height="32"/>
         <image name="avatar" width="175" height="175"/>
         <image name="history" width="32" height="32"/>
-        <image name="home" width="25" height="25"/>
+        <image name="home" width="32" height="32"/>
+        <image name="leftArrow" width="32" height="32"/>
         <image name="love" width="32" height="32"/>
         <image name="menu" width="22" height="22"/>
-        <image name="profile" width="25" height="25"/>
+        <image name="profile" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="9Q4-oR-zsZ"/>
-    </inferredMetricsTieBreakers>
 </document>
