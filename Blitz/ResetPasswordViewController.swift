@@ -9,9 +9,10 @@
 import UIKit
 
 class ResetPasswordViewController: UIViewController {
-
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +48,10 @@ class ResetPasswordViewController: UIViewController {
         }
     }
 
+
+    @IBAction func goToLogin(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

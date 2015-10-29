@@ -16,9 +16,8 @@ class LoginViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+        NSLog("viewDidLoad() called")
         // Do any additional setup after loading the view.
     }
     
@@ -29,7 +28,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
+        NSLog("viewDidAppear() called")
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         if(true){
@@ -63,7 +62,7 @@ class LoginViewController: UIViewController {
             NSLog("@LoginViewController.swift: Result: %@", result);
             
             if(result["success"] as! Bool){
-                 NSLog("@SignupViewController.swift: Login SUCCESS");
+                NSLog("@SignupViewController.swift: Login SUCCESS");
                 
                 let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 prefs.setObject(username, forKey: "USERNAME")
