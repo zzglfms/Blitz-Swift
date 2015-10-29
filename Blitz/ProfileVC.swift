@@ -20,11 +20,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headerLabel:UILabel!
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
+    @IBOutlet weak var labelUsername: UILabel!
     var blurredHeaderImageView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        localStroageRead()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -70,24 +72,16 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         }
             
             // SCROLL UP/DOWN ------------
-            
         else {
             
             // Header -----------
-            
             headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -offset), 0)
-            
             //  ------------ Label
-            
             let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, offset_B_LabelHeader - offset), 0)
             headerLabel.layer.transform = labelTransform
-            
             //  ------------ Blur
-            
             headerBlurImageView?.alpha = min (1.0, (offset - offset_B_LabelHeader)/distance_W_LabelHeader)
-            
             // Avatar -----------
-            
             let avatarScaleFactor = (min(offset_HeaderStop, offset)) / avatarImage.bounds.height / 1.4 // Slow down the animation
             let avatarSizeVariation = ((avatarImage.bounds.height * (1.0 + avatarScaleFactor)) - avatarImage.bounds.height) / 2.0
             avatarTransform = CATransform3DTranslate(avatarTransform, 0, avatarSizeVariation, 0)
@@ -105,11 +99,26 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
-        
         // Apply Transformations
-        
         header.layer.transform = headerTransform
         avatarImage.layer.transform = avatarTransform
+    }
+    
+    func localStroageRead(){
+        //local data read
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        if let username = prefs.stringForKey("USERNAME"){
+            labelUsername.text = username
+        }
+        
+        if let imageData = prefs.objectForKey("avatar")as? NSData{
+            let image = UIImage.init(data: imageData)
+            avatarImage.image = image
+        } else {
+            //fetch image from server
+        }
+        
+        
     }
     
 }

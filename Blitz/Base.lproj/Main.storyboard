@@ -938,6 +938,7 @@
                         <outlet property="avatarImage" destination="RT6-eB-uPs" id="I4s-xF-cC6"/>
                         <outlet property="header" destination="7Iw-ZK-Qqr" id="dXv-Ah-T6j"/>
                         <outlet property="headerLabel" destination="ba7-1b-xLA" id="LgZ-Zq-kKg"/>
+                        <outlet property="labelUsername" destination="bbJ-P7-diZ" id="KGC-fw-90x"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
                     </connections>
                 </viewController>
