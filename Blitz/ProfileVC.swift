@@ -79,6 +79,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             //  ------------ Label
             let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, offset_B_LabelHeader - offset), 0)
             headerLabel.layer.transform = labelTransform
+            headerLabel.text = labelUsername.text
             //  ------------ Blur
             headerBlurImageView?.alpha = min (1.0, (offset - offset_B_LabelHeader)/distance_W_LabelHeader)
             // Avatar -----------
