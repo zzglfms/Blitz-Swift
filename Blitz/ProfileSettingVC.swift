@@ -18,8 +18,11 @@ UIImagePickerControllerDelegate {
     
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var avatarimage: UIImageView!
+    @IBOutlet weak var webSiteTextField: UITextField!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var fullNameTextField: UITextField!
     
     
     var APP_NAME = "Blitz"
@@ -89,6 +92,46 @@ UIImagePickerControllerDelegate {
             let image = UIImage.init(data: imageData)
             avatarimage.image = image
         }
+        
+        if let fullname = prefs.stringForKey("FULLNAME"){
+            fullNameTextField.text = fullname
+        }
+        
+        if let phone = prefs.stringForKey("PHONE"){
+            phoneTextField.text = phone
+        }
+        
+        if let website = prefs.stringForKey("WEBSITE"){
+            webSiteTextField.text = website
+        }
+    }
+    
+    @IBAction func saveButtonTapped(sender: UIButton) {
+        let fullname:NSString = fullNameTextField.text!
+        let phone:NSString = phoneTextField.text!
+        let website:NSString = webSiteTextField.text!
+        
+        
+        if (fullname.isEqualToString("") || phone.isEqualToString("") || website.isEqualToString("http://")){
+            print("no action")
+        }
+        else{
+            localStorageWrite()
+        }
+    }
+
+    func localStorageWrite(){
+        let fullname:NSString = fullNameTextField.text!
+        let phone:NSString = phoneTextField.text!
+        let website:NSString = webSiteTextField.text!
+        
+        print("fullname = " + fullNameTextField.text!)
+        prefs.setObject(fullname, forKey: "FULLNAME")
+        print("phone = " + phoneTextField.text!)
+        prefs.setObject(phone, forKey: "PHONE")
+        print("website = " + webSiteTextField.text!)
+        prefs.setObject(website, forKey: "WEBSITE")
+
     }
     
     @IBAction func backButtonTapped(sender: UIBarButtonItem) {
