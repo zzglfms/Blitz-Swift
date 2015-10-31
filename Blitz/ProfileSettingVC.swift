@@ -137,6 +137,17 @@ UIImagePickerControllerDelegate {
     @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func testGetProfile(sender: UIButton) {
+        let jsonObject: [String: AnyObject] = [
+            "operation": "GetProfile",
+            "username": "Terry_Yu"
+        ]
+        
+        let result = request(jsonObject)
+        
+        NSLog("@LoginViewController.swift: Result: %@", result);
+    }
     /*
     // MARK: - Navigation
     

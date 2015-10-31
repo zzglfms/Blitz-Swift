@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I5U-4Q-r2s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I5U-4Q-r2s">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -145,11 +145,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oAQ-fA-3Zc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OKE-Y2-4h8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5n-KB-CRU" userLabel="containerScrollView">
-                                <rect key="frame" x="0.0" y="-3" width="600" height="603"/>
+                                <rect key="frame" x="0.0" y="-3" width="375" height="670"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="NO4-vn-lj1" userLabel="avatarImage">
                                         <rect key="frame" x="151" y="17" width="70" height="70"/>
@@ -271,6 +271,9 @@
                                         <state key="normal" title="Change Password">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="testGetProfile:" destination="dru-MI-dTA" eventType="touchUpInside" id="v8t-yg-T0K"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gr-VL-od7">
                                         <rect key="frame" x="60" y="167" width="68" height="21"/>
@@ -1103,14 +1106,14 @@
                         <viewControllerLayoutGuide type="bottom" id="FZz-ws-s9o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JYK-mP-pgF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Iw-ZK-Qqr" userLabel="Header">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="107"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba7-1b-xLA">
-                                        <rect key="frame" x="300" y="104" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="187" y="104" width="0.0" height="0.0"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1126,14 +1129,14 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-HI-lsG" userLabel="Scrollview">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="RT6-eB-uPs" userLabel="AvatarImage" customClass="AvatarImageView" customModule="Blitz" customModuleProvider="target">
                                         <rect key="frame" x="8" y="79" width="69" height="69"/>
                                         <animations/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wf-oI-pGn" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
-                                        <rect key="frame" x="478" y="118" width="112" height="30"/>
+                                        <rect key="frame" x="253" y="118" width="112" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="112" id="AOv-rR-blG"/>
@@ -1147,26 +1150,26 @@
                                             <segue destination="V6A-He-2ar" kind="presentation" id="me8-DU-GGM"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il5-u2-4Fm" userLabel="TwitterUsername">
-                                        <rect key="frame" x="8" y="177" width="128" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="li1173@purdue.edu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il5-u2-4Fm" userLabel="email">
+                                        <rect key="frame" x="8" y="177" width="224" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="0.40000000000000002" green="0.41960784309999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="o9E-56-e3L" userLabel="Love">
-                                        <rect key="frame" x="281" y="404" width="32" height="32"/>
+                                        <rect key="frame" x="168" y="404" width="32" height="32"/>
                                         <animations/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvk-X6-Mxo" userLabel="Sizer">
-                                        <rect key="frame" x="0.0" y="477" width="600" height="286"/>
+                                        <rect key="frame" x="0.0" y="477" width="375" height="286"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="286" id="fve-rn-dkd"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DingZhe Li" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbJ-P7-diZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DingZhe Li" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbJ-P7-diZ" userLabel="username">
                                         <rect key="frame" x="8" y="156" width="224" height="22"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
@@ -1174,7 +1177,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qx5-gW-0rC" customClass="HCSStarRatingView">
-                                        <rect key="frame" x="199" y="201" width="202" height="19"/>
+                                        <rect key="frame" x="141" y="156" width="224" height="19"/>
                                         <animations/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
@@ -1224,22 +1227,28 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="3Ia-Ze-jwP"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="avatarImage" destination="RT6-eB-uPs" id="I4s-xF-cC6"/>
                         <outlet property="header" destination="7Iw-ZK-Qqr" id="dXv-Ah-T6j"/>
                         <outlet property="headerLabel" destination="ba7-1b-xLA" id="LgZ-Zq-kKg"/>
                         <outlet property="labelUsername" destination="bbJ-P7-diZ" id="KGC-fw-90x"/>
+                        <outlet property="ratingView" destination="qx5-gW-0rC" id="s5q-Ml-1IU"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55E-jt-5gm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-887" y="-449"/>
+            <point key="canvasLocation" x="-887.5" y="-449.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HzK-1m-va3">
             <objects>
                 <viewController id="DLf-aP-jbZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GjK-IP-vG8"/>
+                        <viewControllerLayoutGuide type="bottom" id="tBd-jd-vhX"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pov-l8-6ON">
                         <rect key="frame" x="0.0" y="0.0" width="352" height="141"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

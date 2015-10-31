@@ -21,11 +21,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
     var blurredHeaderImageView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        ratingView.editable = false
         localStroageRead()
     }
     

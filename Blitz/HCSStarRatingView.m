@@ -70,6 +70,7 @@
     _value = 0;
     _spacing = 5.f;
     _continuous = YES;
+    _editable = YES;
 }
 
 - (void)setNeedsLayout {
@@ -349,24 +350,26 @@
 }
 
 - (void)_handleTouch:(UITouch *)touch {
-    CGFloat cellWidth = self.bounds.size.width / _maximumValue;
-    CGPoint location = [touch locationInView:self];
-    CGFloat value = location.x / cellWidth;
-    if (_allowsHalfStars) {
-        if (_accurateHalfStars) {
-            value = value;
-        }
-        else {
-            if (value+.5f < ceilf(value)) {
-                value = floor(value)+.5f;
-            } else {
-                value = ceilf(value);
+    if(_editable){
+        CGFloat cellWidth = self.bounds.size.width / _maximumValue;
+        CGPoint location = [touch locationInView:self];
+        CGFloat value = location.x / cellWidth;
+        if (_allowsHalfStars) {
+            if (_accurateHalfStars) {
+                value = value;
             }
+            else {
+                if (value+.5f < ceilf(value)) {
+                    value = floor(value)+.5f;
+                } else {
+                    value = ceilf(value);
+                }
+            }
+        } else {
+            value = ceilf(value);
         }
-    } else {
-        value = ceilf(value);
+        [self setValue:value sendValueChangedAction:_continuous];
     }
-    [self setValue:value sendValueChangedAction:_continuous];
 }
 
 #pragma mark - First responder

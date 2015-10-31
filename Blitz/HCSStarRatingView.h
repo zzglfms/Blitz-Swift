@@ -33,6 +33,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL allowsHalfStars;
 @property (nonatomic) IBInspectable BOOL accurateHalfStars;
 @property (nonatomic) IBInspectable BOOL continuous;
+@property (nonatomic) IBInspectable BOOL editable;
 
 @property (nonatomic) BOOL shouldBecomeFirstResponder;
 
