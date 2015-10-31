@@ -8,12 +8,37 @@
 
 import UIKit
 
-class PostVC: UIViewController {
+class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
+    // MARK: - OUTLETS
+    @IBOutlet var categoryPicker: UIPickerView!
+    @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
 
+    var categories = ["Carpool", "Food Discoer", "Tutor", "House Rental", "Need A Ride"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        categoryTextField.text = categories[0]
+        categoryPicker.showsSelectionIndicator = true
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        
+        // Set up toolBar of the picker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+
+        categoryTextField.inputView = categoryPicker
+        categoryTextField.inputAccessoryView = toolBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +46,36 @@ class PostVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backButtonTapped(sender: AnyObject) {
+    
+    // MARK: - PICKERVIEW DELEGATES
+    // returns the number of 'columns' to display.
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    // returns the # of rows in each component..
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return categories.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        categoryTextField.text = categories[row]
+    }
+    
+    
+    // MARK: - PICKERVIEW DONE BUTTON ACTION
+    func donePicker() {
+        categoryTextField.resignFirstResponder()
+    }
+    
+    
+    // MARK: - NAVIGATION BAR BACK BUTTON
+    @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
