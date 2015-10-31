@@ -33,7 +33,7 @@ class MainTabBar: UITabBar {
         let frame = CGRectMake(0, 0, w, h)
         
         var index: CGFloat = 0
-        for view in self.subviews as! [UIView] {
+        for view in self.subviews {
             if (view is UIControl && !(view is UIButton)) {
                 /**
                 *  当前控件是响应者对象，并且不是 UIButton 类型时参照设置尺寸位置
