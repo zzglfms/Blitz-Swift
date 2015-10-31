@@ -13,6 +13,7 @@
 		3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9201BE138A800EFC2C2 /* FXBlurView.m */; };
 		34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34267E541BE1849800F050A5 /* MainTabBar.swift */; };
 		344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */; };
+		3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3468C3281BE555700052C558 /* HCSStarRatingView.m */; settings = {ASSET_TAGS = (); }; };
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
 		C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C918FFF31BE1BA8100687401 /* PostVC.swift */; };
@@ -47,6 +48,8 @@
 		3421C9201BE138A800EFC2C2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		34267E541BE1849800F050A5 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		3468C3271BE555700052C558 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
+		3468C3281BE555700052C558 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C918FFF31BE1BA8100687401 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
@@ -107,6 +110,15 @@
 			name = TabBar;
 			sourceTree = "<group>";
 		};
+		3468C3261BE555580052C558 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				3468C3271BE555700052C558 /* HCSStarRatingView.h */,
+				3468C3281BE555700052C558 /* HCSStarRatingView.m */,
+			);
+			name = Rating;
+			sourceTree = "<group>";
+		};
 		C96553601BE1220A00636531 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
 				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
 				C918FFF31BE1BA8100687401 /* PostVC.swift */,
+				3468C3261BE555580052C558 /* Rating */,
 				C9C48F071BC740F100578C7C /* MainViewController.swift */,
 				C9C48F031BC7383F00578C7C /* MenuViewController.swift */,
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
@@ -291,6 +304,7 @@
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
+				3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */,
 				C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */,
 				3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */,
 			);

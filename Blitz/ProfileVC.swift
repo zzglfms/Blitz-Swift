@@ -121,5 +121,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
         
     }
+
+    @IBAction func rating_value_change(sender: HCSStarRatingView) {
+        NSLog("@Changed rating to %.1f", sender.value);
+    }
     
 }

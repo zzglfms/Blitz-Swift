@@ -4,3 +4,4 @@
 
 #import "SWRevealViewController.h"
 #import "FXBlurView.h"
+#import "HCSStarRatingView.h"
