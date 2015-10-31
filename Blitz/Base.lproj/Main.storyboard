@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I5U-4Q-r2s">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1199,6 +1198,13 @@
                                             <action selector="rating_value_change:" destination="1Nh-b2-RKT" eventType="valueChanged" id="C0W-1E-Vje"/>
                                         </connections>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYo-f8-Mth">
+                                        <rect key="frame" x="141" y="183" width="224" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <constraints>
@@ -1233,8 +1239,10 @@
                         <outlet property="header" destination="7Iw-ZK-Qqr" id="dXv-Ah-T6j"/>
                         <outlet property="headerLabel" destination="ba7-1b-xLA" id="LgZ-Zq-kKg"/>
                         <outlet property="labelUsername" destination="bbJ-P7-diZ" id="KGC-fw-90x"/>
+                        <outlet property="ratingScore" destination="EYo-f8-Mth" id="hWb-Pb-soe"/>
                         <outlet property="ratingView" destination="qx5-gW-0rC" id="s5q-Ml-1IU"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
+                        <outlet property="useremail" destination="il5-u2-4Fm" id="LuQ-Yv-OcF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55E-jt-5gm" sceneMemberID="firstResponder"/>

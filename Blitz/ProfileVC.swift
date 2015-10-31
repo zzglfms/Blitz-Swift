@@ -23,11 +23,21 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var ratingView: HCSStarRatingView!
     var blurredHeaderImageView:UIImageView?
+    @IBOutlet weak var useremail: UILabel!
+    @IBOutlet weak var ratingScore: UILabel!
+    
+    
+    
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
         ratingView.editable = false
+        let score = String(format: "Score: %.1f", ratingView.value)
+        ratingScore.text = score
+        getProfile()
         localStroageRead()
     }
     
@@ -107,9 +117,28 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         avatarImage.layer.transform = avatarTransform
     }
     
+    func getProfile(){
+        let username:String = prefs.stringForKey("USERNAME")!
+        
+        let jsonObject: [String: AnyObject] = [
+            "operation": "GetProfile",
+            "username": username
+        ]
+        
+        let result = request(jsonObject)
+        
+        //NSLog("@Profilesetting: Result: %@", result);
+        let json = JSON(result)
+        
+        let email:String = json["email"].string!
+        let emailnss = email as NSString
+        prefs.setObject(emailnss, forKey: "EMAIL")
+        prefs.synchronize()
+    }
+
+    
     func localStroageRead(){
         //local data read
-        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if let username = prefs.stringForKey("USERNAME"){
             labelUsername.text = username
         }
@@ -121,6 +150,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             //fetch image from server
         }
         
+        if let email = prefs.stringForKey("EMAIL"){
+            useremail.text = email
+        }
         
     }
 

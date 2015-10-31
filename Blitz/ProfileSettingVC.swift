@@ -31,7 +31,6 @@ UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getProfile()
         localStroageRead()
     }
     
@@ -144,24 +143,6 @@ UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func getProfile(){
-        let username:String = prefs.stringForKey("USERNAME")!
-        
-        let jsonObject: [String: AnyObject] = [
-            "operation": "GetProfile",
-            "username": username
-        ]
-        
-        let result = request(jsonObject)
-        
-        //NSLog("@Profilesetting: Result: %@", result);
-        let json = JSON(result)
-        
-        let email:String = json["email"].string!
-        let emailnss = email as NSString
-        prefs.setObject(emailnss, forKey: "EMAIL")
-        prefs.synchronize()
-    }
     
     @IBAction func testGetProfile(sender: UIButton) {
         let jsonObject: [String: AnyObject] = [
