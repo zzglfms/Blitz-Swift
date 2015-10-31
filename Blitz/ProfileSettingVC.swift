@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
 import UIKit
+
 
 class ProfileSettingVC: UIViewController,
     UITextFieldDelegate,
@@ -19,7 +19,7 @@ UIImagePickerControllerDelegate {
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var avatarimage: UIImageView!
     @IBOutlet weak var webSiteTextField: UITextField!
-    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var useremailLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -31,6 +31,7 @@ UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        getProfile()
         localStroageRead()
     }
     
@@ -88,6 +89,11 @@ UIImagePickerControllerDelegate {
         if let username = prefs.stringForKey("USERNAME"){
             usernameLabel.text = username
         }
+        
+        if let email = prefs.stringForKey("EMAIL"){
+            useremailLabel.text = email
+        }
+        
         if let imageData = prefs.objectForKey("avatar")as? NSData{
             let image = UIImage.init(data: imageData)
             avatarimage.image = image
@@ -138,6 +144,25 @@ UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func getProfile(){
+        let username:String = prefs.stringForKey("USERNAME")!
+        
+        let jsonObject: [String: AnyObject] = [
+            "operation": "GetProfile",
+            "username": username
+        ]
+        
+        let result = request(jsonObject)
+        
+        //NSLog("@Profilesetting: Result: %@", result);
+        let json = JSON(result)
+        
+        let email:String = json["email"].string!
+        let emailnss = email as NSString
+        prefs.setObject(emailnss, forKey: "EMAIL")
+        prefs.synchronize()
+    }
+    
     @IBAction func testGetProfile(sender: UIButton) {
         let jsonObject: [String: AnyObject] = [
             "operation": "GetProfile",
@@ -147,6 +172,7 @@ UIImagePickerControllerDelegate {
         let result = request(jsonObject)
         
         NSLog("@LoginViewController.swift: Result: %@", result);
+
     }
     /*
     // MARK: - Navigation
