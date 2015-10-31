@@ -10,7 +10,6 @@ import UIKit
 
 class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var txtUsername: UITextField!
-    @IBOutlet weak var txtEmail: UITextField!
     
     
     override func viewDidLoad() {
@@ -26,16 +25,15 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func restTapped(sender: UIButton) {
         let username:NSString = txtUsername.text!
-        let email:NSString = txtEmail.text!
         
-        if (username.isEqualToString("") || email.isEqualToString("")){
-            let alertController = UIAlertController(title: "Rest Password Failed!", message: "Please enter Username and Email", preferredStyle: .Alert)
+        if (username.isEqualToString("")){
+            let alertController = UIAlertController(title: "Rest Password Failed!", message: "Please enter Username", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
             alertController.addAction(OKAction)
             self.presentViewController(alertController, animated: true) {}
         }else{
             //connect server
-            NSLog("@ResetPasswordViewController.swift: username = %@, email = %@", username, email)
+            NSLog("@ResetPasswordViewController.swift: username = %@", username)
             
             let jsonObject: [String: AnyObject] = [
                 "operation": "ForgetPassword",
