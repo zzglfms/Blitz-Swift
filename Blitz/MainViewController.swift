@@ -8,6 +8,8 @@
 
 import UIKit
 
+var searchedAdsArray = NSMutableArray()
+
 class MainViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
@@ -30,6 +32,24 @@ class MainViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - TABLEVIEW DELEGATES
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchedAdsArray.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Post Cell", forIndexPath: indexPath) as! PostCell
+        
+        cell.TitleLabel.text = "丁丁"
+        cell.DescrLabel.text = "极品跳楼大甩卖"
+        
+        return cell
+    }
+
 
     // MARK: - Table view data source
 
