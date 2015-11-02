@@ -32,7 +32,6 @@ class TabBarViewController: UITabBarController {
     }
     
     func composeButtonClick(){
-        print(__FUNCTION__)
         let backItem = UIBarButtonItem(title: "Custom Text HERE", style: .Done, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         performSegueWithIdentifier("Post", sender: self)
