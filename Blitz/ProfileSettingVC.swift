@@ -31,7 +31,6 @@ UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getProfile()
         localStroageRead()
     }
     
@@ -144,36 +143,70 @@ UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func getProfile(){
-        let username:String = prefs.stringForKey("USERNAME")!
+    @IBAction func testGetProfile(sender: UIButton) {
+        var pwTextField: UITextField?
+        var pwcTextField: UITextField?
         
-        let jsonObject: [String: AnyObject] = [
-            "operation": "GetProfile",
-            "username": username
-        ]
+        let alert = UIAlertController(title: APP_NAME,
+            message: "Change Your Password",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler { (textField) in
+            pwTextField = textField
+            pwTextField!.placeholder = "Password"
+            pwTextField!.secureTextEntry = true
+        }
+        alert.addTextFieldWithConfigurationHandler { (textField) in
+            pwcTextField = textField
+            pwcTextField!.placeholder = "Password Confirmation"
+            pwcTextField!.secureTextEntry = true
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:nil))
         
-        let result = request(jsonObject)
-        
-        //NSLog("@Profilesetting: Result: %@", result);
-        let json = JSON(result)
-        
-        let email:String = json["email"].string!
-        let emailnss = email as NSString
-        prefs.setObject(emailnss, forKey: "EMAIL")
-        prefs.synchronize()
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+            let pw:NSString = pwTextField!.text!
+            let pwc:NSString = pwcTextField!.text!
+            if(pw.isEqualToString(pwc as String)){
+                if(pw.length < 6){
+                    alert.dismissViewControllerAnimated(true, completion: nil)
+                    let alert_ok = UIAlertController(title: "Length of Password is at least 6!",
+                        message: "Try again!",
+                        preferredStyle: UIAlertControllerStyle.Alert)
+                    alert_ok.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler:nil))
+                    self.presentViewController(alert_ok, animated: true, completion: nil)
+                }
+                else{
+                    //print((pw as String) + "\n" + (pwc as String))
+                    let username = self.prefs.stringForKey("USERNAME")
+                    let subjson1 = ["username": username!]
+                    let subjson2 = ["password": (pw as String)]
+                    let jsonObject:[String: AnyObject] = [
+                        "operation": "ModifyProfile",
+                        "username": username!,
+                        "changes": [ subjson1,
+                            subjson2
+                        ]
+                    ]
+                    let valid = NSJSONSerialization.isValidJSONObject(jsonObject) // true
+                    if valid {
+                        let result = request(jsonObject)
+                        let result_JSON = JSON(result)
+                        print(result_JSON)
+                    }
+                }
+                
+            }else{
+                alert.dismissViewControllerAnimated(true, completion: nil)
+                let alert_ok = UIAlertController(title: "Passwords doesn't Match",
+                    message: "Try again!",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                alert_ok.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler:nil))
+                self.presentViewController(alert_ok, animated: true, completion: nil)
+            }
+        }
+        alert.addAction(OKAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    @IBAction func testGetProfile(sender: UIButton) {
-        let jsonObject: [String: AnyObject] = [
-            "operation": "GetProfile",
-            "username": "Terry_Yu"
-        ]
-        
-        let result = request(jsonObject)
-        
-        NSLog("@LoginViewController.swift: Result: %@", result);
-
-    }
     /*
     // MARK: - Navigation
     
