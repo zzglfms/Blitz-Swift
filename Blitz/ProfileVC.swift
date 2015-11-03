@@ -37,7 +37,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         ratingView.editable = false
         let score = String(format: "Score: %.1f", ratingView.value)
         ratingScore.text = score
-        getProfile()
+        getProfile()  // need to ingore if the network lag
         localStroageRead()
     }
     
