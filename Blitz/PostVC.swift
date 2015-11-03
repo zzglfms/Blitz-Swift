@@ -8,18 +8,24 @@
 
 import UIKit
 
-class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIScrollViewDelegate {
     
     // MARK: - OUTLETS
     @IBOutlet var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
 
+    // MARK: - VARIABLES
     var categories = ["Carpool", "Food Discoer", "Tutor", "House Rental", "Need A Ride"]
+    var carpoolPostVC: CarpoolPostVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        scrollView.delegate = self
+        scrollView.contentSize = CGSizeMake(375.0, 920.0)
+        
         // Do any additional setup after loading the view.
         categoryTextField.text = categories[0]
         categoryPicker.showsSelectionIndicator = true
@@ -79,14 +85,22 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
+    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        //let controller = storyboard!.instantiateViewControllerWithIdentifier("CarpoolSubview") as! CarpoolPostVC
+        NSLog("Here")
+        let info = carpoolPostVC.getAllInformation()
+        NSLog("From"+info.from)
+    }
+    
 
+    // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "carpoolPost"
+        {
+            carpoolPostVC = segue.destinationViewController as! CarpoolPostVC
+        }
     }
-    */
-
 }
