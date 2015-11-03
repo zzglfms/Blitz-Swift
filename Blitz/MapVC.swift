@@ -48,13 +48,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     
     // MARK: - CORE LOCATION MANAGER -> GET CURRENT LOCATION OF THE USER
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("didFailWithError: %@", error)
+        NSLog("@MapVC.swft: didFailWithError: %@", error)
         
-        let errorAlert = UIAlertView(title: "Blitz",
-            message: "Failed to Get Your Location",
-            delegate: nil,
-            cancelButtonTitle: "OK")
-        errorAlert.show()
+        // Pop up alert
+        let alertController = UIAlertController(title: "Blitz", message: "Failed to Get Your Location", preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+        alertController.addAction(OKAction)
+        self.presentViewController(alertController, animated: true) {}
     }
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
@@ -103,12 +103,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
         localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
             // Place not found or GPS not available
             if localSearchResponse == nil  {
-                let alert = UIAlertView(title: "Blitz",
-                    message: "Place not found, or GPS not available",
-                    delegate: nil,
-                    cancelButtonTitle: "Try again" )
-                alert.show()
-                
+                // Pop up alert
+                let alertController = UIAlertController(title: "Blitz", message: "Place not found, or GPS not available", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+                alertController.addAction(OKAction)
+                self.presentViewController(alertController, animated: true) {}
             } else {
                 // Add PointAnnonation text and a Pin to the Map
                 self.pointAnnotation = MKPointAnnotation()

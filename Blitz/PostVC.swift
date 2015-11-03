@@ -12,13 +12,22 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     // MARK: - OUTLETS
     @IBOutlet var categoryPicker: UIPickerView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var qunatityTextField: UITextField!
+    @IBOutlet weak var bountyTextField: UITextField!
+    @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
 
+    // MARK: - Constants
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    
     // MARK: - VARIABLES
     var categories = ["Carpool", "Food Discoer", "Tutor", "House Rental", "Need A Ride"]
     var carpoolPostVC: CarpoolPostVC!
+    var type: String! = "Request"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,12 +95,47 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        //let controller = storyboard!.instantiateViewControllerWithIdentifier("CarpoolSubview") as! CarpoolPostVC
-        NSLog("Here")
         let info = carpoolPostVC.getAllInformation()
-        NSLog("From"+info.from)
+        
+        // Make a json object for communication with server
+        let postJSONObject: [String: AnyObject] = [
+            "operation": "CreatePost",
+            "username": prefs.stringForKey("USERNAME")!,
+            "position": info.from,
+            "description": descriptionTextView.text!,
+            "quantity": qunatityTextField.text!,
+            "title": titleTextField.text!,
+            "bounty": bountyTextField.text!,
+            "contact": contactTextField.text!,
+            "isRequest": type == "Request",
+            "category": categoryTextField.text!
+        ]
+        NSLog("Title: "+titleTextField.text!)
+        NSLog("Type: "+type)
+        NSLog("Category: "+categoryTextField.text!)
+        NSLog("Quantity: "+qunatityTextField.text!)
+        NSLog("Bounty: "+bountyTextField.text!)
+        NSLog("Contact: "+contactTextField.text!)
+        NSLog("Description: "+descriptionTextView.text!)
+        NSLog("From: "+info.from)
+        NSLog("To: "+info.to)
+        NSLog("Effective: "+info.effectiveDate)
+        NSLog("Repeat: "+info.repeatString)
+        NSLog("=-=-=-=-=-=-=-=-=-=-=-")
+        NSLog(String(postJSONObject))
     }
     
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch typeSegmentedControl.selectedSegmentIndex
+        {
+            case 0:
+                type = "Request"
+            case 1:
+                type = "Provide"
+            default:
+                break;
+        }
+    }
 
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
