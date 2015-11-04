@@ -8,10 +8,14 @@
 
 import UIKit
 
-var searchedAdsArray = NSMutableArray()
 
 class MainViewController: UITableViewController {
+    
+    // MARK: - Outlets
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    // MARK: - Variables
+    var posts: [[String: AnyObject]] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,53 +37,21 @@ class MainViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - TABLEVIEW DELEGATES
+    // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchedAdsArray.count
+        return posts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Post Cell", forIndexPath: indexPath) as! PostCell
-        
-        cell.TitleLabel.text = "丁丁"
-        cell.DescrLabel.text = "极品跳楼大甩卖"
+        let cell = tableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel!.text = posts[indexPath.row]["title"] as? String
+        cell.detailTextLabel!.text = posts[indexPath.row]["postTime"] as? String
         
         return cell
     }
-
-
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.
@@ -107,6 +79,22 @@ class MainViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Action Outlet
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        NSLog("@MainViewController.swift - indexChanged(): Called")
+        
+        // Make a json object for communication with server
+        let signupJSONObject: [String: AnyObject] = [
+            "operation": "Query",
+            "category": "FoodDiscover"
+        ]
+        
+        posts = query(signupJSONObject)
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
 
     /*
     // MARK: - Navigation
