@@ -546,7 +546,8 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButton" destination="lDp-BY-GpI" id="cOo-dX-3mv"/>
+                        <outlet property="filterButton" destination="lDp-BY-GpI" id="2zb-Lk-nTY"/>
+                        <outlet property="isRequestSegmentedControl" destination="PEX-3t-vmN" id="s4g-1f-21I"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH8-Mx-HAl" userLabel="First Responder" sceneMemberID="firstResponder"/>

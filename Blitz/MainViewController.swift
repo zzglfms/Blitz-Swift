@@ -12,19 +12,24 @@ import UIKit
 class MainViewController: UITableViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
+    @IBOutlet weak var isRequestSegmentedControl: UISegmentedControl!
     
     // MARK: - Variables
     var posts: [[String: AnyObject]] = []
+    var isRequest: Bool! = true
+    var category: String! = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
+            filterButton.target = self.revealViewController()
+            filterButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        reloadTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -58,7 +63,6 @@ class MainViewController: UITableViewController {
         //self.performSegueWithIdentifier("yourIdentifier", sender: self)
         let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
         let postID = posts[indexPath.row]["_id"] as? String
-        NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): postID = " + postID!)
         let input: [String: AnyObject] = [
             "operation": "GetPostDetail",
             "postID": postID!
@@ -99,15 +103,30 @@ class MainViewController: UITableViewController {
     
     // MARK: - Action Outlet
     @IBAction func indexChanged(sender: UISegmentedControl) {
-        NSLog("@MainViewController.swift - indexChanged(): Called")
-        
-        // Make a json object for communication with server
-        let signupJSONObject: [String: AnyObject] = [
+        switch isRequestSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            self.isRequest = true
+            reloadTableView()
+        case 1:
+            self.isRequest = false
+            reloadTableView()
+        default:
+            break;
+        }
+    }
+    
+    func reloadTableView() {
+        //
+        var queryJSON: [String: AnyObject] = [
             "operation": "Query",
-            "category": "FoodDiscover"
+            "isRequest": self.isRequest
         ]
+        if category != "" {
+            queryJSON["category"] = self.category
+        }
         
-        posts = query(signupJSONObject)
+        posts = query(queryJSON)
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
         })
