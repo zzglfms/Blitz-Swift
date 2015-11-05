@@ -13,6 +13,9 @@ class MenuViewController: UITableViewController {
     // MARK: - Constants
     let tableEntries = ["FoodDiscover", "Food Discovery"]
     
+    // MARK: - Variables
+    var lastSelectedRow: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +28,10 @@ class MenuViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         NSLog("MenuViewController.swift - viewDidAppear(): Called")
+        if let row = lastSelectedRow {
+            let rowToSelect:NSIndexPath = NSIndexPath(forRow: row, inSection: 0);  //slecting 0th row with 0th section
+            self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None);
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,8 +63,9 @@ class MenuViewController: UITableViewController {
         if self.revealViewController() != nil {
             let navController = self.revealViewController().frontViewController as! UINavigationController
             let mainViewController = navController.viewControllers[0] as! MainViewController
-            //self.revealViewController().revealToggle(self)
+            self.revealViewController().revealToggle(self)
             mainViewController.category = tableEntries[indexPath.row]
+            lastSelectedRow = indexPath.row
             mainViewController.reloadTableView()
         }
         else{
