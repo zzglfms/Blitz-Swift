@@ -57,7 +57,15 @@ class MainViewController: UITableViewController {
         NSLog("You selected cell number: \(indexPath.row)!")
         //self.performSegueWithIdentifier("yourIdentifier", sender: self)
         let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
-        showPost.post = JSON(posts[indexPath.row])
+        let postID = posts[indexPath.row]["_id"] as? String
+        NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): postID = " + postID!)
+        let input: [String: AnyObject] = [
+            "operation": "GetPostDetail",
+            "postID": postID!
+        ]
+        let result = response(input)
+        //NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): result = " + String(result))
+        showPost.postdata = JSON(result)
         self.navigationController?.pushViewController(showPost, animated: true)
     }
 

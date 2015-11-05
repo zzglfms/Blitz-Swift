@@ -28,8 +28,7 @@ class ShowPostVC: UIViewController,
     
     
     //variable
-    var post:JSON = []
-    
+    var postdata:JSON = []
     override func viewDidLoad() {
         super.viewDidLoad()
         containerScrollView.contentSize = CGSizeMake(containerScrollView.frame.size.width, 790)
@@ -38,9 +37,15 @@ class ShowPostVC: UIViewController,
     }
     
     override func viewDidAppear(animated: Bool) {
-        print(post)
+        let post:JSON = postdata["object"]
+        PostTitleLabel.text = post["title"].string!
         PostTitleLabel.text = post["title"].string!
         PostTime.text = post["postTime"].string!
+        PostTime.text = post["postTime"].string!
+        DescrTxt.text = post["description"].string!
+        let bounty:String = String(post["bounty"].number!)
+        BountyLabel.text = bounty
+        QuantityLabel.text = String(post["quantity"].number!)
         
     }
 
