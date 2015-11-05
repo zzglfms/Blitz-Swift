@@ -52,6 +52,17 @@ class MainViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let postID = posts[indexPath.row]["_id"] as? String
+        NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): postID = " + postID!)
+        let input: [String: AnyObject] = [
+            "operation": "GetPostDetail",
+            "postID": postID!
+        ]
+        let result = response(input)
+        NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): result = " + String(result))
+    }
 
     /*
     // Override to support editing the table view.
