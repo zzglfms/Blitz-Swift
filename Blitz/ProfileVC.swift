@@ -34,9 +34,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        ratingView.editable = false
-        let score = String(format: "Score: %.1f", ratingView.value)
-        ratingScore.text = score
         getProfile()  // need to ingore if the network lag
         localStroageRead()
     }
@@ -119,26 +116,36 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     
     func getProfile(){
         let username:String = prefs.stringForKey("USERNAME")!
+
         
         let jsonObject: [String: AnyObject] = [
             "operation": "GetProfile",
             "username": username
         ]
         
+        print("--------Print from NetworkUtil-------")
         let result = request(jsonObject)
-        
+        print("--------Print from NetworkUtil-------")
+
         //NSLog("@Profilesetting: Result: %@", result);
         let json = JSON(result)
-        
+        print("Profile JSON:\n",json)
+
         let email:String = json["email"].string!
         let emailnss = email as NSString
         prefs.setObject(emailnss, forKey: "EMAIL")
+        
+        let rating:NSNumber = json["rating"].number!
+        prefs.setObject(rating as NSNumber, forKey: "RATING")
         prefs.synchronize()
     }
 
     
     func localStroageRead(){
         //local data read
+        ratingView.editable = false
+        let score = String(format: "Score: %.1f", ratingView.value)
+        ratingScore.text = score
         if let username = prefs.stringForKey("USERNAME"){
             labelUsername.text = username
         }

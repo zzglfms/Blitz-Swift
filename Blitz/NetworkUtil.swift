@@ -26,7 +26,7 @@ func request(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
         let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions())
         let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
         
-        NSLog("@NetworkUtil.swift: JSON String: " + jsonString)
+        //NSLog("@NetworkUtil.swift: JSON String: " + jsonString)
         
         // Add "\n" to the end for socketServer(java)
         outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
@@ -52,7 +52,7 @@ func request(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
             }
         }
         
-        NSLog("@NetworkUtil.swift: Done: "+res)
+        //NSLog("@NetworkUtil.swift: Done: "+res)
         
         if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
             let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
