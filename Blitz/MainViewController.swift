@@ -52,6 +52,15 @@ class MainViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog("You selected cell number: \(indexPath.row)!")
+        //self.performSegueWithIdentifier("yourIdentifier", sender: self)
+        let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
+        showPost.post = JSON(posts[indexPath.row])
+        self.navigationController?.pushViewController(showPost, animated: true)
+    }
+
 
     /*
     // Override to support editing the table view.
