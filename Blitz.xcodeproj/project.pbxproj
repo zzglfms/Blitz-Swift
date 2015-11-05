@@ -169,6 +169,16 @@
 			name = Post;
 			sourceTree = "<group>";
 		};
+		C930B5561BEAF4E300CFDAF9 /* LoginComponent */ = {
+			isa = PBXGroup;
+			children = (
+				34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */,
+				34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */,
+				344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */,
+			);
+			name = LoginComponent;
+			sourceTree = "<group>";
+		};
 		C96553601BE1220A00636531 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 		D163DF471BBDCA380031E915 /* Blitz */ = {
 			isa = PBXGroup;
 			children = (
+				C930B5561BEAF4E300CFDAF9 /* LoginComponent */,
 				3468C32A1BE570700052C558 /* SupportClass */,
 				347EAD741BEAE9A100A249C1 /* ShowPost */,
 				34267E4F1BE1840600F050A5 /* TabBar */,
@@ -223,10 +234,7 @@
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
 				D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */,
 				D163DF541BBDCA380031E915 /* Info.plist */,
-				34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */,
-				34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */,
 				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
-				344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */,
 			);
 			path = Blitz;
 			sourceTree = "<group>";
