@@ -12,6 +12,7 @@
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; };
 		3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9201BE138A800EFC2C2 /* FXBlurView.m */; };
 		34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34267E541BE1849800F050A5 /* MainTabBar.swift */; };
+		342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342F994B1BEB23F90007BF00 /* SwiftDate.swift */; };
 		344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */; };
 		3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3468C3281BE555700052C558 /* HCSStarRatingView.m */; };
 		3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */; };
@@ -53,6 +54,7 @@
 		3421C91F1BE138A800EFC2C2 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		3421C9201BE138A800EFC2C2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		34267E541BE1849800F050A5 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
+		342F994B1BEB23F90007BF00 /* SwiftDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDate.swift; path = ../SwiftDate.swift; sourceTree = "<group>"; };
 		344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		3468C3271BE555700052C558 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		3468C3281BE555700052C558 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		3468C32A1BE570700052C558 /* SupportClass */ = {
 			isa = PBXGroup;
 			children = (
+				342F994B1BEB23F90007BF00 /* SwiftDate.swift */,
 				3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */,
 			);
 			name = SupportClass;
@@ -354,6 +357,7 @@
 				C96553621BE1223A00636531 /* ProfileVC.swift in Sources */,
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
+				342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */,
 				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,

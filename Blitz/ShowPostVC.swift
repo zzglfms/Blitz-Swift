@@ -40,8 +40,11 @@ class ShowPostVC: UIViewController,
         let post:JSON = postdata["object"]
         PostTitleLabel.text = post["title"].string!
         PostTitleLabel.text = post["title"].string!
-        PostTime.text = post["postTime"].string!
-        PostTime.text = post["postTime"].string!
+        let date_iso8601 = NSDate.date(fromString: post["postTime"].string!, format: DateFormat.ISO8601)
+        let date_String = date_iso8601?.toString(format: DateFormat.Custom("YYYY-MM-dd  HH:MM"))
+        print("this is date:", date_String)
+        
+        PostTime.text = date_String
         DescrTxt.text = post["description"].string!
         let bounty:String = String(post["bounty"].number!)
         BountyLabel.text = bounty
