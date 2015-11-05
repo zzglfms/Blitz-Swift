@@ -59,13 +59,20 @@ class MainViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog("You selected cell number: \(indexPath.row)!")
+        //self.performSegueWithIdentifier("yourIdentifier", sender: self)
+        let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
         let postID = posts[indexPath.row]["_id"] as? String
         let input: [String: AnyObject] = [
             "operation": "GetPostDetail",
             "postID": postID!
         ]
-        response(input)
+        let result = response(input)
+        //NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): result = " + String(result))
+        showPost.postdata = JSON(result)
+        self.navigationController?.pushViewController(showPost, animated: true)
     }
+
 
     /*
     // Override to support editing the table view.
