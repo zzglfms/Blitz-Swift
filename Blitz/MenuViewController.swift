@@ -10,6 +10,9 @@ import UIKit
 
 class MenuViewController: UITableViewController {
  
+    // MARK: - Constants
+    let tableEntries = ["FoodDiscover", "Food Discovery"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +23,10 @@ class MenuViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        NSLog("MenuViewController.swift - viewDidAppear(): Called")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,6 +49,19 @@ class MenuViewController: UITableViewController {
             return "ERROR"
         } else {
             return prefs.valueForKey("USERNAME") as? String
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.revealViewController() != nil {
+            let navController = self.revealViewController().frontViewController as! UINavigationController
+            let mainViewController = navController.viewControllers[0] as! MainViewController
+            //self.revealViewController().revealToggle(self)
+            mainViewController.category = tableEntries[indexPath.row]
+            mainViewController.reloadTableView()
+        }
+        else{
+            NSLog("@MenuViewController.swift - tableView.didSelectRowAtIndexPath: Null revealController")
         }
     }
     
@@ -100,7 +120,7 @@ class MenuViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -108,6 +128,6 @@ class MenuViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
