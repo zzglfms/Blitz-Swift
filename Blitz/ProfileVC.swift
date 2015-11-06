@@ -123,9 +123,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             "username": username
         ]
         
-        print("--------Print from NetworkUtil-------")
         let result = request(jsonObject)
-        print("--------Print from NetworkUtil-------")
 
         //NSLog("@Profilesetting: Result: %@", result);
         let json = JSON(result)
@@ -137,6 +135,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
         let rating:NSNumber = json["rating"].number!
         prefs.setObject(rating as NSNumber, forKey: "RATING")
+        
+        let fullname:String = json["fullname"].string!
+        prefs.setObject(fullname as NSString, forKey: "FULLNAME")
         prefs.synchronize()
     }
 
@@ -167,4 +168,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         NSLog("@Changed rating to %.1f", sender.value);
     }
     
+    @IBAction func logoutTapped(sender: UIButton) {
+        let appDomain = NSBundle.mainBundle().bundleIdentifier
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+        self.performSegueWithIdentifier("Logout", sender: self)
+    }
 }

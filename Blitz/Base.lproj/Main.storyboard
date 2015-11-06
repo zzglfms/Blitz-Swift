@@ -165,13 +165,10 @@
                             <outlet property="delegate" destination="8FP-6A-fab" id="aKa-AM-yaV"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <segue destination="I5U-4Q-r2s" kind="modal" identifier="Logout" id="J5J-r4-vH7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="788-np-dq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2900" y="-2795"/>
+            <point key="canvasLocation" x="-2848" y="-3648"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="h2a-P5-lVC">
@@ -190,29 +187,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e1s-ws-Age" userLabel="nicknameLabel">
-                                        <rect key="frame" x="60" y="110" width="295" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Full Name" minimumFontSize="17" id="jAz-j2-zus" userLabel="fullnameTxt">
-                                        <rect key="frame" x="128" y="163" width="227" height="30"/>
+                                        <rect key="frame" x="123" y="191" width="227" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DeV-09-9Wr" userLabel="usernameLabel">
-                                        <rect key="frame" x="60" y="130" width="295" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap to change/edit Avatar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rz9-Yc-9gC">
                                         <rect key="frame" x="89" y="95" width="195" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -232,30 +213,15 @@
                                             <action selector="changeImageButt:" destination="dru-MI-dTA" eventType="touchUpInside" id="h1I-IV-2Be"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone number" minimumFontSize="17" id="bbC-no-dPn" userLabel="phoneTxt">
-                                        <rect key="frame" x="128" y="201" width="227" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email address" minimumFontSize="17" id="bbC-no-dPn" userLabel="phoneTxt">
+                                        <rect key="frame" x="123" y="237" width="227" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" placeholder="Your website" minimumFontSize="17" id="mMn-SP-MHe" userLabel="websiteTxt">
-                                        <rect key="frame" x="128" y="239" width="227" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Phone:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ID0-ir-h6D">
-                                        <rect key="frame" x="60" y="205" width="68" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QSU-m6-0vd">
-                                        <rect key="frame" x="60" y="243" width="60" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ID0-ir-h6D">
+                                        <rect key="frame" x="47" y="241" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
@@ -263,7 +229,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jKN-qs-tLB" userLabel="saveProfileButt">
-                                        <rect key="frame" x="90" y="287" width="235" height="44"/>
+                                        <rect key="frame" x="70" y="296" width="235" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.43137254899999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,7 +242,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OJ5-Za-Euz" userLabel="ChangePassword">
-                                        <rect key="frame" x="90" y="347" width="235" height="44"/>
+                                        <rect key="frame" x="69" y="372" width="235" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.2470588235" green="0.68235294120000001" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,15 +251,23 @@
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="testGetProfile:" destination="dru-MI-dTA" eventType="touchUpInside" id="v8t-yg-T0K"/>
+                                            <action selector="changePasswordTapped:" destination="dru-MI-dTA" eventType="touchUpInside" id="vqh-CI-g9w"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5gr-VL-od7">
-                                        <rect key="frame" x="60" y="167" width="68" height="21"/>
+                                        <rect key="frame" x="47" y="195" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WYD-ha-MSQ">
+                                        <rect key="frame" x="143" y="135" width="89" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -311,19 +285,14 @@
                                 <action selector="backButtonTapped:" destination="dru-MI-dTA" id="CmV-2q-qhy"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="6YH-YH-men">
-                            <color key="tintColor" red="1" green="1" blue="0.73270869760000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="avatarimage" destination="NO4-vn-lj1" id="9vi-qX-vrK"/>
                         <outlet property="containerScrollView" destination="j5n-KB-CRU" id="bTP-bD-ubm"/>
+                        <outlet property="emailTextField" destination="bbC-no-dPn" id="sc1-NH-Yhd"/>
                         <outlet property="fullNameTextField" destination="jAz-j2-zus" id="cxz-4e-bUb"/>
-                        <outlet property="phoneTextField" destination="bbC-no-dPn" id="UOK-dX-meR"/>
-                        <outlet property="useremailLabel" destination="DeV-09-9Wr" id="2Ga-6T-tu5"/>
-                        <outlet property="usernameLabel" destination="e1s-ws-Age" id="RsG-1z-qxJ"/>
-                        <outlet property="webSiteTextField" destination="mMn-SP-MHe" id="CS2-d8-1hv"/>
+                        <outlet property="usernameLabel" destination="WYD-ha-MSQ" id="O95-Ha-ZFs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccu-ra-XtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -952,18 +921,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Wf-oI-pGn" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
-                                        <rect key="frame" x="253" y="118" width="112" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <state key="normal" title="Edit My Profile">
-                                            <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="V6A-He-2ar" kind="modal" id="me8-DU-GGM"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="li1173@purdue.edu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="il5-u2-4Fm" userLabel="email">
                                         <rect key="frame" x="8" y="177" width="224" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1022,6 +979,30 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="r0X-NH-DTd" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
+                                        <rect key="frame" x="305" y="118" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutTapped:" destination="1Nh-b2-RKT" eventType="touchUpInside" id="ZRr-7X-XKY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Wf-oI-pGn" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
+                                        <rect key="frame" x="168" y="118" width="112" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <state key="normal" title="Edit My Profile">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="V6A-He-2ar" kind="modal" id="me8-DU-GGM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                             </scrollView>
@@ -1040,6 +1021,7 @@
                         <outlet property="ratingView" destination="qx5-gW-0rC" id="s5q-Ml-1IU"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
                         <outlet property="useremail" destination="il5-u2-4Fm" id="LuQ-Yv-OcF"/>
+                        <segue destination="I5U-4Q-r2s" kind="modal" identifier="Logout" id="LYc-Nv-rWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55E-jt-5gm" sceneMemberID="firstResponder"/>
