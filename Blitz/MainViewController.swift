@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Parse
-
 
 class MainViewController: UITableViewController {
     

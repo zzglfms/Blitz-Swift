@@ -8,8 +8,6 @@
 
 import UIKit
 import MapKit
-import Parse
-
 
 class ShowPostVC: UIViewController,
     UIScrollViewDelegate,
@@ -36,7 +34,6 @@ class ShowPostVC: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         containerScrollView.contentSize = CGSizeMake(containerScrollView.frame.size.width, 790)
-        chattest()
         // Do any additional setup after loading the view.
     }
     
@@ -62,21 +59,21 @@ class ShowPostVC: UIViewController,
     }
     
     
-    func chattest(){ // this func could sent the message
-        //create PFObject
-        let message = PFObject(className:"Message")
-        message["Text"] = "wo ri le gou"
-        message.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                // The object has been saved.
-                //TODO: Retrieve the message
-            } else {
-                // There was a problem, check error.description
-                NSLog(error!.description)
-            }
-        }
-    }
+//    func chattest(){ // this func could sent the message
+//        //create PFObject
+//        let message = PFObject(className:"Message")
+//        message["Text"] = "wo ri le gou"
+//        message.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                // The object has been saved.
+//                //TODO: Retrieve the message
+//            } else {
+//                // There was a problem, check error.description
+//                NSLog(error!.description)
+//            }
+//        }
+//    }
     
 
     /*
