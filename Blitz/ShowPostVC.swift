@@ -40,6 +40,7 @@ class ShowPostVC: UIViewController,
         let post:JSON = postdata["object"]
         PostTitleLabel.text = post["title"].string!
         PostTitleLabel.text = post["title"].string!
+        print(post["postTime"].string!)
         let date_iso8601 = NSDate.date(fromString: post["postTime"].string!, format: DateFormat.ISO8601)
         let date_String = date_iso8601?.toString(format: DateFormat.Custom("YYYY-MM-dd  HH:MM"))
         print("this is date:", date_String)

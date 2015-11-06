@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UITableViewController {
  
     // MARK: - Constants
-    let tableEntries = ["FoodDiscover", "Food Discovery"]
+    var tableEntries = ["Carpool", "FoodDiscover", "Tutor", "House Rental", "Need A Ride", "Other"]
     
     // MARK: - Variables
     var lastSelectedRow: Int!
@@ -40,12 +40,12 @@ class MenuViewController: UITableViewController {
     }
     
     
-    @IBAction func log_outTapped(sender: UIButton) {
-        let appDomain = NSBundle.mainBundle().bundleIdentifier
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-        
-        self.performSegueWithIdentifier("Logout", sender: self)
-    }
+//    @IBAction func log_outTapped(sender: UIButton) {
+//        let appDomain = NSBundle.mainBundle().bundleIdentifier
+//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+//        
+//        self.performSegueWithIdentifier("Logout", sender: self)
+//    }
 
     // MARK: - Table view data source
 
@@ -64,24 +64,23 @@ class MenuViewController: UITableViewController {
             let navController = self.revealViewController().frontViewController as! UINavigationController
             let mainViewController = navController.viewControllers[0] as! MainViewController
             self.revealViewController().revealToggle(self)
-            mainViewController.category = tableEntries[indexPath.row]
-            lastSelectedRow = indexPath.row
-            mainViewController.reloadTableView()
+            
+            if let _ = lastSelectedRow {
+                mainViewController.category = ""
+                lastSelectedRow = nil
+                mainViewController.reloadTableView()
+            }
+            else{
+                mainViewController.category = tableEntries[indexPath.row]
+                lastSelectedRow = indexPath.row
+                mainViewController.reloadTableView()
+            }
         }
         else{
             NSLog("@MenuViewController.swift - tableView.didSelectRowAtIndexPath: Null revealController")
         }
     }
     
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -129,6 +128,7 @@ class MenuViewController: UITableViewController {
     */
 
 
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -136,6 +136,6 @@ class MenuViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+    */
 
 }

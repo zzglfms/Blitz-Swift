@@ -15,17 +15,17 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var categoryTextField: UITextField!
-    @IBOutlet weak var qunatityTextField: UITextField!
+    @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var bountyTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
-
+    
     // MARK: - Constants
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - VARIABLES
-    var categories = ["Carpool", "Food Discoer", "Tutor", "House Rental", "Need A Ride"]
+    var categories = ["Carpool", "FoodDiscover", "Tutor", "House Rental", "Need A Ride", "Other"]
     var carpoolPostVC: CarpoolPostVC!
     var type: String! = "Request"
     
@@ -51,11 +51,11 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, doneButton], animated: false)
         toolBar.userInteractionEnabled = true
-
+        
         categoryTextField.inputView = categoryPicker
         categoryTextField.inputAccessoryView = toolBar
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,8 +93,47 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        var inValidMessage: String! = ""
+        
+        let quantity: Int? = Int(quantityTextField.text!)
+        let bounty: Float? = Float(bountyTextField.text!)
+        
+        // Validation for quantity and bounty
+        if let q = quantity {
+            if q <= 0 {
+                inValidMessage.appendContentsOf("Please enter a postive integer for quantity\n")
+            }
+        }
+        else {
+            inValidMessage.appendContentsOf("Please enter a postive integer for quantity\n")
+        }
+        if let b = bounty {
+            if b < 0 {
+                inValidMessage.appendContentsOf("Please enter a postive number for bounty\n")
+            }
+        }
+        else {
+            inValidMessage.appendContentsOf("Please enter a postive number for bounty\n")
+        }
+        
+        // Validation for title
+        if titleTextField.text!.isEmpty {
+            inValidMessage.appendContentsOf("Please enter a title for your post\n")
+            print("Here")
+        }
+        
+        // Pop up error message if have invalid field
+        if inValidMessage != "" {
+            let alertController = UIAlertController(title: "Invalid", message: inValidMessage, preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {}
+            return
+        }
+        
+        // get information specified to carpool
         let info = carpoolPostVC.getAllInformation()
         
         // Make a json object for communication with server
@@ -103,40 +142,39 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             "username": prefs.stringForKey("USERNAME")!,
             "position": info.from,
             "description": descriptionTextView.text!,
-            "quantity": qunatityTextField.text!,
+            "quantity": quantity!,
             "title": titleTextField.text!,
-            "bounty": bountyTextField.text!,
+            "bounty": bounty!,
             "contact": contactTextField.text!,
             "isRequest": type == "Request",
             "category": categoryTextField.text!
         ]
-        NSLog("Title: "+titleTextField.text!)
-        NSLog("Type: "+type)
-        NSLog("Category: "+categoryTextField.text!)
-        NSLog("Quantity: "+qunatityTextField.text!)
-        NSLog("Bounty: "+bountyTextField.text!)
-        NSLog("Contact: "+contactTextField.text!)
-        NSLog("Description: "+descriptionTextView.text!)
         NSLog("From: "+info.from)
         NSLog("To: "+info.to)
         NSLog("Effective: "+info.effectiveDate)
         NSLog("Repeat: "+info.repeatString)
         NSLog("=-=-=-=-=-=-=-=-=-=-=-")
         NSLog(String(postJSONObject))
+        
+        let result = createPost(postJSONObject)
+        NSLog(String(result))
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch typeSegmentedControl.selectedSegmentIndex
         {
-            case 0:
-                type = "Request"
-            case 1:
-                type = "Provide"
-            default:
-                break;
+        case 0:
+            type = "Request"
+        case 1:
+            type = "Provide"
+        default:
+            break;
         }
     }
-
+    
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
