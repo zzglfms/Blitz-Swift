@@ -51,8 +51,12 @@ class MainViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as UITableViewCell
+        // Set title
         cell.textLabel!.text = posts[indexPath.row]["title"] as? String
-        cell.detailTextLabel!.text = posts[indexPath.row]["postTime"] as? String
+        // Set postTime
+        let date_iso8601 = NSDate.date(fromString: posts[indexPath.row]["postTime"]! as! String, format: DateFormat.ISO8601)
+        let date_String = date_iso8601?.toString(format: DateFormat.Custom("yyyy-MM-dd HH:mm"))
+        cell.detailTextLabel!.text = date_String
         
         return cell
     }

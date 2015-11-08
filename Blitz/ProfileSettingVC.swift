@@ -18,10 +18,8 @@ UIImagePickerControllerDelegate {
     
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var avatarimage: UIImageView!
-    @IBOutlet weak var webSiteTextField: UITextField!
-    @IBOutlet weak var useremailLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var fullNameTextField: UITextField!
     
     
@@ -90,7 +88,7 @@ UIImagePickerControllerDelegate {
         }
         
         if let email = prefs.stringForKey("EMAIL"){
-            useremailLabel.text = email
+            emailTextField.text = email
         }
         
         if let imageData = prefs.objectForKey("avatar")as? NSData{
@@ -101,49 +99,52 @@ UIImagePickerControllerDelegate {
         if let fullname = prefs.stringForKey("FULLNAME"){
             fullNameTextField.text = fullname
         }
-        
-        if let phone = prefs.stringForKey("PHONE"){
-            phoneTextField.text = phone
-        }
-        
-        if let website = prefs.stringForKey("WEBSITE"){
-            webSiteTextField.text = website
-        }
     }
     
     @IBAction func saveButtonTapped(sender: UIButton) {
         let fullname:NSString = fullNameTextField.text!
-        let phone:NSString = phoneTextField.text!
-        let website:NSString = webSiteTextField.text!
+        let email:NSString = emailTextField.text!
         
         
-        if (fullname.isEqualToString("") || phone.isEqualToString("") || website.isEqualToString("http://")){
-            print("no action")
+        if (fullname.isEqualToString("") || email.isEqualToString("")){
+            NSLog("@ProfileSettingVC.swift - saveButtonTapped(): no action")
         }
         else{
             localStorageWrite()
         }
+        
+        // TODO: Connect to Server
+        let modifyJSON: [String: AnyObject]! = [
+            "username": prefs.stringForKey("USERNAME")!,
+            "operation": "ModifyProfile",
+            "changes": [
+                ["fullname": fullname],
+                ["email": email]
+            ]
+        ]
+        NSLog("@ProfileSettingVC.swift - saveButtonTapped(): input = "+String(modifyJSON))
+        let result = request(modifyJSON)
+        let result_JSON = JSON(result)
+        NSLog("@ProfileSettingVC.swift - saveButtonTapped(): result = "+String(result_JSON))
     }
 
     func localStorageWrite(){
         let fullname:NSString = fullNameTextField.text!
-        let phone:NSString = phoneTextField.text!
-        let website:NSString = webSiteTextField.text!
+        let email:NSString = emailTextField.text!
         
-        print("fullname = " + fullNameTextField.text!)
+        NSLog("@ProfileSettingVC.swift - localStorageWrite(): fullname = " + fullNameTextField.text!)
         prefs.setObject(fullname, forKey: "FULLNAME")
-        print("phone = " + phoneTextField.text!)
-        prefs.setObject(phone, forKey: "PHONE")
-        print("website = " + webSiteTextField.text!)
-        prefs.setObject(website, forKey: "WEBSITE")
-
+        NSLog("@ProfileSettingVC.swift - localStorageWrite(): email = " + emailTextField.text!)
+        prefs.setObject(email, forKey: "EMAIL")
     }
     
+    
+    // MARK: - Action Outlets
     @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func testGetProfile(sender: UIButton) {
+    @IBAction func changePasswordTapped(sender: UIButton) {
         var pwTextField: UITextField?
         var pwcTextField: UITextField?
         
@@ -190,7 +191,7 @@ UIImagePickerControllerDelegate {
                     if valid {
                         let result = request(jsonObject)
                         let result_JSON = JSON(result)
-                        print(result_JSON)
+                        NSLog("@ProfileSettingVC.swift - changePasswordTapped(): result = "+String(result_JSON))
                     }
                 }
                 

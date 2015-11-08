@@ -39,13 +39,6 @@ class MenuViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-//    @IBAction func log_outTapped(sender: UIButton) {
-//        let appDomain = NSBundle.mainBundle().bundleIdentifier
-//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-//        
-//        self.performSegueWithIdentifier("Logout", sender: self)
-//    }
 
     // MARK: - Table view data source
 
