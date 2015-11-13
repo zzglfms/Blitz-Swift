@@ -63,16 +63,19 @@ class MainViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("You selected cell number: \(indexPath.row)!")
         //self.performSegueWithIdentifier("yourIdentifier", sender: self)
         let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
         let postID = posts[indexPath.row]["_id"] as? String
+        
         let input: [String: AnyObject] = [
             "operation": "GetPostDetail",
             "postID": postID!
         ]
-        let result = response(input)
-        //NSLog("@MainViewController.swift - didSelectRowAtIndexPath(): result = " + String(result))
+        
+        let result = getResultFromServerAsJSONObject(input)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(result))
+        
         showPost.postdata = JSON(result)
         self.navigationController?.pushViewController(showPost, animated: true)
     }
@@ -130,7 +133,7 @@ class MainViewController: UITableViewController {
             queryJSON["category"] = self.category
         }
         
-        posts = query(queryJSON)
+        posts = getResultFromServerAsJSONArray(queryJSON)
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
         })

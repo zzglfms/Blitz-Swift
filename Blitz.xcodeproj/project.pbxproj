@@ -30,6 +30,7 @@
 		C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F031BC7383F00578C7C /* MenuViewController.swift */; };
 		C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F071BC740F100578C7C /* MainViewController.swift */; };
 		C9DD44521BE7FF0C00E9BF75 /* RepeatTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */; };
+		C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DF70241BF3F9E00091AFDB /* LogUtil.swift */; };
 		D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D163DF481BBDCA380031E915 /* AppDelegate.swift */; };
 		D163DF4E1BBDCA380031E915 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4C1BBDCA380031E915 /* Main.storyboard */; };
 		D163DF501BBDCA380031E915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D163DF4F1BBDCA380031E915 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		C9C48F031BC7383F00578C7C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C9C48F071BC740F100578C7C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatTableVC.swift; sourceTree = "<group>"; };
+		C9DF70241BF3F9E00091AFDB /* LogUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogUtil.swift; sourceTree = "<group>"; };
 		D163DF451BBDCA380031E915 /* Blitz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blitz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D163DF481BBDCA380031E915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D163DF4D1BBDCA380031E915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -202,6 +204,15 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		C9DF70231BF3F9A50091AFDB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
+				C9DF70241BF3F9E00091AFDB /* LogUtil.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		D163DF3C1BBDCA380031E915 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +234,7 @@
 		D163DF471BBDCA380031E915 /* Blitz */ = {
 			isa = PBXGroup;
 			children = (
+				C9DF70231BF3F9A50091AFDB /* Util */,
 				C930B5561BEAF4E300CFDAF9 /* LoginComponent */,
 				3468C32A1BE570700052C558 /* SupportClass */,
 				347EAD741BEAE9A100A249C1 /* ShowPost */,
@@ -237,7 +249,6 @@
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
 				D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */,
 				D163DF541BBDCA380031E915 /* Info.plist */,
-				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
 			);
 			path = Blitz;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 				C95FE8281BE6C2F6005C53F9 /* MapVC.swift in Sources */,
 				344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
+				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,

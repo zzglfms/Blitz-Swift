@@ -8,80 +8,65 @@
 
 import Foundation
 
-func request(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
-    let addr = "blitzproject.cs.purdue.edu"
-    let port = 9066
-    
-    var inp :NSInputStream?
-    var out :NSOutputStream?
-    
-    NSStream.getStreamsToHostWithName(addr, port: port, inputStream: &inp, outputStream: &out)
-    
-    let inputStream = inp!
-    let outputStream = out!
-    inputStream.open()
-    outputStream.open()
-    
-    do{ // Try to convert jsonObject into String
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions())
-        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-        
-        //NSLog("@NetworkUtil.swift: JSON String: " + jsonString)
-        
-        // Add "\n" to the end for socketServer(java)
-        outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
-        
-        var buffer = [UInt8](count: 8, repeatedValue: 0)
-        var res = ""
-        var isWait :Bool = true
-        while true {
-            let result :Int = inputStream.read(&buffer, maxLength: buffer.count)
-            let char = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
-            //print((char, result))
-            if result == -1{
-                // Connection fail
-                break
-            }
-            if result == 0 && !isWait{
-                break
-            }
-            if result > 0 {
-                let index1 = char.endIndex.advancedBy(result-8)
-                res += char.substringToIndex(index1)
-                isWait = false;
-            }
-        }
-        
-        //NSLog("@NetworkUtil.swift - request(): Done: "+res)
-        
-        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
+let operationToPortMap = [
+    "Login": 9066,
+    "Signup": 9066,
+    "ForgetPassword": 9066,
+    "GetProfile":9066,
+    "ModifyProfile": 9066,
+    "Query": 9067,
+    "CreatePost": 9068,
+    "GetPostDetail": 9069,
+    "OfferPrice": 9069,
+    "DeleteOffer": 9069,
+    "AcceptOffer": 9069,
+    "UploadPicture": 9071,
+    "GetPicture": 9071
+]
+
+
+func getResultFromServerAsJSONObject(inputJSON: [String: AnyObject]) -> [String: AnyObject] {
+    let JSONString = getJSONStringFromServer(inputJSON)
+    if let data = JSONString.dataUsingEncoding(NSUTF8StringEncoding){
+        do {
             let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
-            
-            if (parsedObject != nil) {
-                
-            }
-            else {
-
-            }
             return parsedObject!
         }
-        return [ "success": false, "msg": "Error when use 'dataUsingEncoding'" ]
+        catch {
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use NSJSONSerialization.JSONObjectWithData")
+            return [ "error": true, "success": false, "msg": "Error when use NSJSONSerialization.JSONObjectWithData" ]
+        }
     }
-    catch{
-        return [ "success": false, "msg": "Error when use 'dataWithJSONObject/JSONObjectWithData'" ]
-    }
+    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use String.dataUsingEncoding")
+    return [ "Error": true, "success": false, "msg": "Error when use String.dataUsingEncoding" ]
 }
 
 
-// Not useful, just explore
-func query(jsonObject :[String: AnyObject]) -> [[String: AnyObject]]{
+func getResultFromServerAsJSONArray(inputJSON: [String: AnyObject]) -> [[String: AnyObject]] {
+    let JSONString = getJSONStringFromServer(inputJSON)
+    if let data = JSONString.dataUsingEncoding(NSUTF8StringEncoding){
+        do {
+            let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? [Dictionary<String, AnyObject>]
+            return parsedObject!
+        }
+        catch {
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use NSJSONSerialization.JSONObjectWithData")
+            return [[ "error": true, "success": false, "msg": "Error when use NSJSONSerialization.JSONObjectWithData"]]
+        }
+    }
+    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use String.dataUsingEncoding")
+    return [[ "error": true, "success": false, "msg": "Error when use String.dataUsingEncoding" ]]
+}
+
+
+func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
     let addr = "blitzproject.cs.purdue.edu"
-    let port = 9067
+    let port = operationToPortMap[inputJSON["operation"] as! String]
     
     var inp :NSInputStream?
     var out :NSOutputStream?
     
-    NSStream.getStreamsToHostWithName(addr, port: port, inputStream: &inp, outputStream: &out)
+    NSStream.getStreamsToHostWithName(addr, port: port!, inputStream: &inp, outputStream: &out)
     
     let inputStream = inp!
     let outputStream = out!
@@ -89,10 +74,10 @@ func query(jsonObject :[String: AnyObject]) -> [[String: AnyObject]]{
     outputStream.open()
     
     do{ // Try to convert jsonObject into String
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions())
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(inputJSON, options: NSJSONWritingOptions())
         let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
         
-        //NSLog("@NetworkUtil.swift - query(): JSON String: " + jsonString)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON String = " + jsonString)
         
         // Add "\n" to the end for socketServer(java)
         outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
@@ -118,152 +103,12 @@ func query(jsonObject :[String: AnyObject]) -> [[String: AnyObject]]{
             }
         }
         
-        //NSLog("@NetworkUtil.swift - query(): Done: "+res)
-        
-        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
-            let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [[String: AnyObject]]
-            
-            if (parsedObject != nil) {
-                
-            }
-            else {
-                
-            }
-            return parsedObject!
-        }
-        return [[ "success": false, "msg": "Error when use 'dataUsingEncoding'" ]]
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result JSON String = " + res)
+        return res
     }
     catch{
-        return [[ "success": false, "msg": "Error when use 'dataWithJSONObject/JSONObjectWithData'" ]]
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use 'NSJSONSerialization.dataWithJSONObject")
+        return String([ "error": true, "success": false,"msg": "Error when use 'NSJSONSerialization.dataWithJSONObject'"])
     }
-}
-
-
-func createPost(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
-    let addr = "blitzproject.cs.purdue.edu"
-    let port = 9068
     
-    var inp :NSInputStream?
-    var out :NSOutputStream?
-    
-    NSStream.getStreamsToHostWithName(addr, port: port, inputStream: &inp, outputStream: &out)
-    
-    let inputStream = inp!
-    let outputStream = out!
-    inputStream.open()
-    outputStream.open()
-    
-    do{ // Try to convert jsonObject into String
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions())
-        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-        
-        //NSLog("@NetworkUtil.swift - createPost(): JSON String: " + jsonString)
-        
-        // Add "\n" to the end for socketServer(java)
-        outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
-        
-        var buffer = [UInt8](count: 8, repeatedValue: 0)
-        var res = ""
-        var isWait :Bool = true
-        while true {
-            let result :Int = inputStream.read(&buffer, maxLength: buffer.count)
-            let char = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
-            //print((char, result))
-            if result == -1{
-                // Connection fail
-                break
-            }
-            if result == 0 && !isWait{
-                break
-            }
-            if result > 0 {
-                let index1 = char.endIndex.advancedBy(result-8)
-                res += char.substringToIndex(index1)
-                isWait = false;
-            }
-        }
-        
-        //NSLog("@NetworkUtil.swift - createPost(): Done: "+res)
-        
-        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
-            let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String: AnyObject]
-            
-            if (parsedObject != nil) {
-                
-            }
-            else {
-                
-            }
-            return parsedObject!
-        }
-        return [ "success": false, "msg": "Error when use 'dataUsingEncoding'" ]
-    }
-    catch{
-        return [ "success": false, "msg": "Error when use 'dataWithJSONObject/JSONObjectWithData'" ]
-    }
-}
-
-
-func response(jsonObject :[String: AnyObject]) -> [String: AnyObject]{
-    let addr = "blitzproject.cs.purdue.edu"
-    let port = 9069
-    
-    var inp :NSInputStream?
-    var out :NSOutputStream?
-    
-    NSStream.getStreamsToHostWithName(addr, port: port, inputStream: &inp, outputStream: &out)
-    
-    let inputStream = inp!
-    let outputStream = out!
-    inputStream.open()
-    outputStream.open()
-    
-    do{ // Try to convert jsonObject into String
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions())
-        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-        
-        //NSLog("@NetworkUtil.swift - response(): INPUT JSON String = " + jsonString)
-        
-        // Add "\n" to the end for socketServer(java)
-        outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
-        
-        var buffer = [UInt8](count: 8, repeatedValue: 0)
-        var res = ""
-        var isWait :Bool = true
-        while true {
-            let result :Int = inputStream.read(&buffer, maxLength: buffer.count)
-            let char = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
-            //print((char, result))
-            if result == -1{
-                // Connection fail
-                break
-            }
-            if result == 0 && !isWait{
-                break
-            }
-            if result > 0 {
-                let index1 = char.endIndex.advancedBy(result-8)
-                res += char.substringToIndex(index1)
-                isWait = false;
-            }
-        }
-        
-        //NSLog("@NetworkUtil.swift - response(): OUTPUT JSON String = "+res)
-        
-        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
-            let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
-            
-            if (parsedObject != nil) {
-                
-            }
-            else {
-                
-            }
-            return parsedObject!
-        }
-        return [ "success": false, "msg": "Error when use 'dataUsingEncoding'" ]
-    }
-    catch{
-        return [ "success": false, "msg": "Error when use 'dataWithJSONObject/JSONObjectWithData'" ]
-    }
 }
