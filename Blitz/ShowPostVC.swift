@@ -15,7 +15,7 @@ class ShowPostVC: UIViewController,
     MKMapViewDelegate
 {
     
-    //reference Outlet
+    // MARK: - Reference Outlet
     @IBOutlet weak var PostTitleLabel: UILabel!
     @IBOutlet weak var BountyLabel: UILabel!
     @IBOutlet weak var QuantityLabel: UILabel!
@@ -25,8 +25,7 @@ class ShowPostVC: UIViewController,
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var PostTime: UILabel!
     
-    
-    //variable
+    // MARK: - Variable
     var postdata:JSON = []
     
     
@@ -40,11 +39,11 @@ class ShowPostVC: UIViewController,
     override func viewDidAppear(animated: Bool) {
         let post:JSON = postdata["object"]
         PostTitleLabel.text = post["title"].string!
-        PostTitleLabel.text = post["title"].string!
 
+        // Convert GMT time from server into local time
         let date_iso8601 = NSDate.date(fromString: post["postTime"].string!, format: DateFormat.ISO8601)
         let date_String = date_iso8601?.toString(format: DateFormat.Custom("yyyy-MM-dd HH:mm"))
-        print("this is date:", date_String!)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): local time = %@", date_String!)
         
         PostTime.text = date_String
         DescrTxt.text = post["description"].string!

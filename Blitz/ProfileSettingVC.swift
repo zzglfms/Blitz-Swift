@@ -122,10 +122,13 @@ UIImagePickerControllerDelegate {
                 ["email": email]
             ]
         ]
-        NSLog("@ProfileSettingVC.swift - saveButtonTapped(): input = "+String(modifyJSON))
-        let result = request(modifyJSON)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input = "+String(modifyJSON))
+        
+        let result = getResultFromServerAsJSONObject(modifyJSON)
         let result_JSON = JSON(result)
-        NSLog("@ProfileSettingVC.swift - saveButtonTapped(): result = "+String(result_JSON))
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = "+String(result_JSON))
     }
 
     func localStorageWrite(){
@@ -189,7 +192,7 @@ UIImagePickerControllerDelegate {
                     ]
                     let valid = NSJSONSerialization.isValidJSONObject(jsonObject) // true
                     if valid {
-                        let result = request(jsonObject)
+                        let result = getResultFromServerAsJSONObject(jsonObject)
                         let result_JSON = JSON(result)
                         NSLog("@ProfileSettingVC.swift - changePasswordTapped(): result = "+String(result_JSON))
                     }

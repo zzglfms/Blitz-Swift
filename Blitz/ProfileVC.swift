@@ -123,7 +123,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             "username": username
         ]
         
-        let result = request(jsonObject)
+        let result = getResultFromServerAsJSONObject(jsonObject)
 
         //NSLog("@Profilesetting: Result: %@", result);
         let json = JSON(result)

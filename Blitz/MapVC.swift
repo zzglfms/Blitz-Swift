@@ -48,7 +48,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     
     // MARK: - CORE LOCATION MANAGER -> GET CURRENT LOCATION OF THE USER
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSLog("@MapVC.swft: didFailWithError: %@", error)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", error)
         
         // Pop up alert
         let alertController = UIAlertController(title: "Blitz", message: "Failed to Get Your Location", preferredStyle: .Alert)
@@ -56,6 +56,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
         alertController.addAction(OKAction)
         self.presentViewController(alertController, animated: true) {}
     }
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         locationManager.stopUpdatingLocation()

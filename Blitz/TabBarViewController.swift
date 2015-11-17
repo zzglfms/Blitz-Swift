@@ -27,8 +27,6 @@ class TabBarViewController: UITabBarController {
     
     private func addChildViewControllers() {
         self.tabBar.tintColor = UIColor.orangeColor()
-
-        
     }
     
     func composeButtonClick(){

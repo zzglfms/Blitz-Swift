@@ -23,7 +23,7 @@ class ResetPasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func restTapped(sender: UIButton) {
+    @IBAction func resetTapped(sender: UIButton) {
         let username:NSString = txtUsername.text!
         
         if (username.isEqualToString("")){
@@ -33,16 +33,16 @@ class ResetPasswordViewController: UIViewController {
             self.presentViewController(alertController, animated: true) {}
         }else{
             //connect server
-            NSLog("@ResetPasswordViewController.swift: username = %@", username)
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): username = %@", username)
             
             let jsonObject: [String: AnyObject] = [
                 "operation": "ForgetPassword",
                 "username": username
             ]
             
-            let result = request(jsonObject)
+            let result = getResultFromServerAsJSONObject(jsonObject)
             
-            NSLog("@SignupViewController.swift: Result: %@", result);
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = %@", result)
         }
     }
 

@@ -156,12 +156,15 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         NSLog("=-=-=-=-=-=-=-=-=-=-=-")
         NSLog(String(postJSONObject))
         
-        let result = createPost(postJSONObject)
-        NSLog(String(result))
+        let result = getResultFromServerAsJSONObject(postJSONObject)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    // MARK: - Action Outlet
     @IBAction func indexChanged(sender: UISegmentedControl) {
         switch typeSegmentedControl.selectedSegmentIndex
         {

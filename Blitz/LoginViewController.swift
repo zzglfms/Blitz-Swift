@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         if(isLoggedIn == 1){
             self.performSegueWithIdentifier("Login", sender: self)
-            NSLog("@LoginViewController.swfit: Should jump to homepage")
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Should jump to homepage")
         }
     }
     
@@ -57,12 +57,12 @@ class LoginViewController: UIViewController {
                 "password": password
             ]
             
-            let result = request(jsonObject)
+            let result = getResultFromServerAsJSONObject(jsonObject)
             
-            NSLog("@LoginViewController.swift: Result: %@", result);
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Result = ", result)
             
             if(result["success"] as! Bool){
-                NSLog("@SignupViewController.swift: Login SUCCESS");
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Login SUCCESS");
                 
                 let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 prefs.setObject(username, forKey: "USERNAME")

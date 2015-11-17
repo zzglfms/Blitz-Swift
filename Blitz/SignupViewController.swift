@@ -43,25 +43,15 @@ class SignupViewController: UIViewController {
         else if ( !password.isEqual(confirm_password) )
         {
             let alertController = UIAlertController(title: "Sign Up Failed!", message: "Passwords doesn't Match", preferredStyle: .Alert)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-//                // ...
-//            }
-//            alertController.addAction(cancelAction)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                // ...
-            }
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
             alertController.addAction(OKAction)
-            
-            self.presentViewController(alertController, animated: true) {
-                // ...
-            }
+            self.presentViewController(alertController, animated: true) {}
         }
         else
         {
             let post:String = "username=\(username)&password=\(password)&c_password=\(confirm_password)"
             
-            NSLog("@SignupViewController.swift: PostData: %@", post);
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): PostData: %@", post);
             
             // Make a json object for communication with server
             let signupJSONObject: [String: AnyObject] = [
@@ -71,16 +61,15 @@ class SignupViewController: UIViewController {
                 "email" : email
             ]
             
-            let result = request(signupJSONObject)
+            let result = getResultFromServerAsJSONObject(signupJSONObject)
             
-            NSLog("@SignupViewController.swift: Result: %@", result)
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
             
-            if(result["success"] as! Bool){
-                NSLog("@SignupViewController.swift: Sign Up SUCCESS")
+            if (result["success"] as! Bool) {
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sign Up SUCCESS")
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-            else
-            {
+            else {
                 let alertController = UIAlertController(title: "Sign Up Failed!", message: result["msg"] as? String, preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
                 alertController.addAction(OKAction)

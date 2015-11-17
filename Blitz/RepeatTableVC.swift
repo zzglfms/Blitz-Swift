@@ -23,8 +23,9 @@ class RepeatTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("@RepeatTableVC.swift - viewDidLoad(): Passing Message = " + passingMessage)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Passing Message = %@", passingMessage)
         constructCheckedArray(passingMessage)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -82,7 +83,7 @@ class RepeatTableVC: UITableViewController {
 
     @IBAction func backButtonTapped(sender: UIBarButtonItem) {
         let repeatString: String! = formDescriptiveRepeatString()
-        NSLog("@RepeatTableVC.swift - backButtonTapped(): repeatString = " + repeatString)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): repeatString = %@", repeatString)
         carpoolController.repeatTextField.text = repeatString
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -112,7 +113,8 @@ class RepeatTableVC: UITableViewController {
         for repeatDay in repeatDays {
             checked[DayToIndexMap[repeatDay]!] = true
         }
-        NSLog(String(checked))
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): checked Array = %@", checked)
     }
     
     func getShortStyleDayString(dayString: String) -> String {

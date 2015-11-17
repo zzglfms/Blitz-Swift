@@ -27,7 +27,6 @@ class MenuViewController: UITableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        NSLog("MenuViewController.swift - viewDidAppear(): Called")
         if let row = lastSelectedRow {
             let rowToSelect:NSIndexPath = NSIndexPath(forRow: row, inSection: 0);  //slecting 0th row with 0th section
             self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None);
@@ -59,9 +58,17 @@ class MenuViewController: UITableViewController {
             self.revealViewController().revealToggle(self)
             
             if let _ = lastSelectedRow {
-                mainViewController.category = ""
-                lastSelectedRow = nil
-                mainViewController.reloadTableView()
+                if lastSelectedRow == indexPath.row {
+                    // Deselect
+                    mainViewController.category = ""
+                    lastSelectedRow = nil
+                    mainViewController.reloadTableView()
+                }
+                else {
+                    mainViewController.category = tableEntries[indexPath.row]
+                    lastSelectedRow = indexPath.row
+                    mainViewController.reloadTableView()
+                }
             }
             else{
                 mainViewController.category = tableEntries[indexPath.row]
@@ -70,7 +77,7 @@ class MenuViewController: UITableViewController {
             }
         }
         else{
-            NSLog("@MenuViewController.swift - tableView.didSelectRowAtIndexPath: Null revealController")
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Nil revealController")
         }
     }
     

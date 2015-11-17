@@ -17,7 +17,8 @@ class MainTabBar: UITabBar {
         btn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: UIControlState.Highlighted)
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: UIControlState.Normal)
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: UIControlState.Highlighted)
-        // 添加到父控件中
+        
+        // Add into parent control
         self.addSubview(btn)
         return btn
         }()
