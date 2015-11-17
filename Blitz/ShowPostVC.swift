@@ -47,7 +47,10 @@ class ShowPostVC: UIViewController,
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): local time = %@", date_String!)
         
         PostTime.text = date_String
-        DescrTxt.text = post["description"].string!
+        if let description = post["description"].string{
+            DescrTxt.text = description
+        }
+        
         let bounty:String = String(post["bounty"].number!)
         BountyLabel.text = bounty
         QuantityLabel.text = String(post["quantity"].number!)

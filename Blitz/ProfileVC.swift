@@ -125,10 +125,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
         let result = getResultFromServerAsJSONObject(jsonObject)
 
-        //NSLog("@Profilesetting: Result: %@", result);
         let json = JSON(result)
-        print("Profile JSON:\n",json)
-
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Profile JSON = %@", String(json))
+        
         let email:String = json["email"].string!
         let emailnss = email as NSString
         prefs.setObject(emailnss, forKey: "EMAIL")

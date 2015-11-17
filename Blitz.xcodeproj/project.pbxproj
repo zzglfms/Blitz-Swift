@@ -25,6 +25,7 @@
 		C95FE8281BE6C2F6005C53F9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95FE8271BE6C2F6005C53F9 /* MapVC.swift */; };
 		C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C965535E1BE0009600636531 /* TabBarViewController.swift */; };
 		C96553621BE1223A00636531 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96553611BE1223A00636531 /* ProfileVC.swift */; };
+		C9AD136B1BFBBF1B004E56D3 /* RelatedPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD136A1BFBBF1B004E56D3 /* RelatedPostsVC.swift */; };
 		C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */; };
 		C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F011BC7343F00578C7C /* SWRevealViewController.m */; };
 		C9C48F041BC7383F00578C7C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C48F031BC7383F00578C7C /* MenuViewController.swift */; };
@@ -69,6 +70,7 @@
 		C95FE8271BE6C2F6005C53F9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		C965535E1BE0009600636531 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C96553611BE1223A00636531 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		C9AD136A1BFBBF1B004E56D3 /* RelatedPostsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedPostsVC.swift; sourceTree = "<group>"; };
 		C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		C9C48EFF1BC7343F00578C7C /* Blitz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blitz-Bridging-Header.h"; sourceTree = "<group>"; };
 		C9C48F001BC7343F00578C7C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
 				D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */,
 				D163DF541BBDCA380031E915 /* Info.plist */,
+				C9AD136A1BFBBF1B004E56D3 /* RelatedPostsVC.swift */,
 			);
 			path = Blitz;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */,
 				C95FE8281BE6C2F6005C53F9 /* MapVC.swift in Sources */,
 				344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */,
+				C9AD136B1BFBBF1B004E56D3 /* RelatedPostsVC.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
