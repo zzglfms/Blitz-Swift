@@ -13,6 +13,7 @@
 		3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9201BE138A800EFC2C2 /* FXBlurView.m */; };
 		34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34267E541BE1849800F050A5 /* MainTabBar.swift */; };
 		342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342F994B1BEB23F90007BF00 /* SwiftDate.swift */; };
+		3437A2481BFBCAAB005A4A8A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3437A2471BFBCAAB005A4A8A /* Notification.swift */; };
 		344BC8191BC459260084DA62 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */; };
 		3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3468C3281BE555700052C558 /* HCSStarRatingView.m */; };
 		3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */; };
@@ -57,6 +58,7 @@
 		3421C9201BE138A800EFC2C2 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		34267E541BE1849800F050A5 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		342F994B1BEB23F90007BF00 /* SwiftDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDate.swift; path = ../SwiftDate.swift; sourceTree = "<group>"; };
+		3437A2471BFBCAAB005A4A8A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		344BC8181BC459260084DA62 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		3468C3271BE555700052C558 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		3468C3281BE555700052C558 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
 				C9DF70241BF3F9E00091AFDB /* LogUtil.swift */,
+				3437A2471BFBCAAB005A4A8A /* Notification.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -243,12 +246,12 @@
 				34267E4F1BE1840600F050A5 /* TabBar */,
 				C96553601BE1220A00636531 /* Profile */,
 				C9C48EFE1BC7340600578C7C /* SWRevealViewController */,
-				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
-				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
 				C90ED2871BE56F96002FA4CB /* Post */,
 				3468C3261BE555580052C558 /* Rating */,
 				3468C32D1BE57BCC0052C558 /* Home */,
 				D163DF4F1BBDCA380031E915 /* Assets.xcassets */,
+				D163DF481BBDCA380031E915 /* AppDelegate.swift */,
+				D163DF4C1BBDCA380031E915 /* Main.storyboard */,
 				D163DF511BBDCA380031E915 /* LaunchScreen.storyboard */,
 				D163DF541BBDCA380031E915 /* Info.plist */,
 				C9AD136A1BFBBF1B004E56D3 /* RelatedPostsVC.swift */,
@@ -387,6 +390,7 @@
 				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
+				3437A2481BFBCAAB005A4A8A /* Notification.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
 				3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */,
 				3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */,
@@ -523,6 +527,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Blitz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -541,6 +549,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Blitz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

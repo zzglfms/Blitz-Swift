@@ -126,17 +126,23 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         let result = getResultFromServerAsJSONObject(jsonObject)
 
         let json = JSON(result)
+
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Profile JSON = %@", String(json))
         
         let email:String = json["email"].string!
         let emailnss = email as NSString
         prefs.setObject(emailnss, forKey: "EMAIL")
         
-        let rating:NSNumber = json["rating"].number!
-        prefs.setObject(rating as NSNumber, forKey: "RATING")
+        if let rating:NSNumber = json["rating"].number!{
+            prefs.setObject(rating as NSNumber, forKey: "RATING")
+        }
+        //Server may not have this field for a new user
+        if let fullname:String = json["fullname"].string{
+            prefs.setObject(fullname as NSString, forKey: "FULLNAME")
+        } else {
+            NSLog("@ProfileVC: getProfile():%@", json["fullname"].error!)
+        }
         
-        let fullname:String = json["fullname"].string!
-        prefs.setObject(fullname as NSString, forKey: "FULLNAME")
         prefs.synchronize()
     }
 

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MainViewController: UITableViewController {
     
     // MARK: - Outlets
