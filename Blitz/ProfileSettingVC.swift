@@ -222,5 +222,8 @@ UIImagePickerControllerDelegate {
     */
     
     
+    @IBAction func NotificationsTest(sender: AnyObject) {
+        notificaitonCreate()
+    }
     
 }
