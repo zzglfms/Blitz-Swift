@@ -17,8 +17,7 @@ class CarpoolPostVC: UIViewController {
     @IBOutlet weak var repeatTextField: UILabel!
     
     // MARK: - Variables
-    var fromMapVC: MapVC!
-    var toMapVC: MapVC!
+    var mapVC: FromToMapVC!
     var datePickerView:UIDatePicker!
     
     
@@ -36,15 +35,9 @@ class CarpoolPostVC: UIViewController {
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "carpoolFromMapView"
+        if segue.identifier == "carpoolMapView"
         {
-            fromMapVC = segue.destinationViewController as! MapVC
-            fromMapVC.titleString = "From:"
-        }
-        else if segue.identifier == "carpoolToMapView"
-        {
-            toMapVC = segue.destinationViewController as! MapVC
-            toMapVC.titleString = "To:"
+            mapVC = segue.destinationViewController as! FromToMapVC
         }
         else if segue.identifier == "carpoolRepeatView"
         {
@@ -99,7 +92,7 @@ class CarpoolPostVC: UIViewController {
     }
     
     func getAllInformation() -> (from: String, to: String, effectiveDate: String, repeatString: String){
-        return (fromMapVC.addressTextField.text!, toMapVC.addressTextField.text!, dateTextField.text!, repeatTextField.text!)
+        return (mapVC.fromAddressTextField.text!, mapVC.toAddressTextField.text!, dateTextField.text!, repeatTextField.text!)
     }
 
 }

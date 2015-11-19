@@ -67,7 +67,12 @@ class MenuViewController: UITableViewController {
                 }
             }
             else {
-                print(String(indexPath))
+                if indexPath.row == 0 {
+                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Time")
+                }
+                else {
+                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Location")
+                }
             }
         }
         else{

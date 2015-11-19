@@ -1,5 +1,5 @@
 //
-//  MapVC.swift
+//  FromToMapVC.swift
 //  Blitz
 //
 //  Created by Tianyang Yu on 10/31/15.
@@ -10,11 +10,11 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
+class FromToMapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
     
     // MARK: - Outlets
-    @IBOutlet weak var addressTitle: UILabel!
-    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var fromAddressTextField: UITextField!
+    @IBOutlet weak var toAddressTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Variables
@@ -31,13 +31,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     var region: MKCoordinateRegion!
     var coordinates: CLLocationCoordinate2D!
     
+    var tappedButton: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.addressTextField.delegate = self
-        self.addressTitle.text = titleString
+        self.fromAddressTextField.delegate = self
+        self.toAddressTextField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,11 +79,24 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
             // Country
             let country = placemark.addressDictionary?["Country"] as? String ?? ""
             
-            // Show address on addressTxt
-            self.addressTextField.text = "\(street), \(zip), \(city), \(state), \(country)"
-            // Add a Pin to the Map
-            if self.addressTextField!.text! != "" {
-                self.addPinOnMap(self.addressTextField.text!)
+            if self.tappedButton! == "from" {
+                // Show address on addressTxt
+                self.fromAddressTextField.text = "\(street), \(zip), \(city), \(state), \(country)"
+                // Add a Pin to the Map
+                if self.fromAddressTextField!.text! != "" {
+                    self.addPinOnMap(self.fromAddressTextField.text!, type: "From")
+                }
+            }
+            else if self.tappedButton! == "to" {
+                // Show address on addressTxt
+                self.toAddressTextField.text = "\(street), \(zip), \(city), \(state), \(country)"
+                // Add a Pin to the Map
+                if self.toAddressTextField!.text! != "" {
+                    self.addPinOnMap(self.toAddressTextField.text!, type: "To")
+                }
+            }
+            else {
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): tappedButton has invalid value = %@", self.tappedButton)
             }
         })
         
@@ -90,10 +104,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     
     
     // MARK: - ADD A PIN ON THE MAP
-    func addPinOnMap(address: String) {
+    func addPinOnMap(address: String, type: String) {
         if mapView.annotations.count != 0 {
-            annotation = mapView.annotations[0]
-            mapView.removeAnnotation(annotation)
+            for annotation in mapView.annotations {
+                if annotation.title!! == type{
+                    mapView.removeAnnotation(annotation)
+                }
+            }
         }
         
         // Make a search on the Map
@@ -112,8 +129,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
             } else {
                 // Add PointAnnonation text and a Pin to the Map
                 self.pointAnnotation = MKPointAnnotation()
-                self.pointAnnotation.title = "From"
-                self.pointAnnotation.subtitle = self.addressTextField.text
+                self.pointAnnotation.title = type
+                self.pointAnnotation.subtitle = address
                 self.pointAnnotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
                 
                 // Store coordinates (to use later while posting the Ad)
@@ -124,10 +141,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
                 self.mapView.addAnnotation(self.pinView.annotation!)
                 
                 // Zoom the Map to the location
-                self.region = MKCoordinateRegionMakeWithDistance(self.pointAnnotation.coordinate, 1000, 1000);
-                self.mapView.setRegion(self.region, animated: true)
-                self.mapView.regionThatFits(self.region)
-                self.mapView.reloadInputViews()
+                self.mapView.showAnnotations(self.mapView.annotations, animated: true)
             }
             
         }
@@ -137,15 +151,39 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     // MARK: - UITextField Delegate
     func textFieldDidEndEditing(textField: UITextField) {
         // Get address for the Map
-        if textField == addressTextField {
-            if addressTextField.text != "" {
-                addPinOnMap(addressTextField.text!)
+        if textField == fromAddressTextField {
+            if fromAddressTextField.text != "" {
+                addPinOnMap(fromAddressTextField.text!, type: "From")
+            }
+        }
+        else if textField == toAddressTextField {
+            if toAddressTextField.text != "" {
+                addPinOnMap(toAddressTextField.text!, type: "To")
             }
         }
     }
     
     // MARK: - Action Outlet
-    @IBAction func currentLocationButtonTapped(sender: UIButton) {
+    @IBAction func fromCurrentLocationButtonTapped(sender: UIButton) {
+        // Set 'tappedButton' to 'from', used to let loctionManager didUpdateLocation know which textfield to be filled
+        tappedButton = "from"
+        
+        // Init LocationManager
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+        
+        if locationManager.respondsToSelector("requestWhenInUseAuthorization") {
+            locationManager.requestAlwaysAuthorization()
+        }
+        
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func toCurrentLocationButtonTapped(sender: UIButton) {
+        // Set 'tappedButton' to 'to', used to let loctionManager didUpdateLocation know which textfield to be filled
+        tappedButton = "to"
+        
         // Init LocationManager
         locationManager = CLLocationManager()
         locationManager.delegate = self

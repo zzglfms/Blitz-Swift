@@ -25,7 +25,7 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - VARIABLES
-    var categories = ["Carpool", "FoodDiscover", "Tutor", "House Rental", "Need A Ride", "Other"]
+    var categories = ["Carpool", "FoodDiscover", "House Rental", "Other"]
     var carpoolPostVC: CarpoolPostVC!
     var type: String! = "Request"
     
