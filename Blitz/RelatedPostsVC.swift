@@ -12,8 +12,12 @@ let cellName = "post cell"
 
 class RelatedPostsVC: UITableViewController {
 
+    //Mark variables
     var activeList: [[String: AnyObject]]! = []
     var completeList: [[String: AnyObject]]! = []
+
+
+    //Mark Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +80,30 @@ class RelatedPostsVC: UITableViewController {
             return "Completed"
         }
     }
+    
+    
+    //Mark: -Do action when this cell is tapped
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //self.performSegueWithIdentifier("yourIdentifier", sender: self)
+        let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
+        
+        var postList: [[String: AnyObject]]!
+
+        if indexPath.section == 0 {
+            postList = activeList
+        }
+        else {
+            postList = completeList
+        }
+        
+        let postID = postList[indexPath.row]["_id"] as? String
+        
+        showPost.postID = postID!
+        
+        self.navigationController?.pushViewController(showPost, animated: true)
+    }
+    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

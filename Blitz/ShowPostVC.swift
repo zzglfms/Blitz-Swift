@@ -24,10 +24,13 @@ class ShowPostVC: UIViewController,
     @IBOutlet weak var UsernameLabel: UILabel!
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var PostTime: UILabel!
+    @IBOutlet weak var DeleteButton: UIButton!
     
     // MARK: - Variable
     var postdata:JSON = []
-    
+    var postID:String = ""
+    let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
     
     
     override func viewDidLoad() {
@@ -37,6 +40,9 @@ class ShowPostVC: UIViewController,
     }
     
     override func viewDidAppear(animated: Bool) {
+        requestData()
+        DeleteButton.hidden = true
+
         let post:JSON = postdata["object"]
         PostTitleLabel.text = post["title"].string!
 
@@ -53,6 +59,12 @@ class ShowPostVC: UIViewController,
         let bounty:String = String(post["bounty"].number!)
         BountyLabel.text = bounty
         QuantityLabel.text = String(post["quantity"].number!)
+        
+        let username:NSString = prefs.stringForKey("USERNAME")!
+        if(username.isEqualToString(post["username"].string!)){
+            DeleteButton.hidden = false
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,24 +72,23 @@ class ShowPostVC: UIViewController,
         // Dispose of any resources that can be recreated.
     }
     
+    func requestData(){
+        let input: [String: AnyObject] = [
+            "operation": "GetPostDetail",
+            "postID": postID
+        ]
+        
+        let result = getResultFromServerAsJSONObject(input)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(result))
+        
+        postdata = JSON(result)
+    }
     
-//    func chattest(){ // this func could sent the message
-//        //create PFObject
-//        let message = PFObject(className:"Message")
-//        message["Text"] = "wo ri le gou"
-//        message.saveInBackgroundWithBlock {
-//            (success: Bool, error: NSError?) -> Void in
-//            if (success) {
-//                // The object has been saved.
-//                //TODO: Retrieve the message
-//            } else {
-//                // There was a problem, check error.description
-//                NSLog(error!.description)
-//            }
-//        }
-//    }
+    @IBAction func deleteButtonTapped(sender: AnyObject) {
+        print("Setting Button tapped")
+    }
     
-
     /*
     // MARK: - Navigation
 

@@ -61,21 +61,24 @@ class MainViewController: UITableViewController {
         return cell
     }
     
+    
+    //Mark: -Do action when this cell is tapped
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //self.performSegueWithIdentifier("yourIdentifier", sender: self)
         let showPost = self.storyboard?.instantiateViewControllerWithIdentifier("ShowPostVC") as! ShowPostVC
         let postID = posts[indexPath.row]["_id"] as? String
+        showPost.postID = postID!
         
-        let input: [String: AnyObject] = [
-            "operation": "GetPostDetail",
-            "postID": postID!
-        ]
-        
-        let result = getResultFromServerAsJSONObject(input)
-        
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(result))
-        
-        showPost.postdata = JSON(result)
+//        let input: [String: AnyObject] = [
+//            "operation": "GetPostDetail",
+//            "postID": postID!
+//        ]
+//        
+//        let result = getResultFromServerAsJSONObject(input)
+//        
+//        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(result))
+//        
+//        showPost.postdata = JSON(result)
         self.navigationController?.pushViewController(showPost, animated: true)
     }
 
