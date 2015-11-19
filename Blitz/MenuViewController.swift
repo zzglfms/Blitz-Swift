@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UITableViewController {
  
     // MARK: - Constants
-    var tableEntries = ["Carpool", "FoodDiscover", "Tutor", "House Rental", "Need A Ride", "Other"]
+    var tableEntries = ["Carpool", "FoodDiscover", "House Rental", "Other"]
     
     // MARK: - Variables
     var lastSelectedRow: Int!
@@ -28,7 +28,7 @@ class MenuViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         if let row = lastSelectedRow {
-            let rowToSelect:NSIndexPath = NSIndexPath(forRow: row, inSection: 0);  //slecting 0th row with 0th section
+            let rowToSelect:NSIndexPath = NSIndexPath(forRow: row, inSection: 0)
             self.tableView.selectRowAtIndexPath(rowToSelect, animated: true, scrollPosition: UITableViewScrollPosition.None);
         }
     }
@@ -40,40 +40,34 @@ class MenuViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-        if (isLoggedIn != 1) {
-            return "ERROR"
-        } else {
-            return prefs.valueForKey("USERNAME") as? String
-        }
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.revealViewController() != nil {
             let navController = self.revealViewController().frontViewController as! UINavigationController
             let mainViewController = navController.viewControllers[0] as! MainViewController
             self.revealViewController().revealToggle(self)
             
-            if let _ = lastSelectedRow {
-                if lastSelectedRow == indexPath.row {
-                    // Deselect
-                    mainViewController.category = ""
-                    lastSelectedRow = nil
-                    mainViewController.reloadTableView()
+            if indexPath.section == 0 {
+                if let _ = lastSelectedRow {
+                    if lastSelectedRow == indexPath.row {
+                        // Deselect
+                        mainViewController.category = ""
+                        lastSelectedRow = nil
+                        mainViewController.reloadTableView()
+                    }
+                    else {
+                        mainViewController.category = tableEntries[indexPath.row]
+                        lastSelectedRow = indexPath.row
+                        mainViewController.reloadTableView()
+                    }
                 }
-                else {
+                else{
                     mainViewController.category = tableEntries[indexPath.row]
                     lastSelectedRow = indexPath.row
                     mainViewController.reloadTableView()
                 }
             }
-            else{
-                mainViewController.category = tableEntries[indexPath.row]
-                lastSelectedRow = indexPath.row
-                mainViewController.reloadTableView()
+            else {
+                print(String(indexPath))
             }
         }
         else{
