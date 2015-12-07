@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CarpoolPostVC: UIViewController {
+class CarpoolPostVC: PostSubviewVCInterface {
 
     // MARK: - Outlets
     @IBOutlet weak var dateTextField: UITextField!
@@ -91,8 +91,13 @@ class CarpoolPostVC: UIViewController {
         return dateFormatter.stringFromDate(date)
     }
     
-    func getAllInformation() -> (from: String, to: String, effectiveDate: String, repeatString: String){
-        return (mapVC.fromAddressTextField.text!, mapVC.toAddressTextField.text!, dateTextField.text!, repeatTextField.text!)
+    override func getAllInformation() -> [String: AnyObject]{
+        return [
+            "from": mapVC.fromAddressTextField.text!,
+            "to": mapVC.toAddressTextField.text!,
+            "effectiveDate": dateTextField.text!,
+            "repeatString": repeatTextField.text!
+        ]
     }
 
 }

@@ -21,6 +21,8 @@
 		347EAD761BEAE9FD00A249C1 /* ShowPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347EAD751BEAE9FD00A249C1 /* ShowPostVC.swift */; };
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
+		C90593F21C16371F00AA23C7 /* FoodDiscoverPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90593F11C16371F00AA23C7 /* FoodDiscoverPostVC.swift */; };
+		C90593F41C163B0200AA23C7 /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90593F31C163B0200AA23C7 /* PostSubviewVCInterface.swift */; };
 		C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */; };
 		C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C918FFF31BE1BA8100687401 /* PostVC.swift */; };
 		C95FE8281BE6C2F6005C53F9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95FE8271BE6C2F6005C53F9 /* MapVC.swift */; };
@@ -68,6 +70,8 @@
 		347EAD751BEAE9FD00A249C1 /* ShowPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowPostVC.swift; path = Blitz/ShowPostVC.swift; sourceTree = "<group>"; };
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C90593F11C16371F00AA23C7 /* FoodDiscoverPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiscoverPostVC.swift; sourceTree = "<group>"; };
+		C90593F31C163B0200AA23C7 /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
 		C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarpoolPostVC.swift; sourceTree = "<group>"; };
 		C918FFF31BE1BA8100687401 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		C95FE8271BE6C2F6005C53F9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				C95FE8271BE6C2F6005C53F9 /* MapVC.swift */,
 				C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */,
 				C9FB91B61BFE6D6400F633EF /* FromToMapVC.swift */,
+				C90593F11C16371F00AA23C7 /* FoodDiscoverPostVC.swift */,
+				C90593F31C163B0200AA23C7 /* PostSubviewVCInterface.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
+				C90593F21C16371F00AA23C7 /* FoodDiscoverPostVC.swift in Sources */,
 				34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */,
 				3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */,
 				C9FB91B71BFE6D6400F633EF /* FromToMapVC.swift in Sources */,
@@ -395,6 +402,7 @@
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				3437A2481BFBCAAB005A4A8A /* Notification.swift in Sources */,
+				C90593F41C163B0200AA23C7 /* PostSubviewVCInterface.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
 				3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */,
 				3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */,

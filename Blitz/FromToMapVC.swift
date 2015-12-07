@@ -137,11 +137,31 @@ class FromToMapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegat
                 self.coordinates = self.pointAnnotation.coordinate
                 
                 self.pinView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
+                self.pinView.pinTintColor = UIColor.blueColor()
                 self.mapView.centerCoordinate = self.pointAnnotation.coordinate
                 self.mapView.addAnnotation(self.pinView.annotation!)
                 
                 // Zoom the Map to the location
                 self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+                if self.mapView.annotations.count >= 2 {
+                    let source = MKMapItem( placemark: MKPlacemark(
+                        coordinate: self.mapView.annotations[0].coordinate,
+                        addressDictionary: nil))
+                    let destination = MKMapItem(placemark: MKPlacemark(
+                        coordinate: self.mapView.annotations[1].coordinate,
+                        addressDictionary: nil))
+                    
+                    let directionsRequest = MKDirectionsRequest()
+                    directionsRequest.source = source
+                    directionsRequest.destination = destination
+                    
+                    let directions = MKDirections(request: directionsRequest)
+                    
+                    directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
+                        print("Error: " + String(error))
+                        print("Distance: "+String(response!.routes.first?.distance))
+                    }
+                }
             }
             
         }
