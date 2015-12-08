@@ -113,8 +113,8 @@ class ShowPostVC: UIViewController,
     func initTableView(){
         let responseTable = self.storyboard?.instantiateViewControllerWithIdentifier("responseTableVC") as! responseTableVC
         responseTable.postID = postID
-        let responses:JSON = postdata["response"]
-        print(responses)
+        let responses:JSON = postdata["object"]["response"]
+        print("to post the responses:\n", responses)
         responseTable.responses = responses
         self.navigationController?.pushViewController(responseTable, animated: true)
     }

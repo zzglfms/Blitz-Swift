@@ -41,6 +41,10 @@ class responseTableVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        for (index,subJson):(String, JSON) in responses {
+            //Do something you want
+        }
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("responsecell", forIndexPath: indexPath) as! responseCellVC
         // Set title
         cell.textLabel!.text = "test"
