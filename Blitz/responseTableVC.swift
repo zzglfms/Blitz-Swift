@@ -12,6 +12,7 @@ class responseTableVC: UITableViewController {
 
     //var
     var postID:String = ""
+    var responses:JSON = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

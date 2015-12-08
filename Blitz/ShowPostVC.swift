@@ -47,7 +47,6 @@ class ShowPostVC: UIViewController,
         DeleteButton.hidden = true
 
         let post:JSON = postdata["object"]
-        
         setRightButtion(post)
         
         PostTitleLabel.text = post["title"].string!
@@ -114,6 +113,9 @@ class ShowPostVC: UIViewController,
     func initTableView(){
         let responseTable = self.storyboard?.instantiateViewControllerWithIdentifier("responseTableVC") as! responseTableVC
         responseTable.postID = postID
+        let responses:JSON = postdata["response"]
+        print(responses)
+        responseTable.responses = responses
         self.navigationController?.pushViewController(responseTable, animated: true)
     }
     
@@ -126,13 +128,11 @@ class ShowPostVC: UIViewController,
     
     func clickByOwner(sender:UIButton!)
     {
-        print("clickByOnwer!!!!!!!")
         initTableView()
     }
     
     func clickByViewer(sender:UIButton!)
     {
-        print("clickByViewer")
         initResponseView()
     }
     
