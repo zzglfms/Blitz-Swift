@@ -12,7 +12,7 @@ class MenuViewController: UITableViewController {
  
     // MARK: - Constants
     var tableEntries = ["Carpool", "FoodDiscover", "House Rental", "Other"]
-    
+
     // MARK: - Variables
     var lastSelectedRow: Int!
     
@@ -52,22 +52,54 @@ class MenuViewController: UITableViewController {
                         // Deselect
                         mainViewController.category = ""
                         lastSelectedRow = nil
+                        mainViewController.isRequestSegmentedControl.hidden = false
+                        mainViewController.navigationController?.title = ""
+                        mainViewController.isRequest = (mainViewController.isRequestSegmentedControl.selectedSegmentIndex == 0)
                         mainViewController.reloadTableView()
                     }
                     else {
-                        mainViewController.category = tableEntries[indexPath.row]
+                        let category = tableEntries[indexPath.row]
+                        mainViewController.category = category
                         lastSelectedRow = indexPath.row
+                        if category == "FoodDiscover" || category == "House Rental" {
+                            mainViewController.isRequest = false
+                            mainViewController.isRequestSegmentedControl.hidden = true
+                            mainViewController.navigationItem.title = "Provide"
+                        }
+                        else {
+                            mainViewController.isRequestSegmentedControl.hidden = false
+                            mainViewController.navigationController?.title = ""
+                            mainViewController.isRequest = (mainViewController.isRequestSegmentedControl.selectedSegmentIndex == 0)
+                        }
                         mainViewController.reloadTableView()
                     }
                 }
                 else{
-                    mainViewController.category = tableEntries[indexPath.row]
+                    let category = tableEntries[indexPath.row]
+                    mainViewController.category = category
                     lastSelectedRow = indexPath.row
+                    if category == "FoodDiscover" || category == "House Rental" {
+                        mainViewController.isRequest = false
+                        mainViewController.isRequestSegmentedControl.hidden = true
+                        mainViewController.navigationItem.title = "Provide"
+                        mainViewController.navigationController?.title = "Provid"
+                        mainViewController.title = "Provi"
+                    }
+                    else {
+                        mainViewController.isRequestSegmentedControl.hidden = false
+                        mainViewController.navigationController?.title = ""
+                        mainViewController.isRequest = (mainViewController.isRequestSegmentedControl.selectedSegmentIndex == 0)
+                    }
                     mainViewController.reloadTableView()
                 }
             }
             else {
-                print(String(indexPath))
+                if indexPath.row == 0 {
+                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Time")
+                }
+                else {
+                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Location")
+                }
             }
         }
         else{

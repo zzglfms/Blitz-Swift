@@ -10,15 +10,14 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CarpoolPostVC: UIViewController {
+class CarpoolPostVC: PostSubviewVCInterface {
 
     // MARK: - Outlets
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var repeatTextField: UILabel!
     
     // MARK: - Variables
-    var fromMapVC: MapVC!
-    var toMapVC: MapVC!
+    var mapVC: FromToMapVC!
     var datePickerView:UIDatePicker!
     
     
@@ -36,15 +35,9 @@ class CarpoolPostVC: UIViewController {
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "carpoolFromMapView"
+        if segue.identifier == "carpoolMapView"
         {
-            fromMapVC = segue.destinationViewController as! MapVC
-            fromMapVC.titleString = "From:"
-        }
-        else if segue.identifier == "carpoolToMapView"
-        {
-            toMapVC = segue.destinationViewController as! MapVC
-            toMapVC.titleString = "To:"
+            mapVC = segue.destinationViewController as! FromToMapVC
         }
         else if segue.identifier == "carpoolRepeatView"
         {
@@ -98,8 +91,13 @@ class CarpoolPostVC: UIViewController {
         return dateFormatter.stringFromDate(date)
     }
     
-    func getAllInformation() -> (from: String, to: String, effectiveDate: String, repeatString: String){
-        return (fromMapVC.addressTextField.text!, toMapVC.addressTextField.text!, dateTextField.text!, repeatTextField.text!)
+    override func getAllInformation() -> [String: AnyObject]{
+        return [
+            "from": mapVC.fromAddressTextField.text!,
+            "to": mapVC.toAddressTextField.text!,
+            "effectiveDate": dateTextField.text!,
+            "repeatString": repeatTextField.text!
+        ]
     }
 
 }

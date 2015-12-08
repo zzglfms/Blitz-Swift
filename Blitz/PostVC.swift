@@ -20,13 +20,15 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var provideLabel: UILabel!
+    @IBOutlet weak var subView: UIView!
     
     // MARK: - Constants
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - VARIABLES
-    var categories = ["Carpool", "FoodDiscover", "Tutor", "House Rental", "Need A Ride", "Other"]
-    var carpoolPostVC: CarpoolPostVC!
+    var categories = ["Carpool", "FoodDiscover", "House Rental", "Other"]
+    var currentViewController: PostSubviewVCInterface!
     var type: String! = "Request"
     
     override func viewDidLoad() {
@@ -54,6 +56,13 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         categoryTextField.inputView = categoryPicker
         categoryTextField.inputAccessoryView = toolBar
+        
+        provideLabel.hidden = true
+        
+        self.currentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CarpoolCreatePost") as! PostSubviewVCInterface
+        self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChildViewController(self.currentViewController!)
+        self.addSubview(self.currentViewController!.view, toView: self.subView)
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,11 +91,57 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         categoryTextField.text = categories[row]
     }
     
-    
     // MARK: - PICKERVIEW DONE BUTTON ACTION
     func donePicker() {
         categoryTextField.resignFirstResponder()
     }
+    
+    
+    // MARK: - 
+    @IBAction func categorySelected(sender: AnyObject) {
+        let category = categoryTextField.text!
+        
+        // Reset type field based on selected category
+        if category == "FoodDiscover" || category == "House Rental" {
+            provideLabel.hidden = false
+            typeSegmentedControl.hidden = true
+            type = "Provide"
+        }
+        else{
+            provideLabel.hidden = true
+            typeSegmentedControl.hidden = false
+            type = typeSegmentedControl.selectedSegmentIndex == 0 ? "Request" : "Provide"
+        }
+        
+        // Load Subview based on selected category
+        switch categoryTextField.text! {
+            case "Carpool":
+                let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CarpoolCreatePost")
+                newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+                self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
+                self.currentViewController = newViewController as! PostSubviewVCInterface
+                break
+            case "FoodDiscover":
+                let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FoodDiscoverCreatePost")
+                newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+                self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
+                self.currentViewController = newViewController as! PostSubviewVCInterface
+                break
+            case "House Rental":
+            
+                break
+            case "Other":
+                
+                break
+            default:
+                break
+        }
+        
+        
+        
+
+    }
+    
     
     
     // MARK: - NAVIGATION BAR BACK BUTTON
@@ -94,6 +149,8 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    // MARK: - NAVIGATION BAR DONE BUTTON
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         var inValidMessage: String! = ""
         
@@ -134,13 +191,12 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
         
         // get information specified to carpool
-        let info = carpoolPostVC.getAllInformation()
+        let infoFromSubview = currentViewController.getAllInformation()
         
         // Make a json object for communication with server
-        let postJSONObject: [String: AnyObject] = [
+        var postJSONObject: [String: AnyObject] = [
             "operation": "CreatePost",
             "username": prefs.stringForKey("USERNAME")!,
-            "position": info.from,
             "description": descriptionTextView.text!,
             "quantity": quantity!,
             "title": titleTextField.text!,
@@ -149,18 +205,18 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             "isRequest": type == "Request",
             "category": categoryTextField.text!
         ]
-        NSLog("From: "+info.from)
-        NSLog("To: "+info.to)
-        NSLog("Effective: "+info.effectiveDate)
-        NSLog("Repeat: "+info.repeatString)
-        NSLog("=-=-=-=-=-=-=-=-=-=-=-")
-        NSLog(String(postJSONObject))
+        // Add infoFromSubview into postJSONObject
+        for (key, value) in infoFromSubview {
+            postJSONObject[key] = value
+        }
+
+        NSLog("%@", postJSONObject)
         
-        let result = getResultFromServerAsJSONObject(postJSONObject)
-        
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        let result = getResultFromServerAsJSONObject(postJSONObject)
+//        
+//        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
+//        
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -170,22 +226,55 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         {
         case 0:
             type = "Request"
+            break
         case 1:
             type = "Provide"
+            break
         default:
-            break;
+            break
         }
     }
     
-    
+    /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "carpoolPost"
-        {
-            carpoolPostVC = segue.destinationViewController as! CarpoolPostVC
-        }
     }
+    */
+    
+    
+    // MARK: - Helper function for switching subviews
+    func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
+        oldViewController.willMoveToParentViewController(nil)
+        self.addChildViewController(newViewController)
+        self.addSubview(newViewController.view, toView:self.subView!)
+        // TODO: Set the starting state of your constraints here
+        newViewController.view.layoutIfNeeded()
+        
+        // TODO: Set the ending state of your constraints here
+        
+        UIView.animateWithDuration(0.5, animations: {
+            // only need to call layoutIfNeeded here
+            newViewController.view.layoutIfNeeded()
+            },
+            completion: { finished in
+                oldViewController.view.removeFromSuperview()
+                oldViewController.removeFromParentViewController()
+                newViewController.didMoveToParentViewController(self)
+        })
+    }
+    
+    func addSubview(subView:UIView, toView parentView:UIView) {
+        parentView.addSubview(subView)
+        
+        var viewBindingsDict = [String: AnyObject]()
+        viewBindingsDict["subView"] = subView
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+    }
+    
 }
