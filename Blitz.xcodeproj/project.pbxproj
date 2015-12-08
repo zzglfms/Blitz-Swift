@@ -19,8 +19,11 @@
 		3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */; };
 		3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3468C32E1BE57EFC0052C558 /* PostCell.swift */; };
 		347EAD761BEAE9FD00A249C1 /* ShowPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347EAD751BEAE9FD00A249C1 /* ShowPostVC.swift */; };
+		349C353A1C07A5A200E58A01 /* responseEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C35391C07A5A200E58A01 /* responseEditVC.swift */; };
 		34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */; };
 		34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */; };
+		34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E11FA91C06E12700B1037A /* responseCellVC.swift */; };
+		34E11FB01C06EC9900B1037A /* responseTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E11FAF1C06EC9900B1037A /* responseTableVC.swift */; };
 		C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */; };
 		C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C918FFF31BE1BA8100687401 /* PostVC.swift */; };
 		C95FE8281BE6C2F6005C53F9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95FE8271BE6C2F6005C53F9 /* MapVC.swift */; };
@@ -65,8 +68,11 @@
 		3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3468C32E1BE57EFC0052C558 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		347EAD751BEAE9FD00A249C1 /* ShowPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowPostVC.swift; path = Blitz/ShowPostVC.swift; sourceTree = "<group>"; };
+		349C35391C07A5A200E58A01 /* responseEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = responseEditVC.swift; sourceTree = "<group>"; };
 		34A6D8BA1BC1B85B00E3B3A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34A6D8BC1BC1BA5F00E3B3A7 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		34E11FA91C06E12700B1037A /* responseCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = responseCellVC.swift; path = Blitz/responseCellVC.swift; sourceTree = "<group>"; };
+		34E11FAF1C06EC9900B1037A /* responseTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = responseTableVC.swift; path = Blitz/responseTableVC.swift; sourceTree = "<group>"; };
 		C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarpoolPostVC.swift; sourceTree = "<group>"; };
 		C918FFF31BE1BA8100687401 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		C95FE8271BE6C2F6005C53F9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -163,10 +169,21 @@
 		347EAD741BEAE9A100A249C1 /* ShowPost */ = {
 			isa = PBXGroup;
 			children = (
+				34E11FB11C06EE9300B1037A /* response */,
 				347EAD751BEAE9FD00A249C1 /* ShowPostVC.swift */,
 			);
 			name = ShowPost;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		34E11FB11C06EE9300B1037A /* response */ = {
+			isa = PBXGroup;
+			children = (
+				34E11FAF1C06EC9900B1037A /* responseTableVC.swift */,
+				34E11FA91C06E12700B1037A /* responseCellVC.swift */,
+				349C35391C07A5A200E58A01 /* responseEditVC.swift */,
+			);
+			name = response;
 			sourceTree = "<group>";
 		};
 		C90ED2871BE56F96002FA4CB /* Post */ = {
@@ -372,10 +389,13 @@
 				C9DD44521BE7FF0C00E9BF75 /* RepeatTableVC.swift in Sources */,
 				347EAD761BEAE9FD00A249C1 /* ShowPostVC.swift in Sources */,
 				C96553621BE1223A00636531 /* ProfileVC.swift in Sources */,
+				349C353A1C07A5A200E58A01 /* responseEditVC.swift in Sources */,
+				34E11FB01C06EC9900B1037A /* responseTableVC.swift in Sources */,
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */,
 				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
+				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,

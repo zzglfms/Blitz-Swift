@@ -152,7 +152,7 @@ class RelatedPostsVC: UITableViewController {
             NSLog("%@", results)
             
             for result in results {
-                if result["TranscationCompleted"] as! Bool {
+                if result["TransactionCompleted"] as! Bool {
                     completeList.append(result)
                 }
                 else {
