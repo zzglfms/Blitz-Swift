@@ -24,6 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         
         // Override point for customization after application launch.
+        //thread for notification
+        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+        dispatch_async(backgroundQueue, {
+            print("This is run on the background queue")
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                print("This is run on the main queue, after the previous code in outer block")
+            })
+        })
         return true
     }
     

@@ -72,15 +72,14 @@ class responseEditVC: UIViewController {
     
     //MARK: - OWNER SELECT THIS RESPONSE
     @IBAction func OwnerSelection(sender: UIBarButtonItem) {
-        //TODO: HOW DO SERVER KNOW WHICH RESPONSE IS ACCEPTED? 
-        let username = prefs.stringForKey("USERNAME")!
+        let username = response["username"].string
         let jsonObject: [String: AnyObject] = [
             "operation":"AcceptOffer",
             "postID":postID,
-            "username":username,
+            "username":username!
         ]
-        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(jsonObject))
-        //getResultFromServerAsJSONObject(jsonObject)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(jsonObject))
+        getResultFromServerAsJSONObject(jsonObject)
         
         self.navigationController?.popViewControllerAnimated(true)
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3413D2381C18B9FD00ACA95E /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */; };
 		3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */; };
 		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; };
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
 		3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
 		3421C91B1BE1385000EFC2C2 /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
 		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				C95FE8271BE6C2F6005C53F9 /* MapVC.swift */,
 				C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */,
 				C9FB91B61BFE6D6400F633EF /* FromToMapVC.swift */,
+				3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
+				3413D2381C18B9FD00ACA95E /* PostSubviewVCInterface.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
