@@ -194,6 +194,8 @@
 		C90ED2871BE56F96002FA4CB /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */,
+				2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */,
 				C918FFF31BE1BA8100687401 /* PostVC.swift */,
 				C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */,
 				C95FE8271BE6C2F6005C53F9 /* MapVC.swift */,
@@ -401,6 +403,7 @@
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */,
 				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
+				2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */,
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
@@ -418,6 +421,7 @@
 				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
+				2A6081751C18BAEF00BC284E /* FoodDiscoverPostVC.swift in Sources */,
 				3437A2481BFBCAAB005A4A8A /* Notification.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
 				3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */,
