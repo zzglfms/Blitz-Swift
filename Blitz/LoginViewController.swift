@@ -34,6 +34,30 @@ class LoginViewController: UIViewController {
         if(isLoggedIn == 1){
             self.performSegueWithIdentifier("Login", sender: self)
             NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Should jump to homepage")
+            
+            //thread for notification
+            if let username:NSString = prefs.stringForKey("USERNAME") {
+                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                dispatch_async(backgroundQueue, {
+                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): This is run on the background queue")
+                    while true {
+                        let jsonObject: [String: AnyObject] = [
+                            "operation": "GetNotifications",
+                            "username": username
+                        ]
+
+                        let result = getResultFromServerAsJSONObject(jsonObject)
+                        let resultJSON = JSON(result)
+                        if let msg = resultJSON["msg"].string {
+                            notificaitonCreate(msg)
+                        }
+                        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Background thread running")
+                        NSThread.sleepForTimeInterval(5)
+                    }
+                })
+            }
+
         }
     }
     
