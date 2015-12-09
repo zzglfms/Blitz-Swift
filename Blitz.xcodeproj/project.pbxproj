@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A6081751C18BAEF00BC284E /* FoodDiscoverPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */; };
+		2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */; };
 		3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */; };
 		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; };
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiscoverPostVC.swift; sourceTree = "<group>"; };
+		2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
 		3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
 		3421C91B1BE1385000EFC2C2 /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
 		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
@@ -191,13 +195,13 @@
 		C90ED2871BE56F96002FA4CB /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */,
+				2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */,
 				C918FFF31BE1BA8100687401 /* PostVC.swift */,
 				C90ED2881BE57201002FA4CB /* CarpoolPostVC.swift */,
 				C95FE8271BE6C2F6005C53F9 /* MapVC.swift */,
 				C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */,
 				C9FB91B61BFE6D6400F633EF /* FromToMapVC.swift */,
-				C90593F11C16371F00AA23C7 /* FoodDiscoverPostVC.swift */,
-				C90593F31C163B0200AA23C7 /* PostSubviewVCInterface.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -400,13 +404,13 @@
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */,
 				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
+				2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */,
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
-				C90593F21C16371F00AA23C7 /* FoodDiscoverPostVC.swift in Sources */,
 				34A6D8BB1BC1B85B00E3B3A7 /* LoginViewController.swift in Sources */,
 				3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */,
 				C9FB91B71BFE6D6400F633EF /* FromToMapVC.swift in Sources */,
@@ -417,8 +421,8 @@
 				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
+				2A6081751C18BAEF00BC284E /* FoodDiscoverPostVC.swift in Sources */,
 				3437A2481BFBCAAB005A4A8A /* Notification.swift in Sources */,
-				C90593F41C163B0200AA23C7 /* PostSubviewVCInterface.swift in Sources */,
 				D163DF491BBDCA380031E915 /* AppDelegate.swift in Sources */,
 				3468C3291BE555700052C558 /* HCSStarRatingView.m in Sources */,
 				3468C32C1BE5707E0052C558 /* SwiftyJSON.swift in Sources */,
