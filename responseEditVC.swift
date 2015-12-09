@@ -18,6 +18,7 @@ class responseEditVC: UIViewController {
     //variables
     var isOwner = true;
     var postID:String = ""
+    var response:JSON = []
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
     
@@ -32,6 +33,8 @@ class responseEditVC: UIViewController {
             responseTextField.editable = false
             bounty.enabled = false
             //TODO: SET THE TEXT FOR TWO FIELD
+            responseTextField.text = response["comment"].string
+            bounty.text = response["offeredPrice"].number?.stringValue
         } else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "Done", style: .Plain, target: self,
