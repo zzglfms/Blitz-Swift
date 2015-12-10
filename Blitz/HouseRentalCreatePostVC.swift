@@ -1,22 +1,22 @@
 //
-//  FoodDiscoverPostVC.swift
+//  HouseRentalCreatePostVC.swift
 //  Blitz
 //
-//  Created by Tianyang Yu on 12/7/15.
+//  Created by Tianyang Yu on 12/9/15.
 //  Copyright © 2015 cs490. All rights reserved.
 //
 
 import UIKit
 
-class FoodDiscoverPostVC: PostSubviewVCInterface {
+class HouseRentalCreatePostVC: PostSubviewVCInterface {
     
     // MARK: - Variables
-    var mapVC: MapVC!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        mapVC.addressTitle.text = "Location:"
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,20 +29,13 @@ class FoodDiscoverPostVC: PostSubviewVCInterface {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "foodDiscoverMapView"
         {
-            mapVC = segue.destinationViewController as! MapVC
+            
         }
     }
     
     override func getAllInformation() -> [String: AnyObject] {
-        let locationInfo = mapVC.getLocationCoordinate()
-        
-        if locationInfo.success {
-            return [
-                "position": ["latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
-            ]
-        }
-        else {
-            return ["error": "Location is missing"]
-        }
+        return [
+            :
+        ]
     }
 }

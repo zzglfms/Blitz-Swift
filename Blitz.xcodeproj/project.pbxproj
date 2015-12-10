@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3413D2381C18B9FD00ACA95E /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */; };
+		2A6081751C18BAEF00BC284E /* FoodDiscoverPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */; };
+		2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */; };
+		2A6081781C18BF1400BC284E /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081771C18BF1400BC284E /* CheckButton.swift */; };
+		2A60817B1C18C03000BC284E /* HouseRentalCreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */; };
 		3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */; };
 		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; };
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; };
@@ -56,7 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
+		2A6081731C18BAEF00BC284E /* FoodDiscoverPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiscoverPostVC.swift; sourceTree = "<group>"; };
+		2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
+		2A6081771C18BF1400BC284E /* CheckButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
+		2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseRentalCreatePostVC.swift; sourceTree = "<group>"; };
 		3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
 		3421C91B1BE1385000EFC2C2 /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
 		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 				C9C48EFE1BC7340600578C7C /* SWRevealViewController */,
 				342F994B1BEB23F90007BF00 /* SwiftDate.swift */,
 				3468C32B1BE5707E0052C558 /* SwiftyJSON.swift */,
+				2A6081771C18BF1400BC284E /* CheckButton.swift */,
 			);
 			name = SupportClass;
 			sourceTree = "<group>";
@@ -201,7 +208,7 @@
 				C95FE8271BE6C2F6005C53F9 /* MapVC.swift */,
 				C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */,
 				C9FB91B61BFE6D6400F633EF /* FromToMapVC.swift */,
-				3413D2371C18B9FD00ACA95E /* PostSubviewVCInterface.swift */,
+				2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -402,6 +409,8 @@
 				C9C48F021BC7343F00578C7C /* SWRevealViewController.m in Sources */,
 				C9BDB3F51BC4395B00EF9971 /* NetworkUtil.swift in Sources */,
 				342F994C1BEB23F90007BF00 /* SwiftDate.swift in Sources */,
+				2A60817B1C18C03000BC284E /* HouseRentalCreatePostVC.swift in Sources */,
+				2A6081781C18BF1400BC284E /* CheckButton.swift in Sources */,
 				34267E551BE1849800F050A5 /* MainTabBar.swift in Sources */,
 				2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */,
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,

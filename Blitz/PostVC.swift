@@ -128,7 +128,10 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "House Rental":
-            
+                let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HouseRentalCreatePost")
+                newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+                self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
+                self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "Other":
                 
@@ -181,6 +184,13 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             print("Here")
         }
         
+        // get information specified to carpool
+        let infoFromSubview = currentViewController.getAllInformation()
+        
+        if let errorString = infoFromSubview["error"] {
+            inValidMessage.appendContentsOf(errorString as! String)
+        }
+        
         // Pop up error message if have invalid field
         if inValidMessage != "" {
             let alertController = UIAlertController(title: "Invalid", message: inValidMessage, preferredStyle: .Alert)
@@ -190,8 +200,6 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             return
         }
         
-        // get information specified to carpool
-        let infoFromSubview = currentViewController.getAllInformation()
         
         // Make a json object for communication with server
         var postJSONObject: [String: AnyObject] = [
@@ -205,18 +213,19 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             "isRequest": type == "Request",
             "category": categoryTextField.text!
         ]
+        
         // Add infoFromSubview into postJSONObject
         for (key, value) in infoFromSubview {
             postJSONObject[key] = value
         }
 
-        NSLog("%@", postJSONObject)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON = %@", postJSONObject)
         
-//        let result = getResultFromServerAsJSONObject(postJSONObject)
-//        
-//        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
-//        
-//        self.dismissViewControllerAnimated(true, completion: nil)
+        let result = getResultFromServerAsJSONObject(postJSONObject)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
