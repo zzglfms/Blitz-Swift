@@ -918,6 +918,18 @@
                                             <segue destination="V6A-He-2ar" kind="modal" id="me8-DU-GGM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="startChat" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xz3-Ok-2Dh" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
+                                        <rect key="frame" x="216" y="118" width="112" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                        <state key="normal" title="Start a Chat">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startChat:" destination="1Nh-b2-RKT" eventType="touchUpInside" id="E2C-F4-gBT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -927,9 +939,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="avatarImage" destination="RT6-eB-uPs" id="I4s-xF-cC6"/>
+                        <outlet property="chatButton" destination="xz3-Ok-2Dh" id="KI9-NL-qhI"/>
+                        <outlet property="editProfileButton" destination="0Wf-oI-pGn" id="fee-Dp-xZT"/>
                         <outlet property="header" destination="7Iw-ZK-Qqr" id="dXv-Ah-T6j"/>
                         <outlet property="headerLabel" destination="ba7-1b-xLA" id="LgZ-Zq-kKg"/>
                         <outlet property="labelUsername" destination="bbJ-P7-diZ" id="KGC-fw-90x"/>
+                        <outlet property="logoutButton" destination="r0X-NH-DTd" id="OH4-71-HbG"/>
                         <outlet property="ratingScore" destination="EYo-f8-Mth" id="hWb-Pb-soe"/>
                         <outlet property="ratingView" destination="qx5-gW-0rC" id="s5q-Ml-1IU"/>
                         <outlet property="scrollView" destination="Pmm-HI-lsG" id="6Y0-Ym-wuA"/>
@@ -1150,6 +1165,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1331,7 +1347,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepeatCell" id="IWK-4q-Q6w">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IWK-4q-Q6w" id="TK2-Rk-9Ah">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1684,7 +1700,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="post cell" textLabel="bcs-il-0U4" detailTextLabel="ebX-I5-sSz" style="IBUITableViewCellStyleSubtitle" id="aDB-b6-M4D">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDB-b6-M4D" id="6IB-P0-0Ry">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

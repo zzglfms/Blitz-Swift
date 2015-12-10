@@ -13,7 +13,6 @@ class responseTableVC: UITableViewController {
     //var
     var postID:String = ""
     var responses:JSON = ""
-    var post:JSON = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,8 @@ class responseTableVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Post(JSON) = ")
+        print(responses)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +45,8 @@ class responseTableVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("responsecell", forIndexPath: indexPath) as! responseCellVC
         // Set title
-        cell.textLabel!.text = responses[indexPath.row]["username"].string
+        let title = "Offer from " + responses[indexPath.row]["username"].string!
+        cell.textLabel!.text = title
         // Set Bounty
         cell.detailTextLabel!.text = responses[indexPath.row]["offeredPrice"].number?.stringValue
         
@@ -55,8 +57,12 @@ class responseTableVC: UITableViewController {
         let responseEditVC = self.storyboard?.instantiateViewControllerWithIdentifier("responseView") as! Blitz.responseEditVC
         responseEditVC.isOwner = true
         responseEditVC.postID = postID
+        //responseEditVC.response = 
         //past the response data
-        responseEditVC.response = post[indexPath.row]
+        responseEditVC.username = responses[indexPath.row]["username"].string!
+        let price = responses[indexPath.row]["bounty"].double!
+        responseEditVC.price = price
+        responseEditVC.comment = responses[indexPath.row]["comment"].string!
         self.navigationController?.pushViewController(responseEditVC, animated: true)
     
     }

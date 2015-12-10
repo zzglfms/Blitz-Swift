@@ -16,6 +16,7 @@ let operationToPortMap = [
     "ModifyProfile": 9066,
     "Query": 9067,
     "CreatePost": 9068,
+    "DeletePost": 9068,
     "GetPostDetail": 9069,
     "OfferPrice": 9069,
     "DeleteOffer": 9069,
