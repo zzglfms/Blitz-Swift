@@ -84,7 +84,7 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
         let jsonData = try NSJSONSerialization.dataWithJSONObject(inputJSON, options: NSJSONWritingOptions())
         let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
         
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON String = " + jsonString)
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON String = " + jsonString)
         
         // Add "\n" to the end for socketServer(java)
         outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
@@ -110,7 +110,7 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
             }
         }
         
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result JSON String = " + res)
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result JSON String = " + res)
         return res
     }
     catch{

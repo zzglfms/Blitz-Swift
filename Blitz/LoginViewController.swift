@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
                 let qualityOfServiceClass = QOS_CLASS_BACKGROUND
                 let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
                 dispatch_async(backgroundQueue, {
-                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): This is run on the background queue")
+                    //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): This is run on the background queue")
                     while true {
                         let jsonObject: [String: AnyObject] = [
                             "operation": "GetNotifications",
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
                         if let msg = resultJSON["msg"].string {
                             notificaitonCreate(msg)
                         }
-                        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Background thread running")
+                        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Background thread running")
                         NSThread.sleepForTimeInterval(5)
                     }
                 })

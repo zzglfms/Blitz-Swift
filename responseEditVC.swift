@@ -14,6 +14,7 @@ class responseEditVC: UIViewController {
     @IBOutlet weak var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var responseTextField: UITextView!
     @IBOutlet weak var bounty: UITextField!
+    @IBOutlet weak var userButton: UIButton!
     
     //variables
     var isOwner = true;
@@ -32,13 +33,16 @@ class responseEditVC: UIViewController {
                 action: "OwnerSelection:")
             responseTextField.editable = false
             bounty.enabled = false
-            //TODO: SET THE TEXT FOR TWO FIELD
             responseTextField.text = response["comment"].string
             bounty.text = response["offeredPrice"].number?.stringValue
+            //Button
+            userButton.setTitle(response["username"].string, forState: UIControlState.Normal)
         } else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "Done", style: .Plain, target: self,
                 action: "PostResponse:")
+            userButton.setTitle(prefs.stringForKey("USERNAME")! , forState: UIControlState.Normal)
+            userButton.enabled = false
         }
     }
 
@@ -68,6 +72,9 @@ class responseEditVC: UIViewController {
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(jsonObject))
         getResultFromServerAsJSONObject(jsonObject)
         self.navigationController?.popViewControllerAnimated(true)
+        
+        let msg = String(username + " Reply Your Post")
+        sendNotification(username, msg: msg)
     }
     
     //MARK: - OWNER SELECT THIS RESPONSE
@@ -82,6 +89,25 @@ class responseEditVC: UIViewController {
         getResultFromServerAsJSONObject(jsonObject)
         
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    //func
+    @IBAction func gotoProfile(sender: UIButton) {
+        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier("profile") as! ProfileVC
+        profileVC.isSelf = false
+        profileVC.username_value = response["username"].string!
+        presentViewController(profileVC, animated: true, completion: nil)
+    }
+    
+    //func
+    func sendNotification(username: String, msg: String){
+        let jsonObject: [String: AnyObject] = [
+            "operation" : "PostNotifications",
+            "postID" : postID,
+            "username" : username,
+            "msg" : msg
+        ]
+        getResultFromServerAsJSONObject(jsonObject)
     }
     /*
     // MARK: - Navigation

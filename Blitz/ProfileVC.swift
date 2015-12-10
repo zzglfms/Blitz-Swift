@@ -14,6 +14,7 @@ let distance_W_LabelHeader:CGFloat = 35.0 // The distance between the bottom of 
 
 class ProfileVC: UIViewController, UIScrollViewDelegate {
     
+    //outlet
     @IBOutlet var scrollView:UIScrollView!
     @IBOutlet var avatarImage:UIImageView!
     @IBOutlet var header:UIView!
@@ -26,7 +27,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var useremail: UILabel!
     @IBOutlet weak var ratingScore: UILabel!
     
-    
+    //var
+    var isSelf = false
+    var username_value = ""
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
@@ -34,8 +37,13 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        getProfile()  // need to ingore if the network lag
-        localStroageRead()
+        if isSelf {
+            getProfile()  // need to ingore if the network lag
+            localStroageRead()
+        }else{
+            getProfilefromServer(username_value)
+
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -146,6 +154,31 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         prefs.synchronize()
     }
 
+    func getProfilefromServer(username: String){
+        let jsonObject: [String: AnyObject] = [
+            "operation": "GetProfile",
+            "username": username
+        ]
+        
+        let score = String(format: "Score: %.1f", ratingView.value)
+        ratingScore.text = score
+        ratingView.editable = true
+
+        let result = getResultFromServerAsJSONObject(jsonObject)
+        let json = JSON(result)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Profile JSON = %@", String(json))
+        
+        let email:String = json["email"].string!
+        useremail.text = email
+        let rating:NSNumber = json["rating"].number!
+        let fullname:String = json["fullname"].string!
+        
+        //fetch from server
+        /*let image = UIImage.init(data: imageData)
+        avatarImage.image = image*/
+        
+        labelUsername.text = username
+    }
     
     func localStroageRead(){
         //local data read
@@ -168,9 +201,11 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         }
         
     }
+    
 
     @IBAction func rating_value_change(sender: HCSStarRatingView) {
         NSLog("@Changed rating to %.1f", sender.value);
+        //TODO -- send the value to server
     }
     
     @IBAction func logoutTapped(sender: UIButton) {
