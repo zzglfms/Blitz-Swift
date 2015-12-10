@@ -92,12 +92,27 @@ class CarpoolPostVC: PostSubviewVCInterface {
     }
     
     override func getAllInformation() -> [String: AnyObject]{
-        return [
-            "from": mapVC.fromAddressTextField.text!,
-            "to": mapVC.toAddressTextField.text!,
-            "effectiveDate": dateTextField.text!,
-            "repeatString": repeatTextField.text!
-        ]
+        let fromInfo = mapVC.getLocationCoordinate("From")
+        let toInfo = mapVC.getLocationCoordinate("To")
+        
+        if fromInfo.success && toInfo.success {
+            return [
+                "from": ["latitude": fromInfo.latitude, "longitude": fromInfo.longitude],
+                "to": ["latitude": toInfo.latitude, "longitude": toInfo.longitude],
+                "effectiveDate": dateTextField.text!,
+                "repeatString": repeatTextField.text!
+            ]
+        }
+        else {
+            var errorString: String = ""
+            if !fromInfo.success {
+                errorString += "'From' location is missing\n"
+            }
+            if !toInfo.success {
+                errorString += "'To‘ Location is missing\n"
+            }
+            return ["error": errorString]
+        }
     }
 
 }

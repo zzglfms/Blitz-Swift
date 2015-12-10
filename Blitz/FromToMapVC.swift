@@ -138,7 +138,7 @@ class FromToMapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegat
                 
                 self.pinView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
                 self.pinView.pinTintColor = UIColor.blueColor()
-                self.mapView.centerCoordinate = self.pointAnnotation.coordinate
+                //self.mapView.centerCoordinate = self.pointAnnotation.coordinate
                 self.mapView.addAnnotation(self.pinView.annotation!)
                 
                 // Zoom the Map to the location
@@ -224,5 +224,18 @@ class FromToMapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegat
     // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Helper Function
+    func getLocationCoordinate(type: String) -> (latitude: CLLocationDegrees, longitude: CLLocationDegrees, success: Bool) {
+        if mapView.annotations.count != 0 {
+            for annotation in mapView.annotations {
+                if annotation.title!! == type{
+                    return (annotation.coordinate.latitude, annotation.coordinate.longitude, true)
+                }
+            }
+        }
+        
+        return (0, 0, false)
+    }
     
 }

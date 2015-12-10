@@ -167,4 +167,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIT
     }
     */
     
+    // MARK: - Helper Function
+    func getLocationCoordinate() -> (latitude: CLLocationDegrees, longitude: CLLocationDegrees, success: Bool) {
+        if mapView.annotations.count != 0 {
+            return (mapView.annotations[0].coordinate.latitude, mapView.annotations[0].coordinate.longitude, true)
+        }
+        
+        return (0, 0, false)
+    }
+    
 }

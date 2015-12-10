@@ -38,7 +38,7 @@ func getResultFromServerAsJSONObject(inputJSON: [String: AnyObject]) -> [String:
         }
     }
     NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use String.dataUsingEncoding")
-    return [ "Error": true, "success": false, "msg": "Error when use String.dataUsingEncoding" ]
+    return [ "error": true, "success": false, "msg": "Error when use String.dataUsingEncoding" ]
 }
 
 

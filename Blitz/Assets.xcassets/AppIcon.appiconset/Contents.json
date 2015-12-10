@@ -3,7 +3,7 @@
     {
       "idiom" : "iphone",
       "size" : "29x29",
-      "scale" : "2x",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -13,7 +13,7 @@
     {
       "idiom" : "iphone",
       "size" : "40x40",
-      "scale" : "2x",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -58,6 +58,11 @@
     {
       "idiom" : "ipad",
       "size" : "76x76",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     }
   ],
