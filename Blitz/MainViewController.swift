@@ -40,6 +40,7 @@ class MainViewController: UITableViewController {
         reloadTableView()
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -133,7 +134,8 @@ class MainViewController: UITableViewController {
         //
         var queryJSON: [String: AnyObject] = [
             "operation": "Query",
-            "isRequest": self.isRequest
+            "isRequest": self.isRequest,
+            "TransactionCompleted": false
         ]
         if category != "" {
             queryJSON["category"] = self.category
