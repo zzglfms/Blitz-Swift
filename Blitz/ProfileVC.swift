@@ -26,6 +26,9 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     var blurredHeaderImageView:UIImageView?
     @IBOutlet weak var useremail: UILabel!
     @IBOutlet weak var ratingScore: UILabel!
+    @IBOutlet weak var logoutButton: TWTButton!
+    @IBOutlet weak var editProfileButton: TWTButton!
+    @IBOutlet weak var chatButton: TWTButton!
     
     //var
     var isSelf = true
@@ -40,8 +43,12 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         if isSelf {
             getProfile()  // need to ingore if the network lag
             localStroageRead()
+            chatButton.hidden = true
         }else{
             getProfilefromServer(username_value)
+            logoutButton.hidden = true
+            editProfileButton.hidden = true
+            chatButton.hidden = false
 
         }
     }
@@ -212,5 +219,10 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         let appDomain = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
         self.performSegueWithIdentifier("Logout", sender: self)
+    }
+    
+    //TODO -- this function to init an chat with two user
+    @IBAction func startChat(sender: UIButton){
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Start Chat")
     }
 }
