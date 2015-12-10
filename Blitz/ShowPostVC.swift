@@ -98,6 +98,7 @@ class ShowPostVC: UIViewController,
         ]
         let result = getResultFromServerAsJSONObject(input)
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(result))
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     /*
@@ -114,7 +115,6 @@ class ShowPostVC: UIViewController,
         let responseTable = self.storyboard?.instantiateViewControllerWithIdentifier("responseTableVC") as! responseTableVC
         responseTable.postID = postID
         let responses:JSON = postdata["object"]["response"]
-        print("to post the responses:\n", responses)
         responseTable.responses = responses
         self.navigationController?.pushViewController(responseTable, animated: true)
     }
@@ -128,12 +128,31 @@ class ShowPostVC: UIViewController,
     
     func clickByOwner(sender:UIButton!)
     {
-        initTableView()
+        let bool = postdata["object"]["TransactionCompleted"].number
+        if bool == 0 {
+            initTableView()
+
+        }
+        else {
+            let alertController = UIAlertController(title: "Alter!", message:
+                "This Transaction has been Completed!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+
     }
     
     func clickByViewer(sender:UIButton!)
     {
-        initResponseView()
+        let bool = postdata["object"]["TransactionCompleted"].number
+        if bool == 0 {
+            initResponseView()
+        }else{
+            let alertController = UIAlertController(title: "Alter!", message:
+                "This Transaction has been Completed!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     

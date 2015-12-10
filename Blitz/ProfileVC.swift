@@ -171,7 +171,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         let email:String = json["email"].string!
         useremail.text = email
         let rating:NSNumber = json["rating"].number!
-        let fullname:String = json["fullname"].string!
+        let fullname:String = json["email"].string!
         
         //fetch from server
         /*let image = UIImage.init(data: imageData)

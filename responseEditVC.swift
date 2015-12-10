@@ -19,7 +19,9 @@ class responseEditVC: UIViewController {
     //variables
     var isOwner = true;
     var postID:String = ""
-    var response:JSON = []
+    var username = ""
+    var price: Double = 0
+    var comment = ""
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 
     
@@ -27,16 +29,17 @@ class responseEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //print(response)
         if isOwner { //
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "Select", style: .Plain, target: self,
                 action: "OwnerSelection:")
             responseTextField.editable = false
             bounty.enabled = false
-            responseTextField.text = response["comment"].string
-            bounty.text = response["offeredPrice"].number?.stringValue
+            responseTextField.text = comment
+            bounty.text = String(price)
             //Button
-            userButton.setTitle(response["username"].string, forState: UIControlState.Normal)
+            userButton.setTitle(username, forState: UIControlState.Normal)
         } else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: "Done", style: .Plain, target: self,
@@ -79,11 +82,10 @@ class responseEditVC: UIViewController {
     
     //MARK: - OWNER SELECT THIS RESPONSE
     @IBAction func OwnerSelection(sender: UIBarButtonItem) {
-        let username = response["username"].string
         let jsonObject: [String: AnyObject] = [
             "operation":"AcceptOffer",
             "postID":postID,
-            "username":username!
+            "username":username
         ]
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = " + String(jsonObject))
         getResultFromServerAsJSONObject(jsonObject)
@@ -95,7 +97,7 @@ class responseEditVC: UIViewController {
     @IBAction func gotoProfile(sender: UIButton) {
         let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier("profile") as! ProfileVC
         profileVC.isSelf = false
-        profileVC.username_value = response["username"].string!
+        profileVC.username_value = username
         presentViewController(profileVC, animated: true, completion: nil)
     }
     
