@@ -226,16 +226,21 @@ class FromToMapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegat
     */
     
     // MARK: - Helper Function
-    func getLocationCoordinate(type: String) -> (latitude: CLLocationDegrees, longitude: CLLocationDegrees, success: Bool) {
+    func getLocationCoordinate(type: String) -> (address:String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, success: Bool) {
         if mapView.annotations.count != 0 {
             for annotation in mapView.annotations {
                 if annotation.title!! == type{
-                    return (annotation.coordinate.latitude, annotation.coordinate.longitude, true)
+                    if type == "From" {
+                        return (fromAddressTextField.text! ,annotation.coordinate.latitude, annotation.coordinate.longitude, true)
+                    }
+                    else {
+                        return (toAddressTextField.text! ,annotation.coordinate.latitude, annotation.coordinate.longitude, true)
+                    }
                 }
             }
         }
         
-        return (0, 0, false)
+        return ("Error", 0, 0, false)
     }
     
 }

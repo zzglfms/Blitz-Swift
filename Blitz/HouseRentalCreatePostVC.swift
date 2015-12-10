@@ -26,7 +26,7 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        mapVC.addressTitle.text = "Address:"
     }
     
     override func didReceiveMemoryWarning() {
@@ -135,7 +135,7 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
             }
         }
         return [
-            "position": ["latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
+            "position": ["address": locationInfo.address, "latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
             "startDate": startDateTextField.text!,
             "endDate": endDateTextField.text!,
             "amenity": amenityString
