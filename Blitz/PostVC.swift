@@ -134,7 +134,10 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "Other":
-                
+                let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OtherCreatePost")
+                newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+                self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
+                self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             default:
                 break

@@ -1201,6 +1201,22 @@
             </objects>
             <point key="canvasLocation" x="-603" y="-1111"/>
         </scene>
+        <!--Other Create Post Subview-->
+        <scene sceneID="VdU-Vy-BsV">
+            <objects>
+                <viewController storyboardIdentifier="OtherCreatePost" id="Fc9-23-x4C" userLabel="Other Create Post Subview" customClass="PostSubviewVCInterface" customModule="Blitz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v48-X3-oOl">
+                        <rect key="frame" x="0.0" y="0.0" width="352" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="352" height="500"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zk-9z-IS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-113" y="-1213"/>
+        </scene>
         <!--Carpool Subview-->
         <scene sceneID="3U6-jh-mrh">
             <objects>
