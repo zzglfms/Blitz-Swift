@@ -28,7 +28,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var ratingScore: UILabel!
     
     //var
-    var isSelf = false
+    var isSelf = true
     var username_value = ""
     
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
