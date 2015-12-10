@@ -158,6 +158,7 @@
 		3468C32A1BE570700052C558 /* SupportClass */ = {
 			isa = PBXGroup;
 			children = (
+				34267E4F1BE1840600F050A5 /* TabBar */,
 				3468C3261BE555580052C558 /* Rating */,
 				C9C48EFE1BC7340600578C7C /* SWRevealViewController */,
 				342F994B1BEB23F90007BF00 /* SwiftDate.swift */,
@@ -277,7 +278,6 @@
 				C930B5561BEAF4E300CFDAF9 /* LoginComponent */,
 				3468C32A1BE570700052C558 /* SupportClass */,
 				347EAD741BEAE9A100A249C1 /* ShowPost */,
-				34267E4F1BE1840600F050A5 /* TabBar */,
 				C96553601BE1220A00636531 /* Profile */,
 				C90ED2871BE56F96002FA4CB /* Post */,
 				3468C32D1BE57BCC0052C558 /* Home */,
@@ -416,6 +416,7 @@
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
+				3413D2381C18B9FD00ACA95E /* PostSubviewVCInterface.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,

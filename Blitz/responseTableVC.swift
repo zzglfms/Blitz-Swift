@@ -13,6 +13,7 @@ class responseTableVC: UITableViewController {
     //var
     var postID:String = ""
     var responses:JSON = ""
+    var post:JSON = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,19 +38,15 @@ class responseTableVC: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return responses.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        for (index,subJson):(String, JSON) in responses {
-            //Do something you want
-        }
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("responsecell", forIndexPath: indexPath) as! responseCellVC
         // Set title
-        cell.textLabel!.text = "test"
-        // Set postTime
-        cell.detailTextLabel!.text = "date"
+        cell.textLabel!.text = responses[indexPath.row]["username"].string
+        // Set Bounty
+        cell.detailTextLabel!.text = responses[indexPath.row]["offeredPrice"].number?.stringValue
         
         return cell
     }
@@ -58,6 +55,8 @@ class responseTableVC: UITableViewController {
         let responseEditVC = self.storyboard?.instantiateViewControllerWithIdentifier("responseView") as! Blitz.responseEditVC
         responseEditVC.isOwner = true
         responseEditVC.postID = postID
+        //past the response data
+        responseEditVC.response = post[indexPath.row]
         self.navigationController?.pushViewController(responseEditVC, animated: true)
     
     }

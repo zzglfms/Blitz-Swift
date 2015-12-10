@@ -21,7 +21,9 @@ let operationToPortMap = [
     "DeleteOffer": 9069,
     "AcceptOffer": 9069,
     "UploadPicture": 9071,
-    "GetPicture": 9071
+    "GetPicture": 9071,
+    "GetNotifications": 9072,
+    "PostNotifications": 9072
 ]
 
 
@@ -30,7 +32,12 @@ func getResultFromServerAsJSONObject(inputJSON: [String: AnyObject]) -> [String:
     if let data = JSONString.dataUsingEncoding(NSUTF8StringEncoding){
         do {
             let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
-            return parsedObject!
+            if let _ = parsedObject{
+                return parsedObject!
+            }
+            else {
+                return [:]
+            }
         }
         catch {
             NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use NSJSONSerialization.JSONObjectWithData")

@@ -8,10 +8,10 @@
 
 import Foundation
 
-func notificaitonCreate(){ // need to set the text, notification_id,
+func notificaitonCreate(msg :  String){ // need to set the text, notification_id,
 
     let notification = UILocalNotification()
-    notification.alertBody = " Notificaiton-test" // text that will be displayed in the notification
+    notification.alertBody = msg // text that will be displayed in the notification
     notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
     notification.fireDate = NSDate(timeIntervalSinceNow: 10)
     notification.timeZone = NSTimeZone.defaultTimeZone()

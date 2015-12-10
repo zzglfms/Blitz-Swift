@@ -223,7 +223,19 @@ UIImagePickerControllerDelegate {
     
     
     @IBAction func NotificationsTest(sender: AnyObject) {
-        notificaitonCreate()
+        let modifyJSON: [String: AnyObject]! = [
+            "username": prefs.stringForKey("USERNAME")!,
+            "operation": "GetNotifications",
+        ]
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input = "+String(modifyJSON))
+        
+        let result = getResultFromServerAsJSONObject(modifyJSON)
+        let result_JSON = JSON(result)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = "+String(result_JSON))
+
+        notificaitonCreate("test message")
     }
     
 }
