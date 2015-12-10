@@ -16,6 +16,7 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
     @IBOutlet weak var endDateTextField: UITextField!
 
     // MARK: - Variables
+    var mapVC: MapVC!
     var datePickerView: UIDatePicker!
     var selectedTextField: UITextField!
     var amenityMap: [String: Bool]! = [:]
@@ -64,6 +65,12 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
     
     @IBAction func textFieldEndEditing(sender: UITextField) {
         sender.text = getDateString(datePickerView.date)
+        if sender == startDateTextField {
+            startDate = datePickerView.date
+        }
+        else {
+            endDate = datePickerView.date
+        }
     }
     
     @IBAction func checkBoxTapped(sender: CheckBox) {
@@ -77,19 +84,16 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        if segue.identifier == "houseRentalMapView"
+        {
+            mapVC = segue.destinationViewController as! MapVC
+        }
     }
     
     
     // MARK: - Helper func
     func datePickerValueChanged(sender:UIDatePicker) {
         selectedTextField.text = getDateString(sender.date)
-        if selectedTextField == startDateTextField {
-            startDate = sender.date
-        }
-        else {
-            endDate = sender.date
-        }
     }
     
     func getDateString(date: NSDate) -> String{
@@ -101,6 +105,12 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
     
     override func getAllInformation() -> [String: AnyObject] {
         var errorMsg: String = ""
+        
+        let locationInfo = mapVC.getLocationCoordinate()
+        if !locationInfo.success {
+            errorMsg += "Location is missing\n"
+        }
+        
         if startDate == nil {
             errorMsg += "Start date is missing\n"
         }
@@ -125,6 +135,7 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
             }
         }
         return [
+            "position": ["latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
             "startDate": startDateTextField.text!,
             "endDate": endDateTextField.text!,
             "amenity": amenityString

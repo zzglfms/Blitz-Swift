@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PostSubviewVCInterface: UIViewController {
-
+class PostSubviewVCInterface: UIViewController{
+    
     func getAllInformation() -> [String: AnyObject] {
         return [:]
     }

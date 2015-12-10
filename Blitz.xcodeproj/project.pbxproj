@@ -11,6 +11,8 @@
 		2A6081761C18BAEF00BC284E /* PostSubviewVCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */; };
 		2A6081781C18BF1400BC284E /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6081771C18BF1400BC284E /* CheckButton.swift */; };
 		2A60817B1C18C03000BC284E /* HouseRentalCreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */; };
+		2ABE4BC01C19DCE700877051 /* PictureUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE4BBF1C19DCE700877051 /* PictureUtil.swift */; };
+		2ABE4BC21C1A096F00877051 /* OtherCreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABE4BC11C1A096F00877051 /* OtherCreatePostVC.swift */; };
 		3421C91A1BE1372800EFC2C2 /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */; };
 		3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91B1BE1385000EFC2C2 /* TWTButton.swift */; };
 		3421C9221BE138A800EFC2C2 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */; };
@@ -63,6 +65,8 @@
 		2A6081741C18BAEF00BC284E /* PostSubviewVCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubviewVCInterface.swift; sourceTree = "<group>"; };
 		2A6081771C18BF1400BC284E /* CheckButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseRentalCreatePostVC.swift; sourceTree = "<group>"; };
+		2ABE4BBF1C19DCE700877051 /* PictureUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureUtil.swift; sourceTree = "<group>"; };
+		2ABE4BC11C1A096F00877051 /* OtherCreatePostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherCreatePostVC.swift; sourceTree = "<group>"; };
 		3421C9191BE1372800EFC2C2 /* ProfileSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
 		3421C91B1BE1385000EFC2C2 /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
 		3421C91E1BE138A800EFC2C2 /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				C9DD44511BE7FF0C00E9BF75 /* RepeatTableVC.swift */,
 				C9FB91B61BFE6D6400F633EF /* FromToMapVC.swift */,
 				2A60817A1C18C03000BC284E /* HouseRentalCreatePostVC.swift */,
+				2ABE4BC11C1A096F00877051 /* OtherCreatePostVC.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				C9BDB3F41BC4395B00EF9971 /* NetworkUtil.swift */,
 				C9DF70241BF3F9E00091AFDB /* LogUtil.swift */,
 				3437A2471BFBCAAB005A4A8A /* Notification.swift */,
+				2ABE4BBF1C19DCE700877051 /* PictureUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -416,7 +422,6 @@
 				34E11FAA1C06E12700B1037A /* responseCellVC.swift in Sources */,
 				3421C91C1BE1385000EFC2C2 /* TWTButton.swift in Sources */,
 				C90ED2891BE57201002FA4CB /* CarpoolPostVC.swift in Sources */,
-				3413D2381C18B9FD00ACA95E /* PostSubviewVCInterface.swift in Sources */,
 				C965535F1BE0009600636531 /* TabBarViewController.swift in Sources */,
 				C918FFF41BE1BA8100687401 /* PostVC.swift in Sources */,
 				3421C9231BE138A800EFC2C2 /* FXBlurView.m in Sources */,
@@ -428,6 +433,8 @@
 				C9AD136B1BFBBF1B004E56D3 /* RelatedPostsVC.swift in Sources */,
 				34A6D8BD1BC1BA5F00E3B3A7 /* SignupViewController.swift in Sources */,
 				C9DF70251BF3F9E00091AFDB /* LogUtil.swift in Sources */,
+				2ABE4BC01C19DCE700877051 /* PictureUtil.swift in Sources */,
+				2ABE4BC21C1A096F00877051 /* OtherCreatePostVC.swift in Sources */,
 				3468C32F1BE57EFC0052C558 /* PostCell.swift in Sources */,
 				C9C48F081BC740F100578C7C /* MainViewController.swift in Sources */,
 				2A6081751C18BAEF00BC284E /* FoodDiscoverPostVC.swift in Sources */,

@@ -130,7 +130,8 @@ class MainViewController: UITableViewController {
         //
         var queryJSON: [String: AnyObject] = [
             "operation": "Query",
-            "isRequest": self.isRequest
+            "isRequest": self.isRequest,
+            "TransactionCompleted": false
         ]
         if category != "" {
             queryJSON["category"] = self.category
