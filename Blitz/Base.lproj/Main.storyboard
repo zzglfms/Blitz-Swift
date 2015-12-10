@@ -487,14 +487,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ihv-2s-5K3">
-                                            <rect key="frame" x="15" y="6" width="32" height="20"/>
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XYL-SS-hO8">
-                                            <rect key="frame" x="15" y="26" width="31" height="13"/>
+                                            <rect key="frame" x="15" y="25" width="31" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -921,7 +921,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="startChat" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xz3-Ok-2Dh" userLabel="FollowButton" customClass="TWTButton" customModule="Blitz" customModuleProvider="target">
                                         <rect key="frame" x="216" y="118" width="112" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
                                         <state key="normal" title="Start a Chat">
                                             <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1051,17 +1050,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="QZB-zQ-iHq">
-                                <rect key="frame" x="87" y="38" width="265" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="nm5-0y-ear">
                                 <rect key="frame" x="87" y="0.0" width="265" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="cbC-HU-J6Y" eventType="editingDidBegin" id="csK-eT-NSv"/>
+                                    <action selector="textFieldEndEditing:" destination="cbC-HU-J6Y" eventType="editingDidEnd" id="89M-J4-dfn"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check the applied amenities:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ahf-qz-jkz">
                                 <rect key="frame" x="0.0" y="76" width="221" height="21"/>
@@ -1070,115 +1067,134 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="y76-sB-S7n" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="399" width="176" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Family/Kid Friendly" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="E4c-nY-IT4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ycr-nT-cXl" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="199" width="154" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Air Conditioning" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="32C-wB-yEf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GM3-uV-rdU" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="231" width="87" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Heating" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="jhk-nz-sxH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="baz-Z0-YXH" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="263" width="121" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Refrigerator" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="TuV-tB-bQn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3GG-AA-MvG" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="295" width="86" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Washer" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="ujv-DP-4Nn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V4B-fV-Z2q" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="327" width="71" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dryer" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="J60-hf-2ky"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EOr-dL-cQU" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="18" y="367" width="128" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pets Allowed" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="hTg-DS-gUe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="INx-ct-xR7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="INx-ct-xR7" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
                                 <rect key="frame" x="18" y="105" width="86" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Kitchen" image="ic_check_box_outline_blank">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="JoO-CI-ejo"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H2k-VM-bdT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H2k-VM-bdT" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
                                 <rect key="frame" x="18" y="137" width="87" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Internet" image="ic_check_box_outline_blank">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eCJ-IK-5nM" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
-                                <rect key="frame" x="191" y="295" width="161" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Wireless Internet" image="ic_check_box_outline_blank">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
                                 <connections>
-                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="Zrr-ce-5R4"/>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="YFB-BT-Gkz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8ca-dt-90C" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="169" width="161" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Wireless Internet" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="d1O-gP-b74"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cGJ-w0-QIq" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="201" width="154" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Air Conditioning" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="faJ-xq-ysz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hNZ-TM-K3C" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="233" width="87" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Heating" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="BDk-2S-Waf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cd8-7d-Myg" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="265" width="121" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Refrigerator" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="N3t-dI-Cbz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iPH-ih-AY0" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="297" width="86" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Washer" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="ElV-4K-lvc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hsm-CB-kCs" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="361" width="128" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pets Allowed" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="dTh-aZ-807"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bHY-rD-OOo" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="393" width="176" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Family/Kid Friendly" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="Dot-nk-iUj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T4i-uq-L23" customClass="CheckBox" customModule="Blitz" customModuleProvider="target">
+                                <rect key="frame" x="18" y="329" width="69" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dryer" image="ic_check_box_outline_blank">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkBoxTapped:" destination="cbC-HU-J6Y" eventType="touchUpInside" id="wzF-gf-41X"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="QZB-zQ-iHq">
+                                <rect key="frame" x="87" y="38" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldBeginEditing:" destination="cbC-HU-J6Y" eventType="editingDidBegin" id="k0u-3w-NgK"/>
+                                    <action selector="textFieldEndEditing:" destination="cbC-HU-J6Y" eventType="editingDidEnd" id="JNG-KE-bg4"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="352" height="500"/>
                     <connections>
-                        <outletCollection property="amenities" destination="eCJ-IK-5nM" collectionClass="NSMutableArray" id="3da-nI-K9l"/>
-                        <outletCollection property="amenities" destination="ycr-nT-cXl" collectionClass="NSMutableArray" id="VoB-2T-JzA"/>
-                        <outletCollection property="amenities" destination="GM3-uV-rdU" collectionClass="NSMutableArray" id="a9m-8z-geD"/>
-                        <outletCollection property="amenities" destination="baz-Z0-YXH" collectionClass="NSMutableArray" id="ztQ-lo-dh7"/>
-                        <outletCollection property="amenities" destination="3GG-AA-MvG" collectionClass="NSMutableArray" id="gcK-Qj-GWh"/>
-                        <outletCollection property="amenities" destination="V4B-fV-Z2q" collectionClass="NSMutableArray" id="mG0-OV-Q5D"/>
-                        <outletCollection property="amenities" destination="EOr-dL-cQU" collectionClass="NSMutableArray" id="gEn-HN-wWj"/>
-                        <outletCollection property="amenities" destination="y76-sB-S7n" collectionClass="NSMutableArray" id="NEr-25-bFR"/>
+                        <outlet property="endDateTextField" destination="QZB-zQ-iHq" id="Yxd-vB-zJy"/>
+                        <outlet property="startDateTextField" destination="nm5-0y-ear" id="KaU-FL-tjV"/>
+                        <outletCollection property="amenities" destination="INx-ct-xR7" collectionClass="NSMutableArray" id="Njd-mn-W1e"/>
+                        <outletCollection property="amenities" destination="H2k-VM-bdT" collectionClass="NSMutableArray" id="OvE-YF-T1k"/>
+                        <outletCollection property="amenities" destination="8ca-dt-90C" collectionClass="NSMutableArray" id="eDi-Vv-MNV"/>
+                        <outletCollection property="amenities" destination="cGJ-w0-QIq" collectionClass="NSMutableArray" id="hK6-Jf-tTW"/>
+                        <outletCollection property="amenities" destination="hNZ-TM-K3C" collectionClass="NSMutableArray" id="SyA-yF-PKQ"/>
+                        <outletCollection property="amenities" destination="cd8-7d-Myg" collectionClass="NSMutableArray" id="16I-Yj-Hdd"/>
+                        <outletCollection property="amenities" destination="iPH-ih-AY0" collectionClass="NSMutableArray" id="94d-ZJ-5a4"/>
+                        <outletCollection property="amenities" destination="T4i-uq-L23" collectionClass="NSMutableArray" id="Rjc-vv-uLs"/>
+                        <outletCollection property="amenities" destination="hsm-CB-kCs" collectionClass="NSMutableArray" id="Sap-Mt-eNY"/>
+                        <outletCollection property="amenities" destination="bHY-rD-OOo" collectionClass="NSMutableArray" id="XjV-Rx-XzX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncr-SN-ly2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1347,7 +1363,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepeatCell" id="IWK-4q-Q6w">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IWK-4q-Q6w" id="TK2-Rk-9Ah">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1700,7 +1716,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="post cell" textLabel="bcs-il-0U4" detailTextLabel="ebX-I5-sSz" style="IBUITableViewCellStyleSubtitle" id="aDB-b6-M4D">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDB-b6-M4D" id="6IB-P0-0Ry">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

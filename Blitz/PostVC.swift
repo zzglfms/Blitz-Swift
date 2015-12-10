@@ -181,7 +181,6 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         // Validation for title
         if titleTextField.text!.isEmpty {
             inValidMessage.appendContentsOf("Please enter a title for your post\n")
-            print("Here")
         }
         
         // get information specified to carpool
