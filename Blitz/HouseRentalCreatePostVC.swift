@@ -10,6 +10,7 @@ import UIKit
 
 class HouseRentalCreatePostVC: PostSubviewVCInterface {
     
+    @IBOutlet var amenities: [CheckBox]!
     // MARK: - Variables
     
     
@@ -24,6 +25,14 @@ class HouseRentalCreatePostVC: PostSubviewVCInterface {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func checkBoxTapped(sender: CheckBox) {
+        if sender.isChecked {
+            print("Deselelct"+sender.titleLabel!.text!)
+        }
+        else {
+            print("Selelct"+sender.titleLabel!.text!)
+        }
+    }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
