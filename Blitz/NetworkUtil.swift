@@ -11,6 +11,7 @@ import Foundation
 let operationToPortMap = [
     "Login": 9066,
     "Signup": 9066,
+    "Rate": 9066,
     "ForgetPassword": 9066,
     "GetProfile":9066,
     "ModifyProfile": 9066,
@@ -26,6 +27,7 @@ let operationToPortMap = [
     "GetNotifications": 9072,
     "PostNotifications": 9072
 ]
+
 
 
 func getResultFromServerAsJSONObject(inputJSON: [String: AnyObject]) -> [String: AnyObject] {
@@ -118,5 +120,52 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use 'NSJSONSerialization.dataWithJSONObject")
         return String([ "error": true, "success": false,"msg": "Error when use 'NSJSONSerialization.dataWithJSONObject'"])
     }
+    
+}
+
+func postImage(image : UIImage){
+    /*let url: NSURL = NSURL(string: "http://blitzproject.cs.purdue.edu:9075/UploadFileServer/upload")!
+    let request = NSMutableURLRequest(URL: url)
+    request.HTTPMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    
+    let imageData = UIImageJPEGRepresentation(image, 0.9)
+    let base64String = imageData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) // encode the image
+    let params = ["image":[ "content_type": "image/jpeg", "filename":"test.jpg", "file_data": base64String]]
+    do{
+        request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions(rawValue: 0))
+    } catch _ {
+    
+    }
+    let session = NSURLSession.sharedSession()
+    let task = session.dataTaskWithRequest(request.mutableURl , completionHandler: { data, response, error -> Void in
+        _ = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        let _: NSError?
+        
+        // process the response
+    })
+    
+    task.resume()*/
+    
+    let imageData = UIImagePNGRepresentation(image)
+    if imageData != nil{
+        let request = NSMutableURLRequest(URL: NSURL(string:"http://blitzproject.cs.purdue.edu:9075/UploadFileServer/UploadFileServer")!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = NSData(data: imageData!)
+        
+        do{
+            let returnData =  try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+            let returnString = NSString(data: returnData, encoding: NSUTF8StringEncoding)
+            print("returnString \(returnString)")
+        } catch _{
+            
+        }
+
+    }
+}
+
+func getImage(url : NSURL){
+    
     
 }

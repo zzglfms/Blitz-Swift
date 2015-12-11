@@ -36,7 +36,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     var username_value = ""
     var postID = "" // for rating
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
+    var localjson: JSON = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +142,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         let result = getResultFromServerAsJSONObject(jsonObject)
 
         let json = JSON(result)
-
+        localjson = JSON(result)
+        
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Profile JSON = %@", String(json))
         
         let email:String = json["email"].string!
@@ -213,7 +214,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
     }
     
-
+    //
     @IBAction func rating_value_change(sender: HCSStarRatingView) {
         NSLog("@Changed rating to %.1f", sender.value);
         //TODO -- send the value to server
@@ -230,7 +231,40 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Start Chat")
     }
     
+    //
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+
+    //
+    @IBAction func rateTheUser(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Rate This User\n\n", message: nil,
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let starRatingView: HCSStarRatingView = HCSStarRatingView.init(frame: CGRectMake(50, 50, 180, 20))
+        ratingView.editable = false
+        starRatingView.accurateHalfStars = true
+        starRatingView.maximumValue = 5
+        starRatingView.minimumValue = 0
+        //let rating:NSNumber = localjson["rating"].number!
+        starRatingView.value = CGFloat(1)
+        let username = username_value
+        
+        alertController.view.addSubview(starRatingView)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+            { action -> Void in
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Rating Score " +  String(starRatingView.value))
+                let jsonObject: [String: AnyObject] = [
+                    "operation": "Rate",
+                    "username": username,
+                    "score": String(starRatingView.value)
+                ]
+                getResultFromServerAsJSONObject(jsonObject)
+            }
+        )
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
 }

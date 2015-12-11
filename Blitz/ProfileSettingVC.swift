@@ -78,6 +78,7 @@ UIImagePickerControllerDelegate {
         
         //save image
         prefs.setObject(imageData, forKey: "avatar")
+        postImage(image)
         prefs.synchronize()
     }
     
@@ -113,7 +114,7 @@ UIImagePickerControllerDelegate {
             localStorageWrite()
         }
         
-        // TODO: Connect to Server
+        // Connect to Server
         let modifyJSON: [String: AnyObject]! = [
             "username": prefs.stringForKey("USERNAME")!,
             "operation": "ModifyProfile",
