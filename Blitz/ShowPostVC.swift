@@ -272,12 +272,12 @@ class ShowPostVC: UIViewController,
         let button = UIButton()
         
         if(username.isEqualToString(post["username"].string!)){
-            button.setTitle("view replys", forState: .Normal)
+            button.setTitle("View replys", forState: .Normal)
             button.addTarget(self, action: "clickByOwner:", forControlEvents: .TouchUpInside)
             button.frame = CGRectMake( -50, -40, 100, 500)
             
         }else{
-            button.setTitle("reply", forState: .Normal)
+            button.setTitle("Reply", forState: .Normal)
             button.addTarget(self, action: "clickByViewer:", forControlEvents: .TouchUpInside)
             button.frame = CGRectMake( -50, -40, 60, 500)
         }
