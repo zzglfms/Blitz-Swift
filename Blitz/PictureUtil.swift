@@ -38,15 +38,17 @@ func picture_upload(imageData: NSData) -> [String] {
     return id_array
 }
 
-func picture_download(id_array: [String]) -> NSData {
+func picture_download(id_array: [String]) -> UIImage {
     var myNSString = NSString()
     
     for id in id_array {
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): id = %@", id)
         let json:[String: AnyObject] = [
             "operation": "getpic",
             "id": id
         ]
         let result = JSON(getResultFromServerAsJSONObject(json))
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = ")
         if result["success"].bool! {
             myNSString = (myNSString as String) + result["data"].string!
         }
@@ -55,5 +57,5 @@ func picture_download(id_array: [String]) -> NSData {
     let decodedData = NSData(base64EncodedString: myNSString as String, options: NSDataBase64DecodingOptions(rawValue: 0))
     let image = UIImage.init(data: decodedData!)
     
-    return decodedData!
+    return image!
 }

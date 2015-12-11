@@ -26,7 +26,8 @@ let operationToPortMap = [
     "GetPicture": 9071,
     "GetNotifications": 9072,
     "PostNotifications": 9072,
-    "upload": 9071
+    "upload": 9071,
+    "getpic": 9071
 ]
 
 
@@ -93,13 +94,13 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
         // Add "\n" to the end for socketServer(java)
         outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
         
-        var buffer = [UInt8](count: 8, repeatedValue: 0)
+        var buffer = [UInt8](count: 1000, repeatedValue: 0)
         var res = ""
         var isWait :Bool = true
         while true {
             let result :Int = inputStream.read(&buffer, maxLength: buffer.count)
             let char = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
-            //print((char, result))
+            //print((char, result, res.characters.count))
             if result == -1{
                 // Connection fail
                 break
@@ -108,7 +109,7 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
                 break
             }
             if result > 0 {
-                let index1 = char.endIndex.advancedBy(result-8)
+                let index1 = char.endIndex.advancedBy(result-1000)
                 res += char.substringToIndex(index1)
                 isWait = false;
             }

@@ -56,8 +56,9 @@ class ShowPostVC: UIViewController,
         super.viewDidLoad()
         username = prefs.stringForKey("USERNAME")!
         
-        
         // Do any additional setup after loading the view.
+        requestData()
+        
         // 1
         pageImages = [UIImage(named: "carpool")!,
             UIImage(named: "foodDiscover")!,
@@ -86,7 +87,6 @@ class ShowPostVC: UIViewController,
     }
     
     override func viewDidAppear(animated: Bool) {
-        requestData()
         DeleteButton.hidden = true
         
         let post:JSON = postdata["object"]

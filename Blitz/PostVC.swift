@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Foundation
 
-class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIScrollViewDelegate {
+class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - OUTLETS
     @IBOutlet var categoryPicker: UIPickerView!
@@ -22,6 +23,9 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var provideLabel: UILabel!
     @IBOutlet weak var subView: UIView!
+    @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var no_image: UIImageView!
     
     // MARK: - Constants
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -30,9 +34,15 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
     var categories = ["Carpool", "FoodDiscover", "House Rental", "Other"]
     var currentViewController: PostSubviewVCInterface!
     var type: String! = "Request"
+    var firstPic = true
+    var pageImages: [UIImage] = []
+    var pageViews: [UIImageView?] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageScrollView.delegate = self
         
         scrollView.delegate = self
         scrollView.contentSize = CGSizeMake(375.0, 920.0)
@@ -63,6 +73,27 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(self.currentViewController!)
         self.addSubview(self.currentViewController!.view, toView: self.subView)
+        
+        // 1
+        pageImages = []
+        let pageCount = pageImages.count
+        
+        // 2
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = pageCount
+        
+        // 3
+        for _ in 0..<pageCount {
+            pageViews.append(nil)
+        }
+        
+        // 4
+        let pagesScrollViewSize = imageScrollView.frame.size
+        imageScrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count),
+            height: pagesScrollViewSize.height)
+        
+        // 5
+        loadVisiblePages()
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,28 +147,28 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         // Load Subview based on selected category
         switch categoryTextField.text! {
             case "Carpool":
-                scrollView.contentSize = CGSizeMake(375.0, (920.0 + 108))
+                scrollView.contentSize = CGSizeMake(375.0, (920.0 + 234))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CarpoolCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "FoodDiscover":
-                scrollView.contentSize = CGSizeMake(375.0, (770.0 + 108))
+                scrollView.contentSize = CGSizeMake(375.0, (770.0 + 234))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FoodDiscoverCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "House Rental":
-                scrollView.contentSize = CGSizeMake(375.0, (1020.0 + 108))
+                scrollView.contentSize = CGSizeMake(375.0, (1020.0 + 234))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HouseRentalCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "Other":
-                scrollView.contentSize = CGSizeMake(375.0, (470.0 + 108))
+                scrollView.contentSize = CGSizeMake(375.0, (470.0 + 234))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OtherCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
@@ -288,4 +319,156 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             options: [], metrics: nil, views: viewBindingsDict))
     }
     
+    //Touch The button, change the Image
+    @IBAction func changeImageButt(sender: AnyObject) {
+        let alert = UIAlertController(title: "Blitz",
+            message: "Add a Photo",
+            preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:nil))
+        alert.addAction(UIAlertAction(title: "Take a picture", style: UIAlertActionStyle.Default, handler:handle_photo_camera))
+        alert.addAction(UIAlertAction(title: "Choose from Library", style: UIAlertActionStyle.Default, handler:handle_photo_library))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func handle_photo_camera(alertview: UIAlertAction!){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.allowsEditing = true
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func handle_photo_library(alterview: UIAlertAction!){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.allowsEditing = true
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    // ImagePicker Delegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+//        let imageData = UIImageJPEGRepresentation(image, 0.5)
+//        
+//        print(imageData?.length)
+        
+        no_image.hidden = true
+        pageImages.append(image)
+        
+        // 1
+        let pageCount = pageImages.count
+        
+        // 2
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = pageCount
+        
+        // 3
+        for _ in 0..<pageCount {
+            pageViews.append(nil)
+        }
+        
+        // 4
+        let pagesScrollViewSize = imageScrollView.frame.size
+        imageScrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count),
+            height: pagesScrollViewSize.height)
+        
+        // 5
+        loadVisiblePages()
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+//        print("try to save image,  size of pic = ", imageData?.length)
+        
+        //save image
+//        prefs.setObject(imageData, forKey: "avatar")
+//        
+//        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//            picture_upload(imageData!)
+//            dispatch_async(dispatch_get_main_queue()) {
+//                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Upload Done")
+//            }
+//        }
+//        
+//        
+//        prefs.synchronize()
+    }
+    
+    // MARK: - Scrollview delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Load the pages that are now on screen
+        loadVisiblePages()
+    }
+    
+    
+    // MARK: - Helper Fucntions
+    func loadVisiblePages() {
+        // First, determine which page is currently visible
+        let pageWidth = imageScrollView.frame.size.width
+        let page = Int(floor((imageScrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        
+        // Update the page control
+        pageControl.currentPage = page
+        
+        // Work out which pages you want to load
+        let firstPage = page - 1
+        let lastPage = page + 1
+        
+        // Purge anything before the first page
+        for var index = 0; index < firstPage; ++index {
+            purgePage(index)
+        }
+        
+        // Load pages in our range
+        for index in firstPage...lastPage {
+            loadPage(index)
+        }
+        
+        // Purge anything after the last page
+        for var index = lastPage+1; index < pageImages.count; ++index {
+            purgePage(index)
+        }
+    }
+    
+    func loadPage(page: Int) {
+        if page < 0 || page >= pageImages.count {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        // Load an individual page, first checking if you've already loaded it
+        if let _ = pageViews[page] {
+            // Do nothing. The view is already loaded.
+        } else {
+            var frame = imageScrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.y = 0.0
+            frame = CGRectInset(frame, 10.0, 0.0)
+            
+            let newPageView = UIImageView(image: pageImages[page])
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            imageScrollView.addSubview(newPageView)
+            pageViews[page] = newPageView
+        }
+    }
+    
+    func purgePage(page: Int) {
+        if page < 0 || page >= pageImages.count {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        // Remove a page from the scroll view and reset the container array
+        if let pageView = pageViews[page] {
+            pageView.removeFromSuperview()
+            pageViews[page] = nil
+        }
+    }
+
 }
