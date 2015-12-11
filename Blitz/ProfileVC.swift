@@ -29,13 +29,14 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var logoutButton: TWTButton!
     @IBOutlet weak var editProfileButton: TWTButton!
     @IBOutlet weak var chatButton: TWTButton!
+    @IBOutlet weak var backButton: UIButton!
     
     //var
     var isSelf = true
     var username_value = ""
-    
+    var postID = "" // for rating
     let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
+    var localjson: JSON = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             getProfile()  // need to ingore if the network lag
             localStroageRead()
             chatButton.hidden = true
+            backButton.hidden = true
         }else{
             getProfilefromServer(username_value)
             logoutButton.hidden = true
@@ -132,7 +134,6 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     func getProfile(){
         let username:String = prefs.stringForKey("USERNAME")!
 
-        
         let jsonObject: [String: AnyObject] = [
             "operation": "GetProfile",
             "username": username
@@ -141,7 +142,8 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         let result = getResultFromServerAsJSONObject(jsonObject)
 
         let json = JSON(result)
-
+        localjson = JSON(result)
+        
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Profile JSON = %@", String(json))
         
         let email:String = json["email"].string!
@@ -166,10 +168,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
             "operation": "GetProfile",
             "username": username
         ]
-        
-        let score = String(format: "Score: %.1f", ratingView.value)
-        ratingScore.text = score
-        ratingView.editable = true
+        ratingView.editable = false
 
         let result = getResultFromServerAsJSONObject(jsonObject)
         let json = JSON(result)
@@ -177,8 +176,11 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
         let email:String = json["email"].string!
         useremail.text = email
+        
         let rating:NSNumber = json["rating"].number!
-        let fullname:String = json["email"].string!
+        let score = String(format: "Score: %.1f", rating.floatValue)
+        ratingScore.text = score
+        ratingView.value = CGFloat(rating.floatValue)
         
         //fetch from server
         /*let image = UIImage.init(data: imageData)
@@ -190,8 +192,11 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     func localStroageRead(){
         //local data read
         ratingView.editable = false
-        let score = String(format: "Score: %.1f", ratingView.value)
+        let ratescore = prefs.objectForKey("RATING")
+        let score = String(format: "Score: %.1f", (ratescore?.floatValue)!)
         ratingScore.text = score
+        ratingView.value = CGFloat((ratescore?.floatValue)!)
+        
         if let username = prefs.stringForKey("USERNAME"){
             labelUsername.text = username
         }
@@ -209,7 +214,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         
     }
     
-
+    //
     @IBAction func rating_value_change(sender: HCSStarRatingView) {
         NSLog("@Changed rating to %.1f", sender.value);
         //TODO -- send the value to server
@@ -225,4 +230,41 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
     @IBAction func startChat(sender: UIButton){
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Start Chat")
     }
+    
+    //
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    //
+    @IBAction func rateTheUser(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Rate This User\n\n", message: nil,
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let starRatingView: HCSStarRatingView = HCSStarRatingView.init(frame: CGRectMake(50, 50, 180, 20))
+        ratingView.editable = false
+        starRatingView.accurateHalfStars = true
+        starRatingView.maximumValue = 5
+        starRatingView.minimumValue = 0
+        //let rating:NSNumber = localjson["rating"].number!
+        starRatingView.value = CGFloat(1)
+        let username = username_value
+        
+        alertController.view.addSubview(starRatingView)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+            { action -> Void in
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Rating Score " +  String(starRatingView.value))
+                let jsonObject: [String: AnyObject] = [
+                    "operation": "Rate",
+                    "username": username,
+                    "score": String(starRatingView.value)
+                ]
+                getResultFromServerAsJSONObject(jsonObject)
+            }
+        )
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
 }
