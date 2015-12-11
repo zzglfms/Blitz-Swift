@@ -78,7 +78,7 @@ class OtherCreatePostVC: PostSubviewVCInterface, CLLocationManagerDelegate {
         if let _ = location {
             print(location.coordinate.latitude, location.coordinate.longitude)
             return [
-                "position": ["address": address, "latidude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
+                "position": ["address": address, "latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
             ]
         }
         else {
