@@ -103,7 +103,9 @@ class ShowPostVC: UIViewController,
             
             let effectiveDateString = UILabel(frame: CGRectMake(130, 760, 212, 21))
             effectiveDateString.textAlignment = NSTextAlignment.Center
-            effectiveDateString.text = post["effectiveDate"].string!
+            if let effectiveDate = post["effectiveDate"].string {
+                effectiveDateString.text = effectiveDate
+            }
             effectiveDateString.textColor = UIColor(red: 251/255.0, green: 110/255.0, blue: 82/255.0, alpha: 1.0)
             self.containerScrollView.addSubview(effectiveDateString)
             
@@ -114,7 +116,9 @@ class ShowPostVC: UIViewController,
             
             let repeatString = UILabel(frame: CGRectMake(130, 789, 212, 21))
             repeatString.textAlignment = NSTextAlignment.Center
-            repeatString.text = post["repeatString"].string!
+            if let _ = post["repeatString"].string {
+                repeatString.text = post["repeatString"].string!
+            }
             repeatString.textColor = UIColor(red: 251/255.0, green: 110/255.0, blue: 82/255.0, alpha: 1.0)
             self.containerScrollView.addSubview(repeatString)
             
@@ -134,7 +138,9 @@ class ShowPostVC: UIViewController,
                 
                 let effectiveDateString = UILabel(frame: CGRectMake(130, 760, 212, 21))
                 effectiveDateString.textAlignment = NSTextAlignment.Center
-                effectiveDateString.text = post["startDate"].string!
+                if let startDate = post["startDate"].string {
+                    effectiveDateString.text = startDate
+                }
                 effectiveDateString.textColor = UIColor(red: 251/255.0, green: 110/255.0, blue: 82/255.0, alpha: 1.0)
                 self.containerScrollView.addSubview(effectiveDateString)
                 
@@ -145,7 +151,9 @@ class ShowPostVC: UIViewController,
                 
                 let repeatString = UILabel(frame: CGRectMake(130, 789, 212, 21))
                 repeatString.textAlignment = NSTextAlignment.Center
-                repeatString.text = post["endDate"].string!
+                if let endDate = post["endDate"].string {
+                    repeatString.text = endDate
+                }
                 repeatString.textColor = UIColor(red: 251/255.0, green: 110/255.0, blue: 82/255.0, alpha: 1.0)
                 self.containerScrollView.addSubview(repeatString)
                 
@@ -156,9 +164,11 @@ class ShowPostVC: UIViewController,
                 self.containerScrollView.addSubview(amenitiesLabel)
                 
                 // Split amenityString
-                let amenityNames = post["amenity"].string!.characters.split{$0 == ","}.map(String.init)
-                for name in amenityNames {
-                    amenityMap[name] = true
+                if let amenityString = post["amenity"].string {
+                    let amenityNames = amenityString.characters.split{$0 == ","}.map(String.init)
+                    for name in amenityNames {
+                        amenityMap[name] = true
+                    }
                 }
                 
                 for index in 0...9 {
@@ -273,6 +283,7 @@ class ShowPostVC: UIViewController,
         
         if(username.isEqualToString(post["username"].string!)){
             button.setTitle("View replys", forState: .Normal)
+            
             button.addTarget(self, action: "clickByOwner:", forControlEvents: .TouchUpInside)
             button.frame = CGRectMake( -50, -40, 100, 500)
             
