@@ -59,13 +59,21 @@ class ShowPostVC: UIViewController,
         // Do any additional setup after loading the view.
         requestData()
         
-        // 1
-        pageImages = [UIImage(named: "carpool")!,
-            UIImage(named: "foodDiscover")!,
-            UIImage(named: "houseRental")!,
-            UIImage(named: "other")!,
-            UIImage(named: "avatar")!]
+        let post = postdata["object"]
+        let id_arr_arr = post["photo"].object as! [[String]]
         
+        for id_arr in id_arr_arr {
+            if id_arr != [] {
+                let image = picture_download(id_arr)
+                pageImages.append(image)
+            }
+        }
+        if pageImages == [] {
+            pageImages.append(UIImage(named: "no_image")!)
+        }
+        
+        
+        // 1
         let pageCount = pageImages.count
         
         // 2

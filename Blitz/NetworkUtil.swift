@@ -27,7 +27,8 @@ let operationToPortMap = [
     "GetNotifications": 9072,
     "PostNotifications": 9072,
     "upload": 9071,
-    "getpic": 9071
+    "getpic": 9071,
+    "getpic2": 9071
 ]
 
 
@@ -124,6 +125,84 @@ func getJSONStringFromServer(inputJSON: [String: AnyObject]) -> String {
     }
     
 }
+
+
+
+func getPicture(inputJSON: [String: AnyObject]) -> [String: AnyObject] {
+    let addr = "blitzproject.cs.purdue.edu"
+    let port = operationToPortMap[inputJSON["operation"] as! String]
+    
+    var inp :NSInputStream?
+    var out :NSOutputStream?
+    
+    NSStream.getStreamsToHostWithName(addr, port: port!, inputStream: &inp, outputStream: &out)
+    
+    let inputStream = inp!
+    let outputStream = out!
+    inputStream.open()
+    outputStream.open()
+    
+    do{ // Try to convert jsonObject into String
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(inputJSON, options: NSJSONWritingOptions())
+        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+        
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON String = " + jsonString)
+        
+        // Add "\n" to the end for socketServer(java)
+        outputStream.write(jsonString+"\n", maxLength: jsonString.characters.count + 1)
+        
+        var buffer = [UInt8](count: 1000, repeatedValue: 0)
+        var res = ""
+        var isWait :Bool = true
+        while true {
+            let result :Int = inputStream.read(&buffer, maxLength: buffer.count)
+            let char = String(bytes: buffer, encoding: NSUTF8StringEncoding)!
+            //print((char, result, res.characters.count))
+            if result == -1{
+                // Connection fail
+                break
+            }
+            if result == 0 && !isWait{
+                break
+            }
+            if result > 0 {
+                let index1 = char.endIndex.advancedBy(result-1000)
+                res += char.substringToIndex(index1)
+                if res.rangeOfString("}") != nil{
+                   break
+                }
+                isWait = false;
+            }
+        }
+        
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result JSON String = " + res)
+        if let data = res.dataUsingEncoding(NSUTF8StringEncoding){
+            do {
+                let parsedObject = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
+                if let _ = parsedObject{
+                    return parsedObject!
+                }
+                else {
+                    return [:]
+                }
+            }
+            catch {
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use NSJSONSerialization.JSONObjectWithData")
+                return [ "error": true, "success": false, "msg": "Error when use NSJSONSerialization.JSONObjectWithData" ]
+            }
+        }
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use String.dataUsingEncoding")
+        return [ "error": true, "success": false, "msg": "Error when use String.dataUsingEncoding" ]
+    }
+    catch{
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Error when use 'NSJSONSerialization.dataWithJSONObject")
+        return [ "error": true, "success": false,"msg": "Error when use 'NSJSONSerialization.dataWithJSONObject'"]
+    }
+    
+}
+
+
+
 
 func postImage(image : UIImage){
     /*let url: NSURL = NSURL(string: "http://blitzproject.cs.purdue.edu:9075/UploadFileServer/upload")!

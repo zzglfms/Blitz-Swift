@@ -45,7 +45,7 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         imageScrollView.delegate = self
         
         scrollView.delegate = self
-        scrollView.contentSize = CGSizeMake(375.0, 920.0)
+        scrollView.contentSize = CGSizeMake(375.0, 920.0 + 234)
         
         // Do any additional setup after loading the view.
         categoryTextField.text = categories[0]
@@ -233,6 +233,12 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             return
         }
         
+        var id_arr_arr: [[String]] = []
+        for image in pageImages {
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let id_array = picture_upload(imageData!)
+            id_arr_arr.append(id_array)
+        }
         
         // Make a json object for communication with server
         var postJSONObject: [String: AnyObject] = [
@@ -244,7 +250,8 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             "bounty": bounty!,
             "contact": contactTextField.text!,
             "isRequest": type == "Request",
-            "category": categoryTextField.text!
+            "category": categoryTextField.text!,
+            "photo": id_arr_arr
         ]
         
         // Add infoFromSubview into postJSONObject
@@ -256,7 +263,7 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         let result = getResultFromServerAsJSONObject(postJSONObject)
         
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = %@", result)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -470,5 +477,4 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
             pageViews[page] = nil
         }
     }
-
 }

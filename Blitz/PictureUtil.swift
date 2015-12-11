@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 func picture_upload(imageData: NSData) -> [String] {
-    let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+    let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 1))
     let myNSString = base64String as NSString
     var id_array: [String] = []
     
@@ -39,22 +39,22 @@ func picture_upload(imageData: NSData) -> [String] {
 }
 
 func picture_download(id_array: [String]) -> UIImage {
-    var myNSString = NSString()
+    var myNSString = ""
     
     for id in id_array {
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): id = %@", id)
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): id = %@", id)
         let json:[String: AnyObject] = [
             "operation": "getpic",
             "id": id
         ]
-        let result = JSON(getResultFromServerAsJSONObject(json))
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = ")
+        let result = JSON(getPicture(json))
+        //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = ")
         if result["success"].bool! {
-            myNSString = (myNSString as String) + result["data"].string!
+            myNSString = myNSString + result["data"].string! 
         }
     }
 
-    let decodedData = NSData(base64EncodedString: myNSString as String, options: NSDataBase64DecodingOptions(rawValue: 0))
+    let decodedData = NSData(base64EncodedString: myNSString as String, options: NSDataBase64DecodingOptions(rawValue: 1))
     let image = UIImage.init(data: decodedData!)
     
     return image!
