@@ -65,6 +65,26 @@ class responseEditVC: UIViewController {
         let username = prefs.stringForKey("USERNAME")!
         let comment: NSString = responseTextField.text
         let offeredBounty = Int(bounty.text!)
+        var invalidMessage = ""
+        
+        // Validation for bounty
+        if let q = offeredBounty {
+            if q <= 0 {
+                invalidMessage.appendContentsOf("Please enter a postive integer for bounty")
+            }
+        }
+        else {
+            invalidMessage.appendContentsOf("Please enter a postive integer for bounty")
+        }
+        
+        if invalidMessage != "" {
+            let alertController = UIAlertController(title: "Invalid", message: invalidMessage, preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in }
+            alertController.addAction(OKAction)
+            self.presentViewController(alertController, animated: true) {}
+            return
+        }
+        
         let jsonObject: [String: AnyObject] = [
             "operation":"OfferPrice",
             "postID":postID,

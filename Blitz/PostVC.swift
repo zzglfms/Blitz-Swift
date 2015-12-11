@@ -116,28 +116,28 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         // Load Subview based on selected category
         switch categoryTextField.text! {
             case "Carpool":
-                scrollView.contentSize = CGSizeMake(375.0, 920.0)
+                scrollView.contentSize = CGSizeMake(375.0, (920.0 + 108))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CarpoolCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "FoodDiscover":
-                scrollView.contentSize = CGSizeMake(375.0, 770.0)
+                scrollView.contentSize = CGSizeMake(375.0, (770.0 + 108))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FoodDiscoverCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "House Rental":
-                scrollView.contentSize = CGSizeMake(375.0, 1020.0)
+                scrollView.contentSize = CGSizeMake(375.0, (1020.0 + 108))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("HouseRentalCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
                 self.currentViewController = newViewController as! PostSubviewVCInterface
                 break
             case "Other":
-                scrollView.contentSize = CGSizeMake(375.0, 470.0)
+                scrollView.contentSize = CGSizeMake(375.0, (470.0 + 108))
                 let newViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OtherCreatePost")
                 newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
                 self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)

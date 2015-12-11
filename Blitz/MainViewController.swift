@@ -73,14 +73,33 @@ class MainViewController: UITableViewController, CLLocationManagerDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("postCell", forIndexPath: indexPath) as! PostCell
+        
         // Set title
-        cell.textLabel!.text = posts[indexPath.row]["title"] as? String
+        cell.titleLabel!.text = posts[indexPath.row]["title"] as? String
+        
         // Set postTime
         let date_iso8601 = NSDate.date(fromString: posts[indexPath.row]["postTime"]! as! String, format: DateFormat.ISO8601)
         let date_String = date_iso8601?.toString(format: DateFormat.Custom("yyyy-MM-dd HH:mm"))
-        cell.detailTextLabel!.text = date_String
+        cell.timeLabel!.text = date_String
         
+        // Set Category Image
+        switch posts[indexPath.row]["category"] as! String {
+            case "Carpool":
+                cell.categoryImage.image = UIImage(named: "carpool")
+                break
+            case "FoodDiscover":
+                cell.categoryImage.image = UIImage(named: "foodDiscover")
+                break
+            case "House Rental":
+                cell.categoryImage.image = UIImage(named: "houseRental")
+                break
+            case "Other":
+                cell.categoryImage.image = UIImage(named: "other")
+                break
+            default:
+                break;
+        }
         return cell
     }
     

@@ -71,14 +71,25 @@ UIImagePickerControllerDelegate {
     
     // ImagePicker Delegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        let imageData = UIImageJPEGRepresentation(image, 100)
+        let imageData = UIImageJPEGRepresentation(image, 0.5)
+        
+        print(imageData?.length)
         avatarimage.image = UIImage.init(data: imageData!)
         dismissViewControllerAnimated(true, completion: nil)
-        print("try to save image")
+        print("try to save image,  size of pic = ", imageData?.length)
         
         //save image
         prefs.setObject(imageData, forKey: "avatar")
-        postImage(image)
+
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            picture_upload(imageData!)
+            dispatch_async(dispatch_get_main_queue()) {
+                NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Upload Done")
+            }
+        }
+        
+        
         prefs.synchronize()
     }
     
@@ -223,20 +234,8 @@ UIImagePickerControllerDelegate {
     */
     
     
-    @IBAction func NotificationsTest(sender: AnyObject) {
-        let modifyJSON: [String: AnyObject]! = [
-            "username": prefs.stringForKey("USERNAME")!,
-            "operation": "GetNotifications",
-        ]
-        
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input = "+String(modifyJSON))
-        
-        let result = getResultFromServerAsJSONObject(modifyJSON)
-        let result_JSON = JSON(result)
-        
-        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): result = "+String(result_JSON))
-
-        notificaitonCreate("test message")
+    @IBAction func serverTest(sender: AnyObject) {
+        //alamofire_test()
     }
     
 }

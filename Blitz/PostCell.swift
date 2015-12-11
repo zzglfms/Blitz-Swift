@@ -10,9 +10,10 @@ import UIKit
 
 class PostCell: UITableViewCell {
     
-    /* Views */
-    @IBOutlet var TitleLabel: UILabel!
-    @IBOutlet var DescrLabel: UILabel!
+    // MARK: - Outlets
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
     
     
     override func awakeFromNib() {
