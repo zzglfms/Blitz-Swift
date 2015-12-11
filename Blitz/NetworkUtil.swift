@@ -150,18 +150,20 @@ func postImage(image : UIImage){
     
     let imageData = UIImagePNGRepresentation(image)
     if imageData != nil{
-        let request = NSMutableURLRequest(URL: NSURL(string:"http://blitzproject.cs.purdue.edu:9075/UploadFileServer/UploadFileServer")!)
+        let request = NSMutableURLRequest(URL: NSURL(string:"blitzproject.cs.purdue.edu:9075/UploadFileServer/upload")!)
         request.HTTPMethod = "POST"
         request.HTTPBody = NSData(data: imageData!)
-        
+
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): sending the image to server")
         do{
             let returnData =  try NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
             let returnString = NSString(data: returnData, encoding: NSUTF8StringEncoding)
             print("returnString \(returnString)")
-        } catch _{
-            
-        }
+        } catch {
+            NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Catch An error")
 
+        }
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): done")
     }
 }
 
