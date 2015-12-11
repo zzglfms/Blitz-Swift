@@ -26,6 +26,8 @@ class ShowPostVC: UIViewController,
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var DeleteButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: - Variable
     var annotation:MKAnnotation!
@@ -43,6 +45,9 @@ class ShowPostVC: UIViewController,
     var postOwner: String!
     var amenityMap: [String: Bool] = [:]
     
+    var pageImages: [UIImage] = []
+    var pageViews: [UIImageView?] = []
+    
     
     let amenitiesStrings = ["Kitchen", "Internet", "Wireless Internet", "Air Conditioning", "Heating", "Refriderator", "Washer", "Dryer", "Pets Allowed", "Family/Kid Friendly"]
     
@@ -53,6 +58,31 @@ class ShowPostVC: UIViewController,
         
         
         // Do any additional setup after loading the view.
+        // 1
+        pageImages = [UIImage(named: "carpool")!,
+            UIImage(named: "foodDiscover")!,
+            UIImage(named: "houseRental")!,
+            UIImage(named: "other")!,
+            UIImage(named: "avatar")!]
+        
+        let pageCount = pageImages.count
+        
+        // 2
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = pageCount
+        
+        // 3
+        for _ in 0..<pageCount {
+            pageViews.append(nil)
+        }
+        
+        // 4
+        let pagesScrollViewSize = imageScrollView.frame.size
+        imageScrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count),
+            height: pagesScrollViewSize.height)
+        
+        // 5
+        loadVisiblePages()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -302,6 +332,12 @@ class ShowPostVC: UIViewController,
         usernameButton.titleLabel!.text = postOwner
     }
     
+    // MARK: - Scrollview delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Load the pages that are now on screen
+        loadVisiblePages()
+    }
+    
     
     // MARK: - ADD A PIN ON THE MAP
     func addPinOnMap(address: String, type: String) {
@@ -339,5 +375,68 @@ class ShowPostVC: UIViewController,
         }
     }
     
+    // MARK: - Helper Fucntions    
+    func loadVisiblePages() {
+        // First, determine which page is currently visible
+        let pageWidth = imageScrollView.frame.size.width
+        let page = Int(floor((imageScrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        
+        // Update the page control
+        pageControl.currentPage = page
+        
+        // Work out which pages you want to load
+        let firstPage = page - 1
+        let lastPage = page + 1
+        
+        // Purge anything before the first page
+        for var index = 0; index < firstPage; ++index {
+            purgePage(index)
+        }
+        
+        // Load pages in our range
+        for index in firstPage...lastPage {
+            loadPage(index)
+        }
+        
+        // Purge anything after the last page
+        for var index = lastPage+1; index < pageImages.count; ++index {
+            purgePage(index)
+        }
+    }
     
+    func loadPage(page: Int) {
+        if page < 0 || page >= pageImages.count {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        // Load an individual page, first checking if you've already loaded it
+        if let _ = pageViews[page] {
+            // Do nothing. The view is already loaded.
+        } else {
+            var frame = imageScrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.y = 0.0
+            frame = CGRectInset(frame, 10.0, 0.0)
+            
+            let newPageView = UIImageView(image: pageImages[page])
+            newPageView.contentMode = .ScaleAspectFit
+            newPageView.frame = frame
+            imageScrollView.addSubview(newPageView)
+            pageViews[page] = newPageView
+        }
+    }
+    
+    func purgePage(page: Int) {
+        if page < 0 || page >= pageImages.count {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        // Remove a page from the scroll view and reset the container array
+        if let pageView = pageViews[page] {
+            pageView.removeFromSuperview()
+            pageViews[page] = nil
+        }
+    }
 }

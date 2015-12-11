@@ -1636,7 +1636,9 @@
                         <outlet property="QuantityLabel" destination="TyG-Gy-qXF" id="2HE-qV-riG"/>
                         <outlet property="categoryLabel" destination="bS1-2X-eXr" id="4GS-cX-mK3"/>
                         <outlet property="containerScrollView" destination="7W1-5E-Nqe" id="tWy-5b-3KI"/>
+                        <outlet property="imageScrollView" destination="OMc-pd-Fxr" id="swW-6Z-gHM"/>
                         <outlet property="mapView" destination="Bhf-YP-MMl" id="S1w-9s-vTn"/>
+                        <outlet property="pageControl" destination="XEt-HC-bm4" id="0iu-sR-lLO"/>
                         <outlet property="usernameButton" destination="XUs-9t-J1e" id="igc-3P-rXE"/>
                     </connections>
                 </viewController>
