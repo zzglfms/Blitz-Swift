@@ -25,7 +25,8 @@ let operationToPortMap = [
     "UploadPicture": 9071,
     "GetPicture": 9071,
     "GetNotifications": 9072,
-    "PostNotifications": 9072
+    "PostNotifications": 9072,
+    "upload": 9071
 ]
 
 
