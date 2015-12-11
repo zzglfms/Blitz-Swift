@@ -95,10 +95,10 @@ class MenuViewController: UITableViewController {
             }
             else {
                 if indexPath.row == 0 {
-                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Time")
+                    mainViewController.sortPostsBasedTime()
                 }
                 else {
-                    NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): Sort by Location")
+                    mainViewController.sortPostsBasedDistance()
                 }
             }
         }
