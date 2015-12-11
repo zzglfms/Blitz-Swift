@@ -249,6 +249,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
         //let rating:NSNumber = localjson["rating"].number!
         starRatingView.value = CGFloat(1)
         let username = username_value
+        let postid = postID
         
         alertController.view.addSubview(starRatingView)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
@@ -257,6 +258,7 @@ class ProfileVC: UIViewController, UIScrollViewDelegate {
                 let jsonObject: [String: AnyObject] = [
                     "operation": "Rate",
                     "username": username,
+                    "postID": postid,
                     "score": String(starRatingView.value)
                 ]
                 getResultFromServerAsJSONObject(jsonObject)
