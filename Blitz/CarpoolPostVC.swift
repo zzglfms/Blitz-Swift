@@ -97,8 +97,9 @@ class CarpoolPostVC: PostSubviewVCInterface {
         
         if fromInfo.success && toInfo.success {
             return [
-                "from": ["latitude": fromInfo.latitude, "longitude": fromInfo.longitude],
-                "to": ["latitude": toInfo.latitude, "longitude": toInfo.longitude],
+                "position": ["address": fromInfo.address, "latitude": fromInfo.latitude, "longitude": fromInfo.longitude],
+                "from": ["address": fromInfo.address, "latitude": fromInfo.latitude, "longitude": fromInfo.longitude],
+                "to": ["address": toInfo.address, "latitude": toInfo.latitude, "longitude": toInfo.longitude],
                 "effectiveDate": dateTextField.text!,
                 "repeatString": repeatTextField.text!
             ]

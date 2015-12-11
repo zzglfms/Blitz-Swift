@@ -17,6 +17,7 @@ class ShowPostVC: UIViewController,
     
     // MARK: - Reference Outlet
     @IBOutlet weak var PostTitleLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var BountyLabel: UILabel!
     @IBOutlet weak var QuantityLabel: UILabel!
     @IBOutlet weak var DescrTxt: UITextView!
@@ -25,6 +26,7 @@ class ShowPostVC: UIViewController,
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var PostTime: UILabel!
     @IBOutlet weak var DeleteButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Variable
     var postdata:JSON = []
@@ -57,7 +59,7 @@ class ShowPostVC: UIViewController,
         //NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): local time = %@", date_String!)
         
         PostTime.text = date_String
-        if let description = post["description"].string{
+        if let description = post["description"].string {
             DescrTxt.text = description
         }
         
@@ -69,6 +71,7 @@ class ShowPostVC: UIViewController,
             DeleteButton.hidden = false
         }
         
+        categoryLabel.text = post["category"].string!
 
     }
 

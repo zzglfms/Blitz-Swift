@@ -223,11 +223,11 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
 
         NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): input JSON = %@", postJSONObject)
         
-//        let result = getResultFromServerAsJSONObject(postJSONObject)
-//        
-//        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
-//        
-//        self.dismissViewControllerAnimated(true, completion: nil)
+        let result = getResultFromServerAsJSONObject(postJSONObject)
+        
+        NSLog("@\(getFileName(__FILE__)) - \(__FUNCTION__): %@", result)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

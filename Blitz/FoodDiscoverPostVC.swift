@@ -38,7 +38,7 @@ class FoodDiscoverPostVC: PostSubviewVCInterface {
         
         if locationInfo.success {
             return [
-                "position": ["latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
+                "position": ["address": locationInfo.address, "latitude": locationInfo.latitude, "longitude": locationInfo.longitude],
             ]
         }
         else {

@@ -14,6 +14,7 @@ class OtherCreatePostVC: PostSubviewVCInterface, CLLocationManagerDelegate {
     // MARK: - Variables
     var locationManager: CLLocationManager!
     var location: CLLocation!
+    var address: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,20 @@ class OtherCreatePostVC: PostSubviewVCInterface, CLLocationManagerDelegate {
             placemark = placeArray[0]
             
             self.location = placemark.location
+            
+            // Street
+            let street = placemark.addressDictionary?["Street"] as? String ?? ""
+            // City
+            let city = placemark.addressDictionary?["City"] as? String ?? ""
+            // Zip code
+            let zip = placemark.addressDictionary?["ZIP"] as? String ?? ""
+            // State
+            let state = placemark.addressDictionary?["State"] as? String ?? ""
+            // Country
+            let country = placemark.addressDictionary?["Country"] as? String ?? ""
+            
+            self.address = "\(street), \(zip), \(city), \(state), \(country)"
+
         })
         
     }
@@ -63,7 +78,7 @@ class OtherCreatePostVC: PostSubviewVCInterface, CLLocationManagerDelegate {
         if let _ = location {
             print(location.coordinate.latitude, location.coordinate.longitude)
             return [
-                "position": ["latidude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
+                "position": ["address": address, "latidude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
             ]
         }
         else {
