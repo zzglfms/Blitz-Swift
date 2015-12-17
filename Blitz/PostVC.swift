@@ -235,7 +235,7 @@ class PostVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         var id_arr_arr: [[String]] = []
         for image in pageImages {
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            let imageData = UIImageJPEGRepresentation(image, 0.0)
             let id_array = picture_upload(imageData!)
             id_arr_arr.append(id_array)
         }

@@ -67,6 +67,7 @@ class ShowPostVC: UIViewController,
                 let image = picture_download(id_arr)
                 pageImages.append(image)
             }
+            
         }
         if pageImages == [] {
             pageImages.append(UIImage(named: "no_image")!)
